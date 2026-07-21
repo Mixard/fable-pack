@@ -1,0 +1,13 @@
+{
+  "name": "fable-skills-marketplace",
+  "owner": {
+    "name": "mixardeee"
+  },
+  "plugins": [
+    {
+      "name": "fable-skills",
+      "source": "./",
+      "description": "Curated knowledge-only skill pack: API schemas, CLI flags, version-specific behavior, platform gotchas"
+    }
+  ]
+}
