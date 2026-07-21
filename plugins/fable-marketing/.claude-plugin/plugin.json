@@ -1,0 +1,17 @@
+{
+  "name": "fable-marketing",
+  "description": "Marketing skills with concrete frameworks and numbers: CRO, SEO, copywriting, cold email, ads, pricing, and marketing psychology.",
+  "version": "0.1.0",
+  "author": {
+    "name": "mixardeee"
+  },
+  "license": "MIT",
+  "keywords": [
+    "marketing",
+    "seo",
+    "cro",
+    "copywriting",
+    "ads",
+    "pricing"
+  ]
+}

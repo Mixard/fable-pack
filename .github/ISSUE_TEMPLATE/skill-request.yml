@@ -1,0 +1,36 @@
+name: Skill or agent request
+description: Request a skill or agent that is missing from the pack
+title: "[request] "
+labels: ["request"]
+body:
+  - type: dropdown
+    id: plugin
+    attributes:
+      label: Target plugin
+      options:
+        - fable-knowledge
+        - fable-agents
+        - fable-workflows
+        - fable-marketing
+        - not sure
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What should it cover?
+      description: The tool, API, platform, or task. Be specific about versions.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: What does the model currently get wrong without it?
+      description: This pack only includes knowledge a strong model would otherwise hallucinate. Concrete examples of wrong output make the case.
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Good sources
+      description: Official docs, changelogs, or permissively licensed content worth adapting.

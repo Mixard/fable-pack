@@ -1,0 +1,26 @@
+name: Outdated information
+description: Report a skill that contains stale or wrong facts (API changed, flag removed, version bumped)
+title: "[outdated] "
+labels: ["outdated"]
+body:
+  - type: input
+    id: skill
+    attributes:
+      label: Skill or agent
+      description: Path or name, e.g. fable-knowledge/skills/x-api
+    validations:
+      required: true
+  - type: textarea
+    id: wrong
+    attributes:
+      label: What is outdated?
+      description: Quote the stale statement from the skill.
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: What is correct now?
+      description: The current behavior, with a link to docs or changelog if possible.
+    validations:
+      required: true

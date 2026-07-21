@@ -1,13 +1,40 @@
 {
-  "name": "fable-skills-marketplace",
+  "name": "fable-pack",
   "owner": {
     "name": "mixardeee"
   },
+  "description": "Curated, license-clean plugin pack for Claude Code: knowledge skills, subagents, workflows, and marketing skills. Strict selection: only content a strong model would otherwise get wrong.",
+  "metadata": {
+    "pluginRoot": "./plugins"
+  },
   "plugins": [
     {
-      "name": "fable-skills",
-      "source": "./",
-      "description": "Curated knowledge-only skill pack: API schemas, CLI flags, version-specific behavior, platform gotchas"
+      "name": "fable-knowledge",
+      "source": "./plugins/fable-knowledge",
+      "description": "Knowledge-only skills: exact API schemas, CLI flags, version-specific behavior, platform gotchas",
+      "category": "development",
+      "tags": ["knowledge", "api-reference", "gotchas"]
+    },
+    {
+      "name": "fable-agents",
+      "source": "./plugins/fable-agents",
+      "description": "Curated specialist subagents: language experts, reviewers, infrastructure and incident response",
+      "category": "development",
+      "tags": ["agents", "subagents", "review"]
+    },
+    {
+      "name": "fable-workflows",
+      "source": "./plugins/fable-workflows",
+      "description": "Battle-tested development workflows: TDD, systematic debugging, planning, verification",
+      "category": "productivity",
+      "tags": ["workflow", "tdd", "debugging", "planning"]
+    },
+    {
+      "name": "fable-marketing",
+      "source": "./plugins/fable-marketing",
+      "description": "Marketing skills with concrete frameworks: CRO, SEO, copywriting, ads, pricing",
+      "category": "marketing",
+      "tags": ["marketing", "seo", "cro", "copywriting"]
     }
   ]
 }

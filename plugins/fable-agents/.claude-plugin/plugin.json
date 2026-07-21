@@ -1,0 +1,16 @@
+{
+  "name": "fable-agents",
+  "description": "Curated specialist subagents: language experts, code reviewers, infrastructure, and incident response. Selected for depth over breadth.",
+  "version": "0.1.0",
+  "author": {
+    "name": "mixardeee"
+  },
+  "license": "MIT",
+  "keywords": [
+    "agents",
+    "subagents",
+    "review",
+    "languages",
+    "infrastructure"
+  ]
+}

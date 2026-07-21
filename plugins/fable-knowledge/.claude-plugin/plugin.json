@@ -1,0 +1,17 @@
+{
+  "name": "fable-knowledge",
+  "description": "Curated knowledge-only skill pack: exact API schemas, CLI flags, version-specific behavior, and platform gotchas. No process rituals.",
+  "version": "0.2.0",
+  "author": {
+    "name": "mixardeee"
+  },
+  "license": "MIT",
+  "keywords": [
+    "knowledge",
+    "api-reference",
+    "gotchas",
+    "media",
+    "databases",
+    "web"
+  ]
+}
