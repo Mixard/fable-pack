@@ -2,6 +2,25 @@
 
 All notable changes to this pack are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [fable-guard 0.1.0] - 2026-07-21
+
+### Added
+
+- New opt-in plugin with PreToolUse hooks: blocks secret patterns (Anthropic/OpenAI/GitHub/AWS/Google/Slack keys, private key material) in Bash commands and Write/Edit content, plus dangerous shell patterns (curl|sh, wget|sh, --dangerously-skip-permissions). Single dependency-free Python script, JSON permissionDecision protocol, fails open on malformed input. The four content plugins remain markdown-only; the security model is documented in README.
+
+## [fable-knowledge 0.3.0] - 2026-07-21
+
+### Added
+
+- n8n-selfhosted-ops: operating self-hosted n8n (npm/systemd) - CLI workflow import without an API key, systemd EnvironmentFile for {{$env.*}} expressions, credential re-linking after import, webhook HTTPS requirements, and the Telegram HITL pattern avoiding the broken sendAndWait node (original content, verified on n8n 2.8).
+
+## [repo] - 2026-07-21
+
+### Added
+
+- validate.py: agents must declare an explicit model tier (haiku/sonnet/opus); relative links in all .md content are checked for existence.
+- Maintainer skills in .claude/skills/: release (versioned release procedure) and freshness-sweep (monthly staleness check playbook for version-fragile skills).
+
 ## [fable-agents 0.2.0] - 2026-07-21
 
 ### Changed

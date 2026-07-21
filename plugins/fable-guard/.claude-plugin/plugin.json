@@ -1,0 +1,10 @@
+{
+  "name": "fable-guard",
+  "version": "0.1.0",
+  "description": "Opt-in deterministic guardrails: PreToolUse hooks that block secret leaks and dangerous shell patterns before they execute. The only fable-pack plugin that ships executable code.",
+  "author": {
+    "name": "mixardeee"
+  },
+  "license": "MIT",
+  "keywords": ["security", "hooks", "secrets", "guardrails"]
+}

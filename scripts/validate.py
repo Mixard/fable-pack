@@ -11,6 +11,9 @@ EMOJI_RE = re.compile(
     "[\U0001f300-\U0001faff\U00002700-\U000027bf\U0001f000-\U0001f0ff\U00002600-\U000026ff]"
 )
 
+AGENT_MODELS = {"haiku", "sonnet", "opus"}
+LINK_RE = re.compile(r"\[[^\]]*\]\(([^)\s#][^)\s]*)\)")
+
 errors = []
 
 
@@ -46,6 +49,17 @@ def check_md(path, kind):
         expected = path.parent.name
         if fields.get("name") and fields["name"] != expected:
             err(f"{path}: name '{fields['name']}' != directory '{expected}'")
+    if kind == "agent":
+        model = fields.get("model")
+        if model not in AGENT_MODELS:
+            err(f"{path}: 'model' must be one of {sorted(AGENT_MODELS)}, got '{model}'")
+    for link in LINK_RE.findall(text):
+        if link.startswith(("http://", "https://", "mailto:")):
+            continue
+        if "/" not in link and "." not in link:
+            continue  # not a file path (e.g. Solidity's `new uint32[](2)`)
+        if not (path.parent / link).exists():
+            err(f"{path}: broken relative link '{link}'")
     nlines = text.count("\n") + 1
     if nlines > MAX_SKILL_LINES:
         err(f"{path}: {nlines} lines (max {MAX_SKILL_LINES})")

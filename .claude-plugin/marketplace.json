@@ -35,6 +35,13 @@
       "description": "Marketing skills with concrete frameworks: CRO, SEO, copywriting, ads, pricing",
       "category": "marketing",
       "tags": ["marketing", "seo", "cro", "copywriting"]
+    },
+    {
+      "name": "fable-guard",
+      "source": "./plugins/fable-guard",
+      "description": "Opt-in PreToolUse guardrails: block secret leaks and dangerous shell patterns deterministically",
+      "category": "security",
+      "tags": ["security", "hooks", "secrets"]
     }
   ]
 }

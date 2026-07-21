@@ -1,6 +1,6 @@
 # fable-pack
 
-A curated, license-clean plugin marketplace for Claude Code: 79 skills and 23 subagents across four plugins. Install only what you need.
+A curated, license-clean plugin marketplace for Claude Code: 80 skills and 23 subagents across five plugins. Install only what you need.
 
 The selection bar is strict: every item either contains knowledge a strong model would otherwise hallucinate (exact API schemas, CLI flags, version-specific behavior, platform gotchas) or a battle-tested methodology with hard rules — not generic best practices. We reviewed 1,000+ skills and agents from the most popular community packs and kept under 10% of the knowledge candidates.
 
@@ -17,11 +17,12 @@ Then install any subset:
 /plugin install fable-agents@fable-pack
 /plugin install fable-workflows@fable-pack
 /plugin install fable-marketing@fable-pack
+/plugin install fable-guard@fable-pack
 ```
 
 ## Plugins
 
-### fable-knowledge — 47 skills
+### fable-knowledge — 48 skills
 
 Knowledge-only: exact API schemas, CLI flags, version-specific behavior, platform gotchas. No process rituals.
 
@@ -34,7 +35,7 @@ Knowledge-only: exact API schemas, CLI flags, version-specific behavior, platfor
 | Scientific APIs | pubmed-database, uspto-database, gget |
 | Apple (2025+ APIs) | swift-concurrency-6-2, ios26-liquid-glass, apple-foundation-models |
 | Language niches | kotlin-exposed, kotlin-ktor, perl-modern, cpp-core-guidelines, tinystruct-patterns |
-| Packaging / ops | nuitka-windows-packaging, flox-environments, uncloud, windows-desktop-e2e |
+| Packaging / ops | nuitka-windows-packaging, flox-environments, uncloud, windows-desktop-e2e, n8n-selfhosted-ops |
 | EVM / DeFi | evm-gotchas, defi-amm-security |
 
 ### fable-agents — 23 subagents
@@ -65,6 +66,26 @@ Marketing frameworks with concrete numbers, benchmarks, and templates.
 | SEO | seo-audit, ai-seo, programmatic-seo, aso, competitors |
 | Conversion / retention | ab-testing, popups, offers, churn-prevention, pricing |
 | Foundations | product-marketing, customer-research, copy-editing, revops |
+
+### fable-guard — deterministic guardrails (opt-in)
+
+PreToolUse hooks that block secret patterns (API keys, tokens, private keys) in shell
+commands and file writes, plus dangerous shell patterns (`curl | sh`,
+`--dangerously-skip-permissions`) — before they execute. A model can be tricked or
+forget; a hook fires every time. One dependency-free Python script, fully readable
+in [plugins/fable-guard/hooks/guard.py](plugins/fable-guard/hooks/guard.py).
+
+## Security model
+
+The four content plugins are **inert by design**: markdown only — no hooks, no MCP
+servers, no code that runs on install or load. Reference scripts inside skills are
+examples the model may run with your normal tool permissions, never automatically.
+Installing them cannot send your code or keys anywhere.
+
+`fable-guard` is the single deliberate exception: it ships PreToolUse hooks, which
+Claude Code runs automatically once the plugin is installed. That is its entire
+purpose — deterministic enforcement the model cannot skip. It is opt-in, offline,
+stateless, and small enough to audit in one sitting before installing.
 
 ## Selection principle
 
