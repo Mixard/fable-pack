@@ -16,6 +16,17 @@ A curated, license-clean plugin marketplace for Claude Code. We reviewed 1,000+ 
 /plugin marketplace add Mixard/fable-pack
 ```
 
+## What's new
+
+| Date | Release | Highlights |
+|------|---------|------------|
+| 2026-07-21 | fable-guard 0.1.0 | New opt-in plugin: PreToolUse hooks that deterministically block secret leaks and `curl \| sh` before execution |
+| 2026-07-21 | fable-knowledge 0.3.0 | n8n-selfhosted-ops — first original skill (CLI import without API key, systemd env, Telegram HITL without broken sendAndWait) |
+| 2026-07-21 | fable-agents 0.2.0 | Explicit model tier on all 23 agents: 7 opus / 15 sonnet / 1 haiku — no agent inherits the expensive orchestrator model |
+| 2026-07-21 | repo | Validator now enforces agent model tiers and link integrity; monthly freshness sweep re-verifies version-fragile skills |
+
+Full history in [CHANGELOG.md](CHANGELOG.md).
+
 ## Why this selection
 
 Most community packs were written for weaker models: they teach the model to write React, name variables, or "think step by step." A frontier model does not need any of that — shipping it as a skill just burns context tokens on things the model already does well.
@@ -105,6 +116,22 @@ commands and file writes, plus dangerous shell patterns (`curl | sh`,
 `--dangerously-skip-permissions`) — before they execute. A model can be tricked or
 forget; a hook fires every time. One dependency-free Python script, fully readable
 in [plugins/fable-guard/hooks/guard.py](plugins/fable-guard/hooks/guard.py).
+
+## MCP servers
+
+fable-pack ships **no MCP servers** — that is a deliberate part of the security model
+below, not a gap. Bundled servers auto-start with your session and widen the attack
+surface; a knowledge pack has no business running processes.
+
+Instead, the [mcp-server-configs](plugins/fable-knowledge/skills/mcp-server-configs/SKILL.md)
+skill (fable-knowledge) carries exact, pinned launch configs for the servers people
+actually use — Jira, GitHub, Supabase, Playwright, fal.ai, Cloudflare, Vercel, and
+others — so the model writes a correct `.mcp.json` on the first try and *you* decide
+what runs. Related skills cover the MCP surface where precision matters:
+[claude-devfleet](plugins/fable-knowledge/skills/claude-devfleet/SKILL.md) (exact tool
+signatures for parallel-agent orchestration), [codehealth-mcp](plugins/fable-knowledge/skills/codehealth-mcp/SKILL.md),
+[laravel-plugin-discovery](plugins/fable-knowledge/skills/laravel-plugin-discovery/SKILL.md),
+and [nutrient-api](plugins/fable-knowledge/skills/nutrient-api/SKILL.md).
 
 ## Security model
 
