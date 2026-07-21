@@ -1,6 +1,6 @@
 ---
 name: writing-plans
-description: Use when you have a spec or requirements for a multi-step implementation task, before touching code. Produces a task-by-task plan an engineer with zero codebase context can execute.
+description: Use when you have a spec or requirements for a multi-step implementation task, before touching code. Produces a task-by-task plan an engineer with zero codebase context can execute. For a fresh or large project, scaffold project-cartography first so the plan lands in a mapped codebase; execute via executing-plans.
 ---
 
 # Writing Plans

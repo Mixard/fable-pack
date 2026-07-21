@@ -1,6 +1,6 @@
 ---
 name: executing-plans
-description: Use when you have a written implementation plan to execute inline in the current session, following it task by task with review checkpoints.
+description: Use when you have a written implementation plan to execute inline in the current session, following it task by task with review checkpoints. After substantive tasks, refresh the project-cartography files if the project keeps them.
 ---
 
 # Executing Plans

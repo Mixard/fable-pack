@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://github.com/Mixard/fable-pack/actions/workflows/validate.yml"><img src="https://github.com/Mixard/fable-pack/actions/workflows/validate.yml/badge.svg" alt="CI"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-e3b341" alt="MIT license"></a>
-  <img src="https://img.shields.io/badge/skills-80-2b3242" alt="80 skills">
+  <img src="https://img.shields.io/badge/skills-81-2b3242" alt="81 skills">
   <img src="https://img.shields.io/badge/subagents-23-2b3242" alt="23 subagents">
   <img src="https://img.shields.io/badge/executable_code-none-2b3242" alt="no executable code">
 </p>
@@ -20,6 +20,8 @@ A curated, license-clean plugin marketplace for Claude Code. We reviewed 1,000+ 
 
 | Date | Release | Highlights |
 |------|---------|------------|
+| 2026-07-21 | fable-workflows 0.2.0 | project-cartography — living three-file project map (CODEMAP / PROJECT_STATE / DECISIONS) so large projects survive session boundaries; lifecycle skills now chain |
+| 2026-07-21 | fable-guard 0.2.0 | Stop hook: one-shot stale-map reminder in cartography-mapped projects |
 | 2026-07-21 | fable-guard 0.1.0 | New opt-in plugin: PreToolUse hooks that deterministically block secret leaks and `curl \| sh` before execution |
 | 2026-07-21 | fable-knowledge 0.3.0 | n8n-selfhosted-ops — first original skill (CLI import without API key, systemd env, Telegram HITL without broken sendAndWait) |
 | 2026-07-21 | fable-agents 0.2.0 | Explicit model tier on all 23 agents: 7 opus / 15 sonnet / 1 haiku — no agent inherits the expensive orchestrator model |
@@ -92,11 +94,18 @@ Deep specialist subagents with concrete, tool-specific knowledge.
 
 Every agent declares an explicit model tier — `opus` only where judgment is the product, `sonnet` for implementation, `haiku` for mechanical work.
 
-### fable-workflows — 12 skills
+### fable-workflows — 13 skills
 
 Battle-tested methodologies with hard rules, adapted from obra/superpowers:
 
-test-driven-development, systematic-debugging, brainstorming, writing-plans, executing-plans, verification-before-completion, using-git-worktrees, subagent-driven-development, requesting-code-review, receiving-code-review, finishing-a-development-branch, dispatching-parallel-agents
+test-driven-development, systematic-debugging, brainstorming, writing-plans, executing-plans, verification-before-completion, using-git-worktrees, subagent-driven-development, requesting-code-review, receiving-code-review, finishing-a-development-branch, dispatching-parallel-agents, project-cartography
+
+The lifecycle skills chain: brainstorming settles the design, writing-plans turns it
+into phased tasks, executing-plans runs them, verification closes them out — and
+**project-cartography** keeps a three-file living map (CODEMAP, PROJECT_STATE,
+DECISIONS) so on large projects every new session starts from ~300 lines instead of
+re-reading the codebase. The maps serve the model, never command it: what counts as
+substantive stays a judgment call.
 
 ### fable-marketing — 20 skills
 
@@ -114,8 +123,11 @@ Marketing frameworks with concrete numbers, benchmarks, and templates.
 PreToolUse hooks that block secret patterns (API keys, tokens, private keys) in shell
 commands and file writes, plus dangerous shell patterns (`curl | sh`,
 `--dangerously-skip-permissions`) — before they execute. A model can be tricked or
-forget; a hook fires every time. One dependency-free Python script, fully readable
-in [plugins/fable-guard/hooks/guard.py](plugins/fable-guard/hooks/guard.py).
+forget; a hook fires every time. Also ships a Stop hook that reminds — exactly once,
+and only in projects keeping a CODEMAP.md — when code changed but the project map did
+not (pairs with the project-cartography skill; whether the change was substantive
+stays the model's call). Dependency-free Python, fully readable in
+[plugins/fable-guard/hooks/](plugins/fable-guard/hooks/).
 
 ## MCP servers
 

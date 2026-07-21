@@ -263,6 +263,6 @@
     <text x="640" y="150" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="15" letter-spacing="6" fill="#e3b341">CURATED FOR CLAUDE CODE</text>
     <text x="640" y="222" font-family="ui-sans-serif,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="78" font-weight="800" letter-spacing="-2" fill="#e6edf3">fable<tspan fill="#e3b341">-</tspan>pack</text>
     <text x="640" y="268" font-family="ui-sans-serif,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="21" fill="#9da7b3">Only what a frontier model gets wrong.</text>
-    <text x="640" y="330" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="16" fill="#7d8590">80 skills<tspan fill="#3d4450">&#160;&#160;/&#160;&#160;</tspan>23 agents<tspan fill="#3d4450">&#160;&#160;/&#160;&#160;</tspan>5 plugins<tspan fill="#3d4450">&#160;&#160;/&#160;&#160;</tspan><tspan fill="#e3b341">&lt;10% keep rate</tspan></text>
+    <text x="640" y="330" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="16" fill="#7d8590">81 skills<tspan fill="#3d4450">&#160;&#160;/&#160;&#160;</tspan>23 agents<tspan fill="#3d4450">&#160;&#160;/&#160;&#160;</tspan>5 plugins<tspan fill="#3d4450">&#160;&#160;/&#160;&#160;</tspan><tspan fill="#e3b341">&lt;10% keep rate</tspan></text>
   </g>
 </svg>

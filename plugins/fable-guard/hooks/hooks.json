@@ -19,6 +19,16 @@
           }
         ]
       }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}\"/hooks/stale_map.py"
+          }
+        ]
+      }
     ]
   }
 }

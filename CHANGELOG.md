@@ -2,6 +2,22 @@
 
 All notable changes to this pack are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [fable-workflows 0.2.0] - 2026-07-21
+
+### Added
+
+- project-cartography: living three-file project map (CODEMAP.md, PROJECT_STATE.md, DECISIONS.md) with scaffold templates, update rules, and hard size limits. Design principle: the map serves the model, never commands it - what counts as substantive stays a judgment call.
+
+### Changed
+
+- brainstorming, writing-plans, executing-plans descriptions now point to the next stage in the lifecycle chain (and to project-cartography where relevant).
+
+## [fable-guard 0.2.0] - 2026-07-21
+
+### Added
+
+- Stop hook (stale_map.py): when a project keeps CODEMAP.md and code changed but no map file did, blocks the stop exactly once with a soft reminder; stop_hook_active guards against loops, fail-open on all errors, silent outside mapped projects.
+
 ## [fable-guard 0.1.0] - 2026-07-21
 
 ### Added
