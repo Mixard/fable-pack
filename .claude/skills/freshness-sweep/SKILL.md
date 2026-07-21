@@ -21,6 +21,9 @@ knowledge is worse than no knowledge - the model would otherwise hedge or search
    - stable references (regex-llm-hybrid, ffmpeg-media-recipes, wcag22-reference) - lowest
      priority, check yearly at most.
    Track rotation state in `.claude/skills/freshness-sweep/last-sweep.md` (date + skills checked).
+   Additionally, every sweep: check obra/superpowers releases (source of the 12 adapted
+   fable-workflows skills) for substantive methodology changes since the last sweep -
+   plumbing/platform changes there do not count, only changed rules or tables.
 2. **Verify each target** with web search: current stable version, breaking changes since
    the version the skill documents, deprecated flags/endpoints the skill still recommends.
    Delegate per-skill checks to subagents on sonnet - this is mechanical verification.
