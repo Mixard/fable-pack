@@ -2,6 +2,12 @@
 
 All notable changes to this pack are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [fable-workflows 0.3.0] - 2026-07-21
+
+### Added
+
+- getting-unstuck: critical-thinking process for apparent dead ends. Iron law: no "impossible" without a verified constraint and 3+ tested hypotheses. Four phases (interrogate the wall, generate hypotheses, evidence-only testing ranked by cost-to-test, verdict with experiment log), hypothesis-generation moves table, rationalization table. Security/permission boundaries and explicit user decisions are declared out of scope - never walls to bypass.
+
 ## [fable-workflows 0.2.0] - 2026-07-21
 
 ### Added
