@@ -2,6 +2,13 @@
 
 All notable changes to this pack are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [fable-agents 0.2.0] - 2026-07-21
+
+### Changed
+
+- Explicit model tier on all 23 agents (no agent inherits the orchestrator's model anymore). Coding specialists (golang-pro, java-pro, python-pro, rust-pro) moved from opus to sonnet; the six agents without a model field (backend-architect, database-optimizer, frontend-developer, observability-engineer, performance-engineer, sql-pro) set to sonnet. Final split: 7 opus (architecture, review, security), 15 sonnet, 1 haiku.
+- README: documented the model policy — cheapest model that does the job well; orchestrator delegates mechanical skill work to lower tiers.
+
 ## [0.2.0] - 2026-07-21
 
 Repository restructured from a single-plugin pack (`fable-skills`) into the `fable-pack` marketplace with four independently installable plugins.

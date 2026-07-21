@@ -82,7 +82,8 @@ Marketing frameworks with concrete numbers, benchmarks, and templates.
 ## Conventions
 
 - Skills: `plugins/<plugin>/skills/<name>/SKILL.md`, two-field frontmatter (`name`, `description`), optional `references/` and `scripts/`.
-- Agents: `plugins/fable-agents/agents/<name>.md` with `name`, `description`, and optional `model` tier.
+- Agents: `plugins/fable-agents/agents/<name>.md` with `name`, `description`, and an explicit `model` tier.
+- Model policy: every agent declares the cheapest model that does the job well — `opus` only for judgment-heavy work (architecture, code review, security), `sonnet` for implementation and operations, `haiku` for mechanical tasks. Agents never inherit the orchestrator's model. Skills run inline; when a skill implies substantial mechanical work, the orchestrator should delegate it to a subagent on a lower tier.
 - English only, no emojis, SKILL.md under 800 lines.
 - `python3 scripts/validate.py` checks all of the above; CI runs it on every PR.
 
