@@ -1,16 +1,45 @@
-# fable-pack
+<p align="center">
+  <img src="assets/hero.svg" alt="fable-pack: curated plugin marketplace for Claude Code" width="100%">
+</p>
 
-A curated, license-clean plugin marketplace for Claude Code: 80 skills and 23 subagents across five plugins. Install only what you need.
+<p align="center">
+  <a href="https://github.com/Mixard/fable-pack/actions/workflows/validate.yml"><img src="https://github.com/Mixard/fable-pack/actions/workflows/validate.yml/badge.svg" alt="CI"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-e3b341" alt="MIT license"></a>
+  <img src="https://img.shields.io/badge/skills-80-2b3242" alt="80 skills">
+  <img src="https://img.shields.io/badge/subagents-23-2b3242" alt="23 subagents">
+  <img src="https://img.shields.io/badge/executable_code-none-2b3242" alt="no executable code">
+</p>
 
-The selection bar is strict: every item either contains knowledge a strong model would otherwise hallucinate (exact API schemas, CLI flags, version-specific behavior, platform gotchas) or a battle-tested methodology with hard rules — not generic best practices. We reviewed 1,000+ skills and agents from the most popular community packs and kept under 10% of the knowledge candidates.
-
-## Install
+A curated, license-clean plugin marketplace for Claude Code. We reviewed 1,000+ skills and agents from the most popular community packs and kept fewer than 10% — every survivor either contains knowledge a frontier model would otherwise hallucinate, or a battle-tested methodology with hard rules.
 
 ```
 /plugin marketplace add Mixard/fable-pack
 ```
 
-Then install any subset:
+## Why this selection
+
+Most community packs were written for weaker models: they teach the model to write React, name variables, or "think step by step." A frontier model does not need any of that — shipping it as a skill just burns context tokens on things the model already does well.
+
+What a frontier model still gets wrong is narrow and specific:
+
+- **Exact API schemas and CLI flags** — it will confidently invent a plausible-but-wrong parameter name
+- **Version-specific behavior after its knowledge cutoff** — Next.js 16, Swift 6.2, iOS 26, Angular 21, n8n 2.8
+- **Platform gotchas that contradict intuition** — the documented behavior that no amount of reasoning predicts
+- **Methodologies with hard numeric rules** — cold-email benchmarks, A/B sample sizes, TDD's iron law
+
+That is the entire selection bar. Of 269 skills triaged from ECC alone, 18 survived. Of ~745 agents in wshobson/agents, 23 made it in.
+
+## Why it fits Fable
+
+The pack is tuned for a frontier orchestrator model (Claude Fable / Opus) running the main session:
+
+- **Skills carry facts, not lectures** — short, dense, no process rituals. The orchestrator reads exact schemas and flags instead of re-deriving or hallucinating them.
+- **Every agent declares the cheapest model that does the job** — 7 on `opus` (architecture, code review, security), 15 on `sonnet` (implementation and operations), 1 on `haiku`. No agent silently inherits the expensive orchestrator model. The orchestrator delegates mechanical skill work down-tier and keeps judgment work for itself.
+- **Nothing competes with the model** — no meta-frameworks, no personas, no "orchestration systems" that fight the harness. The pack only fills gaps.
+
+## Install
+
+Install any subset — plugins are independent:
 
 ```
 /plugin install fable-knowledge@fable-pack
@@ -45,14 +74,16 @@ Deep specialist subagents with concrete, tool-specific knowledge.
 | Category | Agents |
 |----------|--------|
 | Languages | python-pro, rust-pro, golang-pro, java-pro, sql-pro, bash-pro |
-| Review / security / perf | code-reviewer, architect-review, security-auditor, performance-engineer |
-| Infrastructure | kubernetes-architect, terraform-specialist, cloud-architect, deployment-engineer, database-admin, database-optimizer, database-architect, backend-architect |
-| Incident / observability | incident-responder, devops-troubleshooter, observability-engineer |
-| Development / QA | frontend-developer, test-automator |
+| Review / security | code-reviewer, architect-review, security-auditor |
+| Infrastructure | kubernetes-architect, terraform-specialist, cloud-architect, deployment-engineer, database-admin, database-architect, database-optimizer |
+| Reliability | devops-troubleshooter, incident-responder, observability-engineer, performance-engineer |
+| Product | frontend-developer, backend-architect, test-automator |
+
+Every agent declares an explicit model tier — `opus` only where judgment is the product, `sonnet` for implementation, `haiku` for mechanical work.
 
 ### fable-workflows — 12 skills
 
-Battle-tested development methodologies with hard rules and anti-pattern tables.
+Battle-tested methodologies with hard rules, adapted from obra/superpowers:
 
 test-driven-development, systematic-debugging, brainstorming, writing-plans, executing-plans, verification-before-completion, using-git-worktrees, subagent-driven-development, requesting-code-review, receiving-code-review, finishing-a-development-branch, dispatching-parallel-agents
 
@@ -98,7 +129,7 @@ stateless, and small enough to audit in one sitting before installing.
 - curated reference data and working non-trivial scripts
 - methodologies with hard rules and measured numbers
 
-**Dropped**: generic best practices, personas, thin wrappers, pack meta-tooling, and anything a frontier model produces reliably on its own. Of the 269 skills triaged from ECC alone, 18 survived.
+**Dropped**: generic best practices, personas, thin wrappers, pack meta-tooling, and anything a frontier model produces reliably on its own.
 
 ## Conventions
 
@@ -106,12 +137,12 @@ stateless, and small enough to audit in one sitting before installing.
 - Agents: `plugins/fable-agents/agents/<name>.md` with `name`, `description`, and an explicit `model` tier.
 - Model policy: every agent declares the cheapest model that does the job well — `opus` only for judgment-heavy work (architecture, code review, security), `sonnet` for implementation and operations, `haiku` for mechanical tasks. Agents never inherit the orchestrator's model. Skills run inline; when a skill implies substantial mechanical work, the orchestrator should delegate it to a subagent on a lower tier.
 - English only, no emojis, SKILL.md under 800 lines.
-- `python3 scripts/validate.py` checks all of the above; CI runs it on every PR.
+- `python3 scripts/validate.py` checks all of the above (including required agent model tiers and link integrity); CI runs it on every PR.
 
 ## Contributing
 
-Missing a skill? Found stale facts? Open an issue — there are templates for [content requests](.github/ISSUE_TEMPLATE/skill-request.yml) and [outdated information reports](.github/ISSUE_TEMPLATE/outdated-info.yml). Outdated-info reports are the most valuable signal for a knowledge pack. See [CONTRIBUTING.md](CONTRIBUTING.md) for the bar and format.
+Missing a skill? Found stale facts? Open an issue — there are templates for [content requests](.github/ISSUE_TEMPLATE/skill-request.yml) and [outdated information reports](.github/ISSUE_TEMPLATE/outdated-info.yml). Outdated-info reports are the most valuable signal for a knowledge pack: version-fragile skills are re-verified against current releases on a monthly sweep. See [CONTRIBUTING.md](CONTRIBUTING.md) for the bar and format.
 
 ## Sources and licensing
 
-This pack is MIT licensed. Parts are adapted from permissively licensed community packs — see [ATTRIBUTIONS.md](ATTRIBUTIONS.md) for the full mapping. Full change history in [CHANGELOG.md](CHANGELOG.md).
+This pack is MIT licensed. Parts are adapted from permissively licensed community packs — see [ATTRIBUTIONS.md](ATTRIBUTIONS.md) for the full mapping: [affaan-m/ECC](https://github.com/affaan-m/ECC), [wshobson/agents](https://github.com/wshobson/agents), [obra/superpowers](https://github.com/obra/superpowers), [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills). Full change history in [CHANGELOG.md](CHANGELOG.md).
