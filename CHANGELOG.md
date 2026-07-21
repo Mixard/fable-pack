@@ -2,6 +2,13 @@
 
 All notable changes to this pack are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [fable-workflows 0.4.0] - 2026-07-21
+
+### Changed
+
+- getting-unstuck: added written experiment-log template (per-hypothesis block with test, timebox, verdict, new-fact line) and a loop limit - two consecutive generation rounds with no new distinct hypothesis force the Phase 4 verdict, preventing the skill from becoming an endless rabbit hole.
+- systematic-debugging: cross-triggers into getting-unstuck at the two natural impasse points - the "3+ fixes failed, question architecture" step and the "no root cause found" section - so the dead-end process fires exactly where tunnel vision peaks.
+
 ## [fable-workflows 0.3.0] - 2026-07-21
 
 ### Added

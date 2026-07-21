@@ -108,6 +108,8 @@ Complete each phase before proceeding to the next.
 
    STOP and question fundamentals: Is this pattern sound? Are we sticking with it through inertia? Should we refactor instead of patching symptoms? **Discuss with the user before attempting more fixes.** This is not a failed hypothesis — this is a wrong architecture.
 
+   Before that discussion, run the getting-unstuck skill on the impasse — its generation moves (change layer, go up a level, reduce scope, invert) often surface the alternative worth proposing, and its verdict format gives the user evidence instead of "I'm stuck".
+
 ## Red Flags - STOP and Follow Process
 
 If you catch yourself thinking:
@@ -179,7 +181,7 @@ If systematic investigation reveals the issue is truly environmental, timing-dep
 3. Implement appropriate handling (retry, timeout, error message)
 4. Add monitoring/logging for future investigation
 
-**But:** 95% of "no root cause" cases are incomplete investigation.
+**But:** 95% of "no root cause" cases are incomplete investigation. And if the conclusion is drifting toward "this can't be done at all" (missing capability, unsupported feature, blocked path — not a bug), switch to the getting-unstuck skill before reporting it.
 
 ## Real-World Impact
 

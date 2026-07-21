@@ -83,8 +83,18 @@ This is where critical thinking becomes discipline:
 1. **Rank by cost-to-test, not by plausibility.** A 10-second experiment on a "probably won't work" idea runs before a 10-minute experiment on a favorite. Cheap-and-weird first.
 2. **Reject only by evidence.** A hypothesis dies from a failed experiment or a VERIFIED fact - never from "that probably won't work." If you can't articulate the experiment that killed it, it isn't dead.
 3. **Minimal experiments.** Smallest command, snippet, or search that produces evidence. One variable at a time. Timebox each (minutes, not hours) - a timeout means INCONCLUSIVE, not refuted.
-4. **Record verdicts:** CONFIRMED / REFUTED (+ the evidence) / INCONCLUSIVE. Inconclusive hypotheses survive and get reported in Phase 4.
-5. **Let results breed.** A refuted hypothesis usually reveals a new fact about the system. Feed it back: does it suggest a new hypothesis or reclassify the wall?
+4. **Record verdicts in a written log.** One block per hypothesis, filled in as you go - a log kept "in the head" degrades into imitation:
+
+   ```
+   H2: the CLI exposes the field even though the API hides it
+   Test: tool export --help | grep -i field    (timebox: 2 min)
+   Verdict: REFUTED - flag absent in v3.2 help output
+   New fact: export exists but emits JSON without metadata
+   ```
+
+   CONFIRMED / REFUTED (+ the evidence) / INCONCLUSIVE. Inconclusive hypotheses survive and get reported in Phase 4.
+5. **Let results breed.** A refuted hypothesis usually reveals a new fact about the system (the `New fact` line above). Feed it back: does it suggest a new hypothesis or reclassify the wall?
+6. **Loop limit.** After exhausting a batch, you may return to Phase 2 with the new facts. But if two consecutive generation rounds produce no new *distinct* hypothesis, stop and proceed to Phase 4 with what you have. This skill exists to break tunnel vision, not to replace it with an endless rabbit hole.
 
 ### Phase 4: Verdict
 
