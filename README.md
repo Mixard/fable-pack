@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://github.com/Mixard/fable-pack/actions/workflows/validate.yml"><img src="https://github.com/Mixard/fable-pack/actions/workflows/validate.yml/badge.svg" alt="CI"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-e3b341" alt="MIT license"></a>
-  <img src="https://img.shields.io/badge/skills-81-2b3242" alt="81 skills">
+  <img src="https://img.shields.io/badge/skills-83-2b3242" alt="83 skills">
   <img src="https://img.shields.io/badge/subagents-23-2b3242" alt="23 subagents">
   <img src="https://img.shields.io/badge/executable_code-none-2b3242" alt="no executable code">
 </p>
@@ -94,11 +94,18 @@ Deep specialist subagents with concrete, tool-specific knowledge.
 
 Every agent declares an explicit model tier — `opus` only where judgment is the product, `sonnet` for implementation, `haiku` for mechanical work.
 
-### fable-workflows — 13 skills
+### fable-workflows — 15 skills
 
 Battle-tested methodologies with hard rules, adapted from obra/superpowers:
 
-test-driven-development, systematic-debugging, brainstorming, writing-plans, executing-plans, verification-before-completion, using-git-worktrees, subagent-driven-development, requesting-code-review, receiving-code-review, finishing-a-development-branch, dispatching-parallel-agents, project-cartography
+test-driven-development, systematic-debugging, brainstorming, writing-plans, executing-plans, verification-before-completion, using-git-worktrees, subagent-driven-development, requesting-code-review, receiving-code-review, finishing-a-development-branch, dispatching-parallel-agents, project-cartography, getting-unstuck, critical-review
+
+Two critical-thinking skills complement each other: **getting-unstuck** fires when a
+path is declared impossible and breaks the wall with tested hypotheses;
+**critical-review** fires when nothing is visibly wrong and hunts blind spots —
+stale assumptions, data contradictions, dismissed alternatives — through a
+mandatory 7-lens pass. Blocked opportunities found by the review route into
+getting-unstuck.
 
 The lifecycle skills chain: brainstorming settles the design, writing-plans turns it
 into phased tasks, executing-plans runs them, verification closes them out — and

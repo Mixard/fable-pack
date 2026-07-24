@@ -2,6 +2,12 @@
 
 All notable changes to this pack are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [fable-workflows 0.5.0] - 2026-07-24
+
+### Added
+
+- critical-review: fresh-eyes re-examination of existing materials to find what was missed - stale assumptions, blind spots, contradictions with own data, dismissed alternatives. Four phases (claim inventory with evidence/freshness/load classification, mandatory 7-lens pass, evidence-only verification with written log, impact-ranked report). Russian triggers in description ("подумай", "посмотри под другим углом", "что мы упускаем"). Complements getting-unstuck: that skill breaks declared dead ends, this one hunts blind spots when nothing is visibly wrong; confirmed blocked opportunities route into getting-unstuck.
+
 ## [fable-workflows 0.4.0] - 2026-07-21
 
 ### Changed

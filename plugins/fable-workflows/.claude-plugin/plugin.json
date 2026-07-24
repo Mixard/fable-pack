@@ -1,7 +1,7 @@
 {
   "name": "fable-workflows",
   "description": "Battle-tested development workflows: test-driven development, systematic debugging, planning, and verification before completion.",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "author": {
     "name": "mixardeee"
   },
