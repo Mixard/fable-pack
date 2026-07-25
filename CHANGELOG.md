@@ -2,6 +2,12 @@
 
 All notable changes to this pack are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [fable-workflows 0.6.0] - 2026-07-25
+
+### Added
+
+- solution-hunter: continuous solution-search loop - subagent generators with rotating lenses, combinator, three adversarial critics (hostile-skeptic / pre-mortem / data-contradiction) executing evidence checks, file-anchored state (BRIEF/STATE/LEDGER/STATUS) in research/<slug>/, anti-stagnation via getting-unstuck, budget guards (rounds/day, total, auto-pause on silence). Stage 0 (round on demand) is the default; Stage 1 (autonomous /loop wakeups) is gated behind four calibration gates (cost, verification yield, dedup on paraphrases, critic divergence) - all four passed on a live smoke round (9.5 min, ~350K subagent tokens, demo hunt found and bit-exact-verified a 37% compression win). Russian triggers in description ("ищи варианты нон-стоп", "перебирай идеи", "не останавливайся пока не найдёшь").
+
 ## [fable-workflows 0.5.0] - 2026-07-24
 
 ### Added
