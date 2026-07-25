@@ -100,7 +100,7 @@ resp = requests.post(
     },
     json={
         "text": "Your narration text here",
-        "model_id": "eleven_turbo_v2_5",
+        "model_id": "eleven_flash_v2_5",
         "voice_settings": {"stability": 0.5, "similarity_boost": 0.75},
     },
 )
@@ -108,4 +108,4 @@ with open("voiceover.mp3", "wb") as f:
     f.write(resp.content)
 ```
 
-`eleven_turbo_v2_5` is the low-latency multilingual model; `stability` and `similarity_boost` range 0-1.
+`stability` and `similarity_boost` range 0-1. As of mid-2026 ElevenLabs recommends `eleven_flash_v2_5` over the functionally equivalent but slower `eleven_turbo_v2_5`; `eleven_v3` tops speech quality but is not built for real-time use. Check the models endpoint for current ids.

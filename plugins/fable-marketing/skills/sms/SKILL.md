@@ -37,7 +37,7 @@ If `.agents/product-marketing.md` exists (created by the product-marketing skill
 
 ## Compliance — Read First
 
-A single TCPA class-action settlement runs $5M-$40M.
+A single TCPA class-action settlement has historically run $5M-$40M (settlement range, unsourced — figures vary case by case).
 
 ### US — TCPA
 
@@ -50,7 +50,7 @@ A single TCPA class-action settlement runs $5M-$40M.
 
 ### US — A2P 10DLC Registration (required since 2022)
 
-Long codes must be registered through The Campaign Registry via your SMS platform. Without it: throttled or zero throughput, carrier filtering — you'll see "delivered" status but recipients won't get messages. Registration covers brand verification, campaign use case, sample messages, opt-in/opt-out language. **Sample messages must match what you actually send** — mismatches get flagged and blocked.
+Long codes must be registered through The Campaign Registry via your SMS platform. Without it: throttled or zero throughput, carrier filtering — you'll see "delivered" status but recipients won't get messages. Registration covers brand verification, campaign use case, sample messages, opt-in/opt-out language. **Sample messages must match what you actually send** — mismatches get flagged and blocked. Re-verify current TCR registration requirements and fees before executing — rules and pricing evolve year to year.
 
 ### EU/UK — GDPR + ePrivacy
 Explicit opt-in (no pre-checked boxes); withdrawing consent must be as easy as giving it; DSARs apply to SMS records.

@@ -72,7 +72,7 @@ A discount won't save someone who isn't using the product; a roadmap won't save 
 
 ### UI Principles
 
-- Keep "continue cancelling" visible at every step — no dark patterns (the FTC Click-to-Cancel rule and several jurisdictions require easy cancellation)
+- Keep "continue cancelling" visible at every step — no dark patterns (the FTC's Click-to-Cancel rule was struck down in 2025, but state laws — e.g. California's auto-renewal law — and other jurisdictions still require easy cancellation)
 - One primary offer + one fallback, not a wall of options
 - Use the customer's name and account data ("Save $47/month")
 - Mobile-friendly — many cancellations happen on mobile

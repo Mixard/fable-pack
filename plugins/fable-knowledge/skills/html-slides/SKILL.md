@@ -1,6 +1,6 @@
 ---
 name: html-slides
-description: Use when building a self-contained HTML presentation deck. Covers a viewport-safe CSS base with clamp() scaling and short-height breakpoints, slide density limits, a catalog of 12 visual presets (font pairings, palettes, signatures), and the negated-CSS-function gotcha.
+description: Use when building a self-contained HTML presentation deck. Covers a viewport-safe CSS base with clamp() scaling and short-height breakpoints, slide density limits, a compact catalog of 12 visual presets (font pairings and palettes), and the negated-CSS-function gotcha.
 ---
 
 # HTML Slides
@@ -151,24 +151,20 @@ img, .image-container {
 
 ## Preset Catalog
 
-| Preset | Fonts | Palette | Signature | Best for |
-|--------|-------|---------|-----------|----------|
-| Bold Signal | Archivo Black + Space Grotesk | charcoal, hot orange focal card, white | oversized section numbers, high-contrast card on dark | pitch decks, launches |
-| Electric Studio | Manrope | black, white, cobalt accent | two-panel split, sharp editorial alignment | client decks, strategy reviews |
-| Creative Voltage | Syne + Space Mono | electric blue, neon yellow, deep navy | halftone textures, badges, punchy contrast | creative studios, brand work |
-| Dark Botanical | Cormorant + IBM Plex Sans | near-black, ivory, blush, gold, terracotta | blurred abstract circles, fine rules, restrained motion | luxury, premium narratives |
-| Notebook Tabs | Bodoni Moda + DM Sans | cream paper on charcoal, pastel tabs | paper sheet, colored side tabs, binder details | reports, structured storytelling |
-| Pastel Geometry | Plus Jakarta Sans | pale blue, cream card, pink/mint/lavender | vertical pills, rounded cards, soft shadows | product overviews, onboarding |
-| Split Pastel | Outfit | peach + lavender split, mint badges | split backdrop, rounded tags, light grid overlays | agency intros, workshops |
-| Vintage Editorial | Fraunces + Work Sans | cream, charcoal, dusty warm accents | geometric accents, bordered callouts, serif headlines | personal brands, opinionated talks |
-| Neon Cyber | Clash Display + Satoshi | midnight navy, cyan, magenta | glow, particles, grids, data-radar energy | AI, infra, dev tools |
-| Terminal Green | JetBrains Mono | GitHub dark + terminal green | scan lines, CLI framing, monospace rhythm | APIs, CLI tools, engineering demos |
-| Swiss Modern | Archivo + Nunito | white, black, signal red | visible grids, asymmetry, geometric discipline | corporate, analytics |
-| Paper & Ink | Cormorant Garamond + Source Serif 4 | warm cream, charcoal, crimson accent | pull quotes, drop caps, elegant rules | essays, manifesto decks |
-
-Mood shortcuts: confident/impressed -> Bold Signal, Electric Studio, Dark Botanical; energized -> Creative Voltage, Neon Cyber, Split Pastel; calm/focused -> Notebook Tabs, Paper & Ink, Swiss Modern; inspired -> Dark Botanical, Vintage Editorial, Pastel Geometry.
-
-Motion by feel: cinematic -> slow fades, parallax, large scale-ins; techy -> glow, particles, grid motion, scramble text; playful -> springy easing, floating motion; corporate -> subtle 200-300 ms transitions; minimal -> whitespace-first restraint; editorial -> staggered text/image interplay.
+| Preset | Fonts | Palette |
+|--------|-------|---------|
+| Bold Signal | Archivo Black + Space Grotesk | charcoal, hot orange focal card, white |
+| Electric Studio | Manrope | black, white, cobalt accent |
+| Creative Voltage | Syne + Space Mono | electric blue, neon yellow, deep navy |
+| Dark Botanical | Cormorant + IBM Plex Sans | near-black, ivory, blush, gold, terracotta |
+| Notebook Tabs | Bodoni Moda + DM Sans | cream paper on charcoal, pastel tabs |
+| Pastel Geometry | Plus Jakarta Sans | pale blue, cream card, pink/mint/lavender |
+| Split Pastel | Outfit | peach + lavender split, mint badges |
+| Vintage Editorial | Fraunces + Work Sans | cream, charcoal, dusty warm accents |
+| Neon Cyber | Clash Display + Satoshi | midnight navy, cyan, magenta |
+| Terminal Green | JetBrains Mono | GitHub dark + terminal green |
+| Swiss Modern | Archivo + Nunito | white, black, signal red |
+| Paper & Ink | Cormorant Garamond + Source Serif 4 | warm cream, charcoal, crimson accent |
 
 ## CSS Gotcha: Negated Functions
 

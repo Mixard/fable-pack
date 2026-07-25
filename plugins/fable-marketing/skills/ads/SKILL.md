@@ -66,6 +66,8 @@ Mapping audience data to creative: demographics → identity-trigger keywords in
 
 Meta's Andromeda algorithm (2025) changed the game. The old playbook (interest stacking, polished video, single-winner scaling) underperforms.
 
+**Note:** the figures in this section (e.g., zombie-campaign resurrection rates) are practitioner-reported patterns from 2025, not published by Meta — re-verify against current Meta guidance before large budget decisions.
+
 ### Creative volume is the constraint (statics > polished video)
 - The algorithm needs constant fresh creative or it fatigues
 - Statics often outperform video: Meta can deliver more statics per session (cheaper delivery), and they're ~10x cheaper/faster to produce, enabling the needed volume
@@ -92,11 +94,9 @@ Study what content natively performs in your niche (a clean burner account follo
 
 ## Creative Best Practices
 
-**Image ads:** product screenshots showing real UI, before/after comparisons, stats as the focal point, real human faces, text overlay under 20% of image.
-
-**Video structure (15-30s):** hook 0-3s (pattern interrupt) → problem 3-8s → solution 8-20s → CTA 20-30s. Captions always (85% watch muted); vertical for Stories/Reels; native feel beats polish; the first 3 seconds decide everything.
-
 **Creative testing hierarchy (biggest impact first):** 1) concept/angle, 2) hook/headline, 3) visual style, 4) body copy, 5) CTA.
+
+Creative production and variation live in the **ad-creative** skill (hook timing, video structure, image specs, per-platform formats).
 
 ---
 

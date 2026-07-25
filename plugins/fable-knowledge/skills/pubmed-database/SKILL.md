@@ -5,15 +5,6 @@ description: Use when searching biomedical literature via PubMed or NCBI E-utili
 
 # PubMed Database
 
-Use this skill when a task needs biomedical literature from PubMed rather than general web search.
-
-## When to Use
-
-- Searching MEDLINE or life-sciences literature
-- Building PubMed queries with MeSH terms, field tags, dates, or article types
-- Looking up PMIDs, abstracts, publication metadata, or related citations
-- Using NCBI E-utilities directly from Python, shell, or another HTTP client
-
 ## Query Construction
 
 Combine concepts with Boolean operators (`AND`, `OR`, `NOT`).

@@ -11,6 +11,8 @@ Reference for the common free stack: `requests`/BeautifulSoup or Playwright for 
 
 Model IDs and free-tier limits (API key from AI Studio, no billing):
 
+Google changes free-tier model IDs and limits frequently; treat this table as a snapshot and fetch current limits from ai.google.dev before relying on them.
+
 | Model | RPM | RPD |
 |---|---|---|
 | `gemini-2.0-flash-lite` | 30 | 1500 |

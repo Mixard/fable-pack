@@ -18,10 +18,10 @@ knowledge is worse than no knowledge - the model would otherwise hedge or search
      kotlin-exposed, kotlin-ktor, nuxt4-patterns, react-performance, remotion)
    - hosted API endpoints and pricing (fal-ai-media, nutrient-api, mailtrap-email-integration,
      free-tier-scraper-apis, x-api, agent-payment-x402)
-   - stable references (regex-llm-hybrid, ffmpeg-media-recipes, wcag22-reference) - lowest
+   - stable references (ffmpeg-media-recipes, wcag22-reference) - lowest
      priority, check yearly at most.
    Track rotation state in `.claude/skills/freshness-sweep/last-sweep.md` (date + skills checked).
-   Additionally, every sweep: check obra/superpowers releases (source of the 12 adapted
+   Additionally, every sweep: check obra/superpowers releases (source of the 11 adapted
    fable-workflows skills) for substantive methodology changes since the last sweep -
    plumbing/platform changes there do not count, only changed rules or tables.
 2. **Verify each target** with web search: current stable version, breaking changes since

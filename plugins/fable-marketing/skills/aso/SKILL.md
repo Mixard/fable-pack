@@ -94,7 +94,7 @@ Report rules: every recommendation specific ("Change subtitle from X to Y," with
 - Screenshots: up to 10 per device; first 3 visible in search — ~90% of users never scroll past the 3rd
 - Screenshot captions are indexed (AI extraction, since June 2025)
 - In-app events: max 10 published, max 31 days each; indexed and appear in search
-- Custom Product Pages (up to 70) appear in organic search; average +5.9% conversion lift
+- Custom Product Pages (up to 70) appear in organic search; industry-reported estimate of +5.9% average conversion lift (not an Apple-published figure)
 - App preview video: up to 3, 15-30s, autoplays muted — +20-40% conversion lift
 - SKStoreReviewController: max 3 rating prompts per 365 days
 - Apple has human editorial curation — design quality matters more
@@ -107,7 +107,7 @@ Report rules: every recommendation specific ("Change subtitle from X to Y," with
 - Screenshots: min 2, **max 8** per device (not 10 like Apple)
 - Feature graphic (1024x500 exact) required for featured placements
 - Video does NOT autoplay — only ~6% tap play (low ROI vs iOS)
-- **Android Vitals directly affect ranking**: crash rate >1.09% or ANR >0.47% = reduced visibility
+- **Android Vitals directly affect ranking**: crash rate >1.09% or ANR >0.47% = reduced visibility (verify these thresholds against current Play Console docs — they change)
 - Promotional Content: submit 14 days early for featuring; participating apps see ~2x explore acquisitions
 - Custom Store Listings: up to 50 (target churned users, countries, ad campaigns)
 - Store Listing Experiments: up to 3 variants, run 7+ days, 1 experiment at a time

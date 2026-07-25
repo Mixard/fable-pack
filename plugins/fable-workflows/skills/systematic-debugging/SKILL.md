@@ -181,10 +181,4 @@ If systematic investigation reveals the issue is truly environmental, timing-dep
 3. Implement appropriate handling (retry, timeout, error message)
 4. Add monitoring/logging for future investigation
 
-**But:** 95% of "no root cause" cases are incomplete investigation. And if the conclusion is drifting toward "this can't be done at all" (missing capability, unsupported feature, blocked path — not a bug), switch to the getting-unstuck skill before reporting it.
-
-## Real-World Impact
-
-- Systematic approach: 15-30 minutes to fix; random fixes: 2-3 hours of thrashing
-- First-time fix rate: 95% vs 40%
-- New bugs introduced: near zero vs common
+**But:** most "no root cause" cases are incomplete investigation. And if the conclusion is drifting toward "this can't be done at all" (missing capability, unsupported feature, blocked path — not a bug), switch to the getting-unstuck skill before reporting it.

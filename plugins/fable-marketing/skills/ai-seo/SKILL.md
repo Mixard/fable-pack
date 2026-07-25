@@ -31,6 +31,8 @@ If `.agents/product-marketing.md` exists (created by the product-marketing skill
 - Brands are 6.5x more likely to be cited via third-party sources than their own domains
 - Optimized content gets cited ~3x more often; statistics and citations boost visibility 40%+
 
+These figures come from 2024-2025 studies and shift fast — re-verify before citing to clients.
+
 ### Google's Official Stance vs Multi-Platform Reality
 
 **Google's position:** AI Overviews and AI Mode are rooted in core Search ranking. No special markup or files required; don't chunk content for AI; don't write separate content for AI (risks the scaled-content-abuse spam policy); people-first E-E-A-T content wins; no AI-specific Search Console reporting.
@@ -108,7 +110,7 @@ Also: dates on all statistics, original research over summaries, "According to [
 
 ### Pillar 3 — Presence (be where AI looks)
 
-Third-party sources matter more than your own site: Wikipedia (7.8% of all ChatGPT citations), Reddit (1.8%), industry publications, review sites (G2/Capterra/TrustRadius), YouTube (frequently cited by AI Overviews), Quora.
+Third-party sources matter more than your own site: Wikipedia (7.8% of all ChatGPT citations), Reddit (1.8%), industry publications, review sites (G2/Capterra/TrustRadius), YouTube (frequently cited by AI Overviews), Quora. (2024-2025 figures, shifting fast — re-verify before citing to clients.)
 
 Actions: keep your Wikipedia presence accurate, participate authentically on Reddit, get into industry roundups, maintain review-platform profiles, create YouTube content for key how-to queries.
 

@@ -1,6 +1,6 @@
 ---
 name: postgres-tips
-description: Use when writing or tuning PostgreSQL. Covers the RLS initPlan wrap trick, SKIP LOCKED job queues, diagnostic queries for unindexed FKs and bloat, index type selection, and upsert patterns.
+description: Use when writing or tuning PostgreSQL. Covers the RLS initPlan wrap trick, SKIP LOCKED job queues, diagnostic queries for unindexed FKs and bloat, and index type selection.
 ---
 
 # Postgres Tips
@@ -73,14 +73,3 @@ ORDER BY mean_exec_time DESC;
 | Large append-only time-series ranges | BRIN (tiny index, correlated data only) |
 | Frequent `SELECT email, name` by email | Covering: `(email) INCLUDE (name)` |
 | Mostly-filtered subset | Partial: `(email) WHERE deleted_at IS NULL` |
-
-## Upsert
-
-```sql
-INSERT INTO settings (user_id, key, value)
-VALUES (123, 'theme', 'dark')
-ON CONFLICT (user_id, key)
-DO UPDATE SET value = EXCLUDED.value;
-```
-
-`ON CONFLICT DO NOTHING` for insert-if-absent; conflict target must match a unique index or constraint.

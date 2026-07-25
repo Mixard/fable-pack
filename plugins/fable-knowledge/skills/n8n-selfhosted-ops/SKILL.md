@@ -50,8 +50,10 @@ a reverse proxy with TLS (or n8n's built-in SSL config) is a hard prerequisite.
 
 ## Telegram human-in-the-loop: do not use sendAndWait
 
-`Telegram.sendAndWait` has long-standing bugs (n8n issues #13331, #15492). Working
-pattern:
+`Telegram.sendAndWait` has long-standing bugs (n8n issues #13331, #15492). As of
+n8n 2.31 (July 2026) both issues were closed "not planned" by the stale-bot without
+a fix, so the workaround below remains necessary; re-check only if n8n ships an
+explicit fix. Working pattern:
 
 1. `Telegram: sendMessage` with an `inline_keyboard` whose button URLs embed the
    execution resume URL: `{{$execution.resumeUrl}}?answer=approve` / `?answer=reject`.

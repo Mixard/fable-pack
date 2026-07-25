@@ -93,6 +93,8 @@ kill "$(cat "$STATE_DIR/videodb_ws_pid")"   # stop listener
 
 Use `--clear` for every fresh capture run so stale events do not leak into the new session. Full workflow, event schemas, and `CaptureClient` API: `references/capture.md`.
 
+Desktop capture (`videodb[capture]`) is an experimental, macOS-only surface likely to change between SDK releases.
+
 ## References
 
 - `references/api-reference.md` — Connection, Collection, Video/Audio/Image objects, transcode, reframe, Meeting, streaming, enums, exceptions

@@ -5,7 +5,7 @@ description: Use when adding x402 payment execution to AI agents - paying 402-ga
 
 # Agent Payment Execution (x402)
 
-x402 extends HTTP 402 (Payment Required) into a machine-negotiable flow: when a server returns `402`, the agent's payment tool negotiates price, checks budget, signs a transaction, and retries - all inside a policy boundary set by the orchestrator. Agents hold their own keys via ERC-4337 smart accounts (non-custodial).
+x402 extends HTTP 402 (Payment Required) into a machine-negotiable flow: when a server returns `402`, the agent's payment tool negotiates price, checks budget, signs a transaction, and retries - all inside a policy boundary set by the orchestrator. Agents may hold their own keys via ERC-4337 smart accounts (non-custodial), though x402 payments commonly use plain EOA signatures (EIP-712/EIP-3009) instead.
 
 Protocol spec: x402.org
 
@@ -27,14 +27,14 @@ Networks:
 
 ## MCP Setup: agentwallet-sdk
 
-Pin the version - this tool manages private keys, and unpinned `npx` installs are a supply-chain risk. Install globally first (`npm install -g agentwallet-sdk@6.0.0`), because `npx` without `-y` prompts for confirmation and hangs in non-interactive environments.
+Pin the version - this tool manages private keys, and unpinned `npx` installs are a supply-chain risk. Install globally first (`npm install -g agentwallet-sdk@6.2.1`), because `npx` without `-y` prompts for confirmation and hangs in non-interactive environments.
 
 ```json
 {
   "mcpServers": {
     "agentpay": {
       "command": "npx",
-      "args": ["agentwallet-sdk@6.0.0"]
+      "args": ["agentwallet-sdk@6.2.1"]
     }
   }
 }
@@ -81,7 +81,7 @@ if (!walletKey) throw new Error("WALLET_PRIVATE_KEY not set - refusing to start 
 // Whitelist env vars - never forward all of process.env to a subprocess holding keys
 const transport = new StdioClientTransport({
   command: "npx",
-  args: ["agentwallet-sdk@6.0.0"],
+  args: ["agentwallet-sdk@6.2.1"],
   env: { PATH: process.env.PATH ?? "", WALLET_PRIVATE_KEY: walletKey },
 });
 const agentpay = new Client({ name: "orchestrator", version: "1.0.0" });

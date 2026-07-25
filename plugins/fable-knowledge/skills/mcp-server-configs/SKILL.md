@@ -7,6 +7,8 @@ description: Use when configuring MCP servers in .claude.json or .mcp.json. Cove
 
 Reference snapshot of working MCP server configurations (package names and URLs verified as of mid-2026; versions drift, treat as a lookup aid). Copy entries into the `mcpServers` section of `~/.claude.json` (global) or `.mcp.json` (project).
 
+Pinned versions (e.g. `mcp-atlassian==0.21.0`) and hosted URLs drift monthly; if a config fails, check the package registry or vendor docs for the current version, and prefer `@latest` only where already used above.
+
 Config shapes:
 - stdio servers: `{"command": ..., "args": [...], "env": {...}}`
 - hosted HTTP servers: `{"type": "http", "url": ..., "headers": {...}}`
@@ -96,7 +98,7 @@ Keeping under ~10 servers enabled preserves context window; tool schemas from ev
 ```
 
 Notes:
-- `mcp-atlassian` is Python (uvx), pinned to 0.21.0 — newer releases changed tool names.
+- `mcp-atlassian` is Python (uvx), pinned to 0.21.0 — newer releases changed tool names. Current PyPI release is 0.23.0 (as of 2026-07); verify tool names against its changelog before bumping the pin.
 - Supabase server takes the project ref as a CLI flag, not an env var.
 - Playwright MCP without `--browser` defaults to its own bundled Chromium.
 

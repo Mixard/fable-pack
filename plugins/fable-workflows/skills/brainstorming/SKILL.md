@@ -21,7 +21,7 @@ Create a task for each of these items and complete them in order:
 
 1. **Explore project context** — check files, docs, recent commits
 2. **Ask clarifying questions** — one at a time; understand purpose, constraints, success criteria
-3. **Propose 2-3 approaches** — with trade-offs and your recommendation
+3. **Propose 2-3 approaches** — with trade-offs and your recommendation; apply YAGNI ruthlessly, removing unnecessary features from each
 4. **Present design** — in sections scaled to their complexity, get user approval after each section
 5. **Write design doc** — save the spec (e.g. `docs/specs/YYYY-MM-DD-<topic>-design.md`) and commit it
 6. **Spec self-review** — quick inline check for placeholders, contradictions, ambiguity, scope
@@ -95,12 +95,3 @@ Wait for the user's response. If they request changes, make them and re-run the 
 
 - Create a detailed implementation plan from the approved spec (the writing-plans skill covers this)
 - Do not start coding directly from the spec
-
-## Key Principles
-
-- **One question at a time** — don't overwhelm with multiple questions
-- **Multiple choice preferred** — easier to answer than open-ended when possible
-- **YAGNI ruthlessly** — remove unnecessary features from all designs
-- **Explore alternatives** — always propose 2-3 approaches before settling
-- **Incremental validation** — present design, get approval before moving on
-- **Be flexible** — go back and clarify when something doesn't make sense

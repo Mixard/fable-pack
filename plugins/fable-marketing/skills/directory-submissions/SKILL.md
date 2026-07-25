@@ -27,20 +27,19 @@ Directories alone won't generate meaningful leads. They pass link equity into th
 
 ### Rule 1: Foundation before submission
 Never submit until the landing page a directory will link to is live, indexed, and has:
-- Single `<h1>` and sequential heading hierarchy — clean-hierarchy pages show ~2.8x higher AI citation rates; 87% of ChatGPT-cited pages use a single H1
+- Single `<h1>` and sequential heading hierarchy — clean-hierarchy pages show ~2.8x higher AI citation rates; 87% of ChatGPT-cited pages use a single H1 (2024-2025 figures, shifting fast — re-verify before citing to clients)
 - A real pricing page (even "free while in beta" — most Tier 1 directories require one)
 - Privacy policy + terms
 - Logo assets: PNG + SVG + square 1024x1024 + favicon
 - 5-8 real product screenshots at 1920x1080 (not mockups)
 - A 60-90 second demo video — Product Hunt posts with video get ~2.7x more upvotes
-- FAQ schema (`FAQPage` JSON-LD is heavily weighted for answer extraction)
-- `Organization`, `Product`, `SoftwareApplication` structured data
+- Schema markup — see the **ai-seo** skill's Schema for AI table for content-type coverage; directories additionally expect `SoftwareApplication` structured data
 
 ### Rule 2: Destination pages before directories
 Minimum destinations before submitting anywhere:
 - 3-5 competitor alternative pages (`/alternatives/[competitor]`) — comparison/alternative pages convert at 5-15% vs 0.5-2% for generic content
 - 3-5 use-case pages (`/for/[audience]` or `/use-cases/[use-case]`)
-- Template gallery with 20+ entries if applicable — this pattern was Typeform's largest SEO growth driver (~30K non-branded signups, ~$3M/year LTV)
+- Template gallery with 20+ entries if applicable — this pattern was Typeform's largest SEO growth driver (~30K non-branded signups, ~$3M/year LTV; 2024-2025 case figure, re-verify before citing to clients)
 - 1 honest "best of [your category]" post you wrote yourself, covering competitors
 
 ### Rule 3: Positioning varies by directory type
@@ -163,13 +162,13 @@ One indexable page per template: keyword H1, 150+ word description, screenshot, 
 `/blog/best-[category]-tools-[year]` including yourself + ~10 competitors with real assessments. Ranks for category queries and becomes a citable reference for AI engines.
 
 ### 5. Integration pages
-`/integrations/[partner]` per integration — the Zapier pattern (~2.6M monthly organic visits from programmatic integration pages, ~15% of their organic traffic).
+`/integrations/[partner]` per integration — the Zapier pattern (~2.6M monthly organic visits from programmatic integration pages, ~15% of their organic traffic; 2024-2025 case figure, re-verify before citing to clients).
 
 ---
 
 ## GEO Tactics (getting the destination pages cited)
 
-1. One H1, sequential hierarchy (2.8x citation rate)
+1. One H1, sequential hierarchy (see Rule 1 above for the citation-rate figure)
 2. Dense factual content with citable stats — specific numbers over vague claims
 3. FAQ schema on every landing page
 4. Comparison tables (extractable structure)

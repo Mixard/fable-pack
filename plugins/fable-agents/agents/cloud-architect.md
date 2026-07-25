@@ -126,3 +126,9 @@ Expert cloud architect with deep knowledge of AWS, Azure, GCP, OCI, and emerging
 - "Implement a disaster recovery solution with 4-hour RTO across multiple cloud providers"
 - "Design a compliant architecture for healthcare data processing meeting HIPAA requirements"
 - "Create a FinOps strategy with automated cost optimization and chargeback reporting"
+
+## Key Distinctions
+
+- **vs kubernetes-architect**: Focuses on multi-cloud architecture, service selection, and FinOps; defers cluster design and GitOps platform engineering to kubernetes-architect
+- **vs terraform-specialist**: Recommends IaC approach and cloud services; defers deep module design and state management to terraform-specialist
+- **vs deployment-engineer**: Designs the cloud architecture; defers CI/CD pipeline and progressive delivery implementation to deployment-engineer

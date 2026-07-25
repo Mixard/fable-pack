@@ -2,6 +2,83 @@
 
 All notable changes to this pack are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [fable-workflows 1.0.0] - 2026-07-25
+
+### Removed
+
+- dispatching-parallel-agents: duplicated what the harness already tells the model via the Agent tool; its one non-obvious rule (parallel dispatch only for fully independent work with no shared state) moved into subagent-driven-development, resolving the previously unstated contradiction between the two skills.
+
+### Fixed
+
+- systematic-debugging: removed the fabricated "Real-World Impact" statistics (15-30 min vs 2-3 h, 95% vs 40% fix rates) - unsourced numbers violated the pack's measured-numbers bar.
+- test-driven-development: "No exceptions" label renamed to "No exceptions without asking" (was contradicted by the Exceptions section two paragraphs above).
+- brainstorming: removed the Key Principles section (near-verbatim duplicate of the checklist); the unique YAGNI bullet merged into the checklist.
+
+## [fable-knowledge 1.0.0] - 2026-07-25
+
+### Removed
+
+- regex-llm-hybrid: an architecture pattern a frontier model derives on its own; its "98% success" metrics were a single-run anecdote presented as a benchmark.
+
+### Changed
+
+- Generic-content cuts to meet the pack's own bar: cpp-core-guidelines 554->114 lines (kept testing/tooling and an 8-rule counterintuitive table, dropped the guidelines retelling), perl-modern 542->36 (version-gated feature table + legacy-to-modern mapping), react-performance 291->136 (version-specific and counterintuitive rules only, "70+ rules" claim dropped), kotlin-ktor 375->132 (gotchas foregrounded, boilerplate cut); trims in nuxt4-patterns (generic SSR block), postgres-tips (upsert), html-slides (preset catalog compressed), manim-explainers (storytelling advice), pubmed-database (When to Use); nextjs-turbopack hedges replaced with direct facts (Next 16 builds with Turbopack by default, --webpack to opt out).
+- Staleness guards added to churn-prone tables: fal-ai-media app_ids, free-tier-scraper-apis Gemini limits, mcp-server-configs pins, uncloud CLI surface, kotlin-exposed dependency pins, videodb capture, nuitka measured tables, x-api base domain.
+
+### Fixed
+
+- uspto-database: search.patentsview.org was retired 2026-03-20 (host no longer resolves) - workflow now points at the data.uspto.gov Open Data Portal migration with the transition guide.
+- n8n-selfhosted-ops: sendAndWait issues #13331/#15492 verified closed "not planned" on n8n 2.31 (July 2026) - the HITL workaround remains necessary.
+- ffmpeg-media-recipes: example switched to eleven_flash_v2_5 (ElevenLabs' current recommendation over the equivalent-but-slower turbo).
+- agent-payment-x402: agentwallet-sdk pin 6.0.0 -> 6.2.1 (verified on npm); ERC-4337 wallet claim softened (x402 commonly uses plain EOA EIP-712/EIP-3009 signatures).
+- mcp-server-configs / jira-integration: the deliberate mcp-atlassian 0.21.0 pin annotated (0.23.0 current; later releases renamed tools).
+- claude-devfleet: 600 s default timeout flagged as unverified against the current README.
+
+## [fable-agents 1.0.0] - 2026-07-25
+
+### Removed
+
+- sql-pro: merged into database-optimizer (bodies overlapped almost entirely; the distinct analytical-SQL material was absorbed, description now covers advanced SQL triggers).
+- devops-troubleshooter: merged into incident-responder (same domain without operational rules; a compact debugging-toolkit section was absorbed).
+
+### Changed
+
+- deployment-engineer: model haiku -> sonnet - SLSA/SBOM/compliance and zero-downtime strategy content is judgment work, not mechanical (was the pack's one tier-policy violation).
+- Version refresh across specialists: Rust 1.85+ (2024 edition), Go 1.24+, Java 21/25 LTS, Python 3.13+, Next.js 16 in frontend-developer (now consistent with the nextjs-turbopack skill); dated "2024/2025" phrasing removed from code-reviewer, observability-engineer, python-pro.
+- Key Distinctions blocks added to the infrastructure cluster (cloud-architect / kubernetes-architect / terraform-specialist / deployment-engineer) and reliability cluster (incident-responder / observability-engineer / performance-engineer); code-reviewer now defers security-audit depth to security-auditor.
+- test-automator: TDD sections removed - the methodology lives in the fable-workflows test-driven-development skill (was a second source of truth).
+- Final model split: 7 opus / 14 sonnet.
+
+## [fable-marketing 0.2.0] - 2026-07-25
+
+### Fixed
+
+- churn-prevention: the FTC Click-to-Cancel rule was presented as in force; corrected - struck down by the 8th Circuit in 2025, while state laws (e.g. California auto-renewal) still require easy cancellation.
+
+### Changed
+
+- Unsourced benchmark clusters dated and qualified: revops speed-to-lead 21x (InsideSales ~2007-2011, never re-validated), ads "Andromeda era" figures (practitioner-reported, not Meta-published), ai-seo and directory-submissions AI-citation stats (2024-2025 studies), aso +5.9% CPP lift (industry estimate, not Apple-published), sms TCPA settlement range (historical).
+- seo-audit: title/meta character counts marked as approximations of Google's pixel-width truncation.
+- ads: Creative Best Practices compressed to a pointer at ad-creative (body now honors the declared boundary); directory-submissions: duplicate 2.8x stat removed, schema table defers to ai-seo.
+- copy-editing: compressed 153->112 lines - sweeps reformatted as checklists, arbitrary expert-panel scoring removed, replacement tables kept in full.
+
+## [fable-guard 0.3.0] - 2026-07-25
+
+### Fixed
+
+- guard.py secret patterns: OpenAI project keys (sk-proj-/sk-svcacct-/sk-admin-) were not caught (the classic sk- regex stops at the hyphen); Slack xoxc/xoxe tokens added.
+- guard.py shell patterns: now blocks `sh <(curl ...)` process substitution, `sh -c "$(curl ...)"` / `eval "$(curl ...)"` command substitution, and zsh/dash/fish pipe variants.
+- `--dangerously-skip-permissions` now blocks only within a claude invocation - no more false positive on commit messages that merely mention the flag.
+- Docstring updated to the actual JSON permissionDecision protocol (previously described the old exit-2 protocol).
+
+## [repo] - 2026-07-25
+
+### Changed
+
+- validate.py: maintainer skills in .claude/skills/ are now validated and counted.
+- release skill: mandatory README-update step added (badge counts, plugin lists, What's new) - the missing step was the root cause of README drifting from releases.
+- freshness-sweep: rotation list updated for removed/renamed content.
+
 ## [fable-workflows 0.6.0] - 2026-07-25
 
 ### Added

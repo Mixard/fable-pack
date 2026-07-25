@@ -25,7 +25,7 @@ Requires Python 3.10+ and `uvx` (from `uv`). Add to `mcpServers` in `~/.claude.j
 }
 ```
 
-API tokens are created at https://id.atlassian.com/manage-profile/security/api-tokens. Prefer system environment variables over the `env` block for anything committed.
+API tokens are created at https://id.atlassian.com/manage-profile/security/api-tokens. Prefer system environment variables over the `env` block for anything committed. The 0.21.0 pin is deliberate — later releases renamed tools (0.23.0 is current as of 2026-07); verify tool names against the changelog before bumping.
 
 ### Tools exposed by mcp-atlassian
 

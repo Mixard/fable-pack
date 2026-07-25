@@ -2,6 +2,8 @@
 
 Real-time screen, microphone, and system-audio recording with live AI processing. Desktop capture supports macOS only. All events (including session lifecycle) arrive over WebSocket — no webhooks or polling needed.
 
+This is an experimental, macOS-only surface likely to change between SDK releases — verify method signatures against the installed SDK version.
+
 Gotcha: the `CaptureClient` runs the local recorder binary that streams data to VideoDB. If the Python process that created it exits, the recorder is killed and capture stops silently. Run capture code as a long-lived background process (e.g. `nohup python capture_script.py &`) and block on an `asyncio.Event` with `SIGINT`/`SIGTERM` handlers until explicitly stopped.
 
 ## ws_listener.py

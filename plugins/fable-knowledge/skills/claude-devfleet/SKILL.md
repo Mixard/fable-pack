@@ -22,7 +22,7 @@ Before first use, verify the process listening on port 18801 is the DevFleet bin
 | `create_mission(project_id, title, prompt, depends_on?, auto_dispatch?)` | Add a mission. `depends_on` is a list of mission ID strings, e.g. `["abc-123"]` |
 | `dispatch_mission(mission_id, model?, max_turns?)` | Start an agent on a mission |
 | `cancel_mission(mission_id)` | Stop a running agent |
-| `wait_for_mission(mission_id, timeout_seconds?)` | Block until completion (default timeout 600 s) |
+| `wait_for_mission(mission_id, timeout_seconds?)` | Block until completion (default timeout 600 s — not confirmed in current README, re-verify) |
 | `get_mission_status(mission_id)` | Non-blocking progress check |
 | `get_report(mission_id)` | Structured report: files changed, what was done, errors, next steps |
 | `get_dashboard()` | Running agents, slot usage, stats, recent activity |

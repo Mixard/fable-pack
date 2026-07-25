@@ -21,6 +21,8 @@ MCP tools: `search` (find models by keyword), `find` (model details/parameters),
 
 ## Image Models
 
+> fal.ai's model catalog churns fast — verify any app_id below via the MCP `search`/`find` tools at runtime before hardcoding it.
+
 | app_id | Use for |
 |--------|---------|
 | `fal-ai/nano-banana-2` | fast iteration, drafts, image editing |

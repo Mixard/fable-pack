@@ -125,7 +125,7 @@ Conversation memory does not survive compaction. Controllers that lost their pla
 - Start implementation on main/master without explicit user consent
 - Skip task review, or accept a report missing either verdict (spec compliance AND task quality are both required)
 - Proceed with unfixed Critical/Important issues
-- Dispatch multiple implementation subagents in parallel (conflicts)
+- Dispatch multiple implementation subagents in parallel (conflicts) — tasks within one plan/branch share files and state. This does not forbid parallel dispatch in general: fully independent work with no shared state (e.g. several unrelated bug fixes in separate subsystems) can still be dispatched in parallel, one message with multiple Agent calls.
 - Make a subagent read the whole plan file (hand it its task brief)
 - Skip scene-setting context (the subagent needs to know where its task fits)
 - Ignore subagent questions (answer before letting them proceed)

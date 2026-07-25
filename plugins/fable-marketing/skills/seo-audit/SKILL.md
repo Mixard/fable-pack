@@ -122,9 +122,11 @@ Three equivalent placements: HTML `<link>` in `<head>`, HTTP `Link` headers, XML
 ### Title Tags
 - Unique per page; primary keyword near the beginning; 50-60 characters; brand name at the end
 - Issues: duplicates, truncation, keyword stuffing, missing entirely
+- Google actually truncates by rendered pixel width (~600px), not character count — the character range is an approximation, not a hard limit
 
 ### Meta Descriptions
 - Unique; 150-160 characters; includes primary keyword; clear value proposition and reason to click
+- Same caveat as titles: truncation is pixel-width-based, so treat the character count as approximate
 
 ### Headings
 - One H1 per page containing the primary keyword; logical H1→H2→H3 hierarchy; no skipped levels; not used purely for styling

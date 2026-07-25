@@ -42,7 +42,7 @@ For PatentSearch, send the key with the `X-Api-Key` header. For TSDR, follow the
 
 Use PatentSearch for broad patent and pre-grant publication search — trends, inventors, assignees, classifications, dates, or portfolio slices.
 
-Base URL: `https://search.patentsview.org/api/v1`
+**Migration (2026-03-20):** `search.patentsview.org` was retired — the host no longer resolves. PatentsView search moved into the USPTO Open Data Portal at `data.uspto.gov`, which requires an ODP API key. See the transition guide: https://data.uspto.gov/support/transition-guide/patentsview. The JSON query DSL below carried over in shape; confirm the current base URL and endpoint paths in the ODP docs before running.
 
 The query body uses a JSON DSL: `q` is the filter (with operators `_and`, `_or`, `_not`, `_gte`, `_lte`, `_text_any`, `_text_all`, `_text_phrase`), `f` is the returned-field list, `s` is the sort spec, and `o` holds options like `per_page` and `page`.
 
@@ -50,7 +50,7 @@ The query body uses a JSON DSL: `q` is the filter (with operators `_and`, `_or`,
 import os, requests
 
 API_KEY = os.environ["PATENTSVIEW_API_KEY"]
-BASE = "https://search.patentsview.org/api/v1"
+BASE = "https://data.uspto.gov/..."  # resolve the current PatentSearch base path from the ODP transition guide
 
 payload = {
     "q": {
@@ -97,5 +97,5 @@ For ownership, search official assignment data by patent/application/registratio
 
 - USPTO APIs catalog: https://developer.uspto.gov/api-catalog
 - USPTO Open Data Portal: https://data.uspto.gov/
-- PatentSearch API reference: https://search.patentsview.org/docs/docs/Search%20API/SearchAPIReference/
+- PatentsView-to-ODP transition guide: https://data.uspto.gov/support/transition-guide/patentsview
 - TSDR API bulk download FAQ: https://developer.uspto.gov/faq/tsdr-api-bulk-download

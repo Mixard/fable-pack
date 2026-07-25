@@ -7,6 +7,8 @@ description: Use when interacting with the X (Twitter) API programmatically - po
 
 Base URL for v2: `https://api.x.com/2`. Media upload still lives on v1.1: `https://upload.twitter.com/1.1/media/upload.json`.
 
+Confirm the base domain (`api.x.com` vs `api.twitter.com`) against current docs — it can shift as the post-rebrand migration continues.
+
 ## Authentication
 
 Two schemes; the choice is dictated by the operation, not preference:

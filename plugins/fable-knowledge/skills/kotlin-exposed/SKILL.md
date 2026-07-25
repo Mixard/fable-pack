@@ -30,6 +30,8 @@ dependencies {
 
 Flyway 10+ splits Postgres support into `flyway-database-postgresql` — `flyway-core` alone fails at runtime against Postgres.
 
+The postgresql/HikariCP/flyway/h2 pins above were current at writing; bump to current patch/minor versions, the APIs shown do not change across those.
+
 ## HikariCP and Flyway wiring
 
 ```kotlin

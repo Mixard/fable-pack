@@ -90,6 +90,8 @@ Response time is the single biggest factor in lead conversion:
 - After **30 minutes**, qualification odds drop ~10x
 - After **24 hours**, the lead is effectively cold
 
+These figures trace to the InsideSales/Velocify speed-to-lead studies (~2007-2011) and haven't been re-validated since — treat as directional, not a current measurement.
+
 Build routing for speed: instant alerts, escalation on missed SLA.
 
 ---

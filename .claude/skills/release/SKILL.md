@@ -20,10 +20,14 @@ is invisible to every installed copy, including the maintainer's own.
    - major: removed or renamed skills/agents (breaks references)
 4. **Changelog**: add a `## [<plugin> <version>] - YYYY-MM-DD` section at the top of
    `CHANGELOG.md` (Keep a Changelog format, newest first).
-5. **Commit and push** to `main` with a conventional message
+5. **Update README.md** to match the release: badge counts (skills/subagents), the
+   per-plugin section counts and skill/agent lists, and a new row in the "What's new"
+   table. Skipping this step is how the README drifted from the pack in the past -
+   grep README for every added/removed skill or agent name before committing.
+6. **Commit and push** to `main` with a conventional message
    (`feat(<plugin>): ...` / `fix(<plugin>): ...`).
-6. **Verify CI**: `gh run list --limit 1` - the `validate` workflow must be `success`.
-7. **Refresh local cache** for each changed plugin that is installed locally:
+7. **Verify CI**: `gh run list --limit 1` - the `validate` workflow must be `success`.
+8. **Refresh local cache** for each changed plugin that is installed locally:
    `claude plugin update <name>@fable-pack`
    The `@fable-pack` marketplace suffix is required - the bare plugin name fails
    with "not found". Restart the session to apply.

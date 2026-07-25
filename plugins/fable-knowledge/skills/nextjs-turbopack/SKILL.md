@@ -25,8 +25,8 @@ Reference: https://nextjs.org/docs/app/getting-started/proxy
 From Next.js 16, `next dev` runs Turbopack (incremental Rust bundler) by default:
 
 - **Filesystem caching**: restarts reuse previous work (typically under `.next`); large projects see roughly 5-14x faster restarts. No extra config needed.
-- **Fallback to webpack**: only if you hit a Turbopack bug or depend on a webpack-only dev plugin. Disable with `--webpack` (some releases use `--no-turbopack`; check the docs for the exact version).
-- **Production**: whether `next build` uses Turbopack or webpack depends on the exact 16.x release; verify against the docs for the version in use rather than assuming.
+- **Fallback to webpack**: only if you hit a Turbopack bug or depend on a webpack-only dev plugin. Disable with `--webpack`.
+- **Production**: Next.js 16 also defaults `next build` to Turbopack (Turbopack production builds reached stable in this line); pass `--webpack` to opt back into a webpack production build.
 
 ## Bundle analysis
 
@@ -36,3 +36,4 @@ Next.js 16.1+ ships an experimental Bundle Analyzer for inspecting output size a
 
 - Stay on a recent 16.x for stable Turbopack and caching behavior.
 - If dev feels slow, confirm Turbopack is active (it is unless explicitly disabled) and that the `.next` cache is not being wiped between runs.
+- Bundler/CLI flags move fast between minor releases — double-check exact flag names against the current changelog before relying on them in scripts.

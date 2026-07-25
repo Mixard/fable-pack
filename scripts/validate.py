@@ -104,6 +104,16 @@ def main():
             for am in sorted(agents_dir.glob("*.md")):
                 check_md(am, "agent")
 
+    repo_skills = ROOT / ".claude" / "skills"
+    if repo_skills.is_dir():
+        for sd in sorted(repo_skills.iterdir()):
+            if sd.is_dir():
+                sm = sd / "SKILL.md"
+                if not sm.is_file():
+                    err(f"{sd}: missing SKILL.md")
+                else:
+                    check_md(sm, "skill")
+
     if errors:
         print(f"FAIL: {len(errors)} problem(s)")
         for e in errors:
@@ -111,7 +121,8 @@ def main():
         sys.exit(1)
     n_skills = len(list((ROOT / "plugins").glob("*/skills/*/SKILL.md")))
     n_agents = len(list((ROOT / "plugins").glob("*/agents/*.md")))
-    print(f"OK: {len(declared)} plugins, {n_skills} skills, {n_agents} agents")
+    n_repo = len(list((ROOT / ".claude" / "skills").glob("*/SKILL.md")))
+    print(f"OK: {len(declared)} plugins, {n_skills} skills, {n_agents} agents, {n_repo} maintainer skills")
 
 
 if __name__ == "__main__":

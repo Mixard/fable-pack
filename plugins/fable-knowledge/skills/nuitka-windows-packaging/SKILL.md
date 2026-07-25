@@ -173,6 +173,8 @@ Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#MyAppName}}
 
 ## Expected Results (measured)
 
+The percentages below and the DLL sizes further up come from one reference project — treat them as orientation values, not guarantees, for a different app's dependency mix.
+
 | Optimization | Size reduction | Startup gain |
 |---|---|---|
 | `--lto=yes` | 5-10% | 10-20% |

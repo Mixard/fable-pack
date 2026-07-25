@@ -1,6 +1,6 @@
 ---
 name: nuxt4-patterns
-description: Use when building or debugging Nuxt 4 apps with SSR, hybrid rendering, or data fetching. Covers routeRules (swr/isr/prerender), hydration-safe useFetch/useAsyncData, Lazy components, hydrate-on-visible, defineLazyHydrationComponent, and SSR gotchas.
+description: Use when building or debugging Nuxt 4 apps with SSR, hybrid rendering, or data fetching. Covers routeRules (swr/isr/prerender), useFetch/useAsyncData usage, and Lazy-hydration specifics — hydrate-on-visible and other strategy props, defineLazyHydrationComponent, and the single-file-component/new-props-trigger-hydration gotchas.
 ---
 
 # Nuxt 4 Patterns
@@ -45,15 +45,6 @@ const { data: comments } = await useFetch(
   { lazy: true, server: false },
 )
 ```
-
-## Hydration safety
-
-First render must be deterministic — server HTML and first client render have to match.
-
-- No `Date.now()`, `Math.random()`, browser APIs, or localStorage reads in SSR-rendered template state. Move them to `onMounted()`, guard with `import.meta.client`, or isolate in `<ClientOnly>` / a `.client.vue` component.
-- Import `useRoute()` from Nuxt, not `vue-router` — they differ during SSR.
-- Do not drive SSR markup from `route.fullPath`: URL fragments (`#hash`) exist only on the client, so full-path-dependent markup mismatches.
-- `ssr: false` route rules are an escape hatch for genuinely browser-only areas, not a fix for mismatches.
 
 ## Lazy loading and lazy hydration
 

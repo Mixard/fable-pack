@@ -1,6 +1,6 @@
 ---
 name: copy-editing
-description: Systematically edit existing marketing copy with the Seven Sweeps framework (clarity, voice, so-what, prove-it, specificity, emotion, zero-risk), expert-panel scoring, and word-level replacement tables. Use when the user wants copy reviewed, tightened, polished, or refreshed — "edit this copy," "too wordy," "make this better" — rather than written from scratch.
+description: Systematically edit existing marketing copy with the Seven Sweeps framework (clarity, voice, so-what, prove-it, specificity, emotion, zero-risk) and word-level replacement tables. Use when the user wants copy reviewed, tightened, polished, or refreshed — "edit this copy," "too wordy," "make this better" — rather than written from scratch.
 ---
 
 # Copy Editing
@@ -17,37 +17,24 @@ If `.agents/product-marketing.md` exists (created by the product-marketing skill
 
 Edit through seven sequential passes, each focused on one dimension. After each sweep, loop back to confirm earlier sweeps weren't compromised.
 
-### Sweep 1: Clarity
-Can the reader understand what you're saying?
+### Sweep 1: Clarity — can the reader understand what you're saying?
+- Check: confusing sentence structures, unclear pronouns, jargon, ambiguity, missing context
+- Common killers: sentences doing too much, abstract instead of concrete, assumed knowledge, points buried in qualifications
+- Confirm the "Rule of One" (one main idea per section) and the "You Rule" (copy speaks to the reader)
 
-Check: confusing sentence structures, unclear pronouns, jargon, ambiguity, missing context. Common killers: sentences doing too much, abstract instead of concrete, assumed knowledge, points buried in qualifications.
+### Sweep 2: Voice and Tone — is the copy consistent in how it sounds?
+- Check: formal/casual shifts, inconsistent personality, jarring mood changes, off-brand word choices; read aloud to hear inconsistencies (recheck: Clarity)
 
-Process: read quickly and highlight unclear parts first; then recommend edits; verify intent is preserved. Confirm the "Rule of One" (one main idea per section) and the "You Rule" (copy speaks to the reader).
+### Sweep 3: So What — does every claim answer "why should I care?"
+- Ask "So what?" of every statement; no deeper benefit means it needs work
+- Weak: "Our platform uses AI-powered analytics" → Strong: "Our AI-powered analytics surface insights you'd miss manually — so you make better decisions in half the time"
+- Common failures: feature lists without benefit bridges, impressive claims that don't land, achievements that don't help the reader — add "which means..." bridges (recheck: Voice, Clarity)
 
-### Sweep 2: Voice and Tone
-Is the copy consistent in how it sounds?
+### Sweep 4: Prove It — is every claim supported with evidence?
+- Proof types: named testimonials with specifics, case-study references, statistics, third-party validation, guarantees, logos, review scores
+- Flag: "Trusted by thousands" (which thousands?), "Industry-leading" (per whom?), results claims without numbers — add proof or soften the claim (recheck: So What, Voice, Clarity)
 
-Check: formal/casual shifts, inconsistent personality, jarring mood changes, off-brand word choices. Read aloud to hear inconsistencies. Then recheck Clarity.
-
-### Sweep 3: So What
-Does every claim answer "why should I care?"
-
-For every statement, literally ask "So what?" If the copy doesn't answer with a deeper benefit, it needs work.
-
-- Weak: "Our platform uses AI-powered analytics"
-- Strong: "Our AI-powered analytics surface insights you'd miss manually — so you make better decisions in half the time"
-
-Common failures: feature lists without benefit bridges, impressive-sounding claims that don't land, company achievements that don't help the reader. Add "which means..." bridges. Then recheck Voice, Clarity.
-
-### Sweep 4: Prove It
-Is every claim supported with evidence?
-
-Proof types: named testimonials with specifics, case-study references, statistics, third-party validation, guarantees, logos, review scores.
-
-Common gaps: "Trusted by thousands" (which thousands?), "Industry-leading" (per whom?), results claims without numbers. Flag unsupported assertions: add proof or soften the claim. Then recheck So What, Voice, Clarity.
-
-### Sweep 5: Specificity
-Is the copy concrete enough to be compelling?
+### Sweep 5: Specificity — is the copy concrete enough to be compelling?
 
 | Vague | Specific |
 |-------|----------|
@@ -57,43 +44,15 @@ Is the copy concrete enough to be compelling?
 | Improve your workflow | Cut reporting time in half |
 | Great support | Response within 2 hours |
 
-Highlight vague words; add numbers, timeframes, examples. Content that can't be made specific is probably filler — cut it. Then recheck Prove It onward.
+- Highlight vague words; add numbers, timeframes, examples; content that can't be made specific is probably filler — cut it (recheck: Prove It onward)
 
-### Sweep 6: Heightened Emotion
-Does the copy make the reader feel something?
+### Sweep 6: Heightened Emotion — does the copy make the reader feel something?
+- Dimensions: pain of the current state, frustration with alternatives, fear of missing out, desire for transformation, relief
+- Techniques: paint the "before" vividly, sensory language, micro-stories, shared experiences, reflective questions — emotion serves the message, never manipulation (recheck: earlier sweeps)
 
-Dimensions: pain of the current state, frustration with alternatives, fear of missing out, desire for transformation, relief. Techniques: paint the "before" vividly, sensory language, micro-stories, shared experiences, reflective questions. Emotion serves the message — never manipulation. Then recheck earlier sweeps.
-
-### Sweep 7: Zero Risk
-Have we removed every barrier to action?
-
-Focus near CTAs: list every reason someone might hesitate; check the copy addresses each. Risk reducers: money-back guarantee, free trial, "no credit card required," "cancel anytime," social proof near the CTA, clear what-happens-next, privacy assurance. Then run one final loop through all sweeps.
-
----
-
-## Expert Panel Scoring (for high-stakes copy)
-
-After the sweeps, for landing pages, launch emails, and sales pages:
-
-1. Assemble 3-5 expert personas relevant to the copy type
-2. Each scores the copy 1-10 in their specialty, with specific critiques
-3. Revise lowest-scoring areas first
-4. Re-score until every persona gives 7+, panel average 8+
-
-**Panels by copy type:**
-- Landing page: conversion copywriter, UX writer, target customer persona, brand strategist
-- Email sequence: email specialist, copywriter, spam-filter analyst, target customer persona
-- Sales page: direct-response copywriter, skeptical buyer persona, editor, SEO specialist
-
-| Score | Meaning |
-|-------|---------|
-| 9-10 | Publish-ready |
-| 7-8 | Strong, minor tweaks |
-| 5-6 | Functional with clear gaps — another pass |
-| 3-4 | Major revision needed |
-| 1-2 | Rethink the approach |
-
-Use always for launch/pricing/high-traffic pages; skip for quick low-stakes edits.
+### Sweep 7: Zero Risk — have we removed every barrier to action?
+- Near CTAs: list every reason someone might hesitate; confirm the copy addresses each
+- Risk reducers: money-back guarantee, free trial, "no credit card required," "cancel anytime," social proof near the CTA, clear what-happens-next, privacy assurance — then run one final loop through all sweeps
 
 ---
 

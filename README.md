@@ -5,8 +5,8 @@
 <p align="center">
   <a href="https://github.com/Mixard/fable-pack/actions/workflows/validate.yml"><img src="https://github.com/Mixard/fable-pack/actions/workflows/validate.yml/badge.svg" alt="CI"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-e3b341" alt="MIT license"></a>
-  <img src="https://img.shields.io/badge/skills-83-2b3242" alt="83 skills">
-  <img src="https://img.shields.io/badge/subagents-23-2b3242" alt="23 subagents">
+  <img src="https://img.shields.io/badge/skills-82-2b3242" alt="82 skills">
+  <img src="https://img.shields.io/badge/subagents-21-2b3242" alt="21 subagents">
   <img src="https://img.shields.io/badge/executable_code-none-2b3242" alt="no executable code">
 </p>
 
@@ -20,6 +20,9 @@ A curated, license-clean plugin marketplace for Claude Code. We reviewed 1,000+ 
 
 | Date | Release | Highlights |
 |------|---------|------------|
+| 2026-07-25 | pack-wide audit release | workflows/knowledge/agents 1.0.0, marketing 0.2.0, guard 0.3.0 — fact fixes (FTC Click-to-Cancel status, retired USPTO host), ~2,200 lines of generic content cut, sql-pro and devops-troubleshooter merged away, guard catches sk-proj keys and curl-pipe variants |
+| 2026-07-25 | fable-workflows 0.6.0 | solution-hunter — continuous solution-search loop: generator subagents with rotating lenses, adversarial critics executing evidence checks, file-anchored state, budget guards |
+| 2026-07-24 | fable-workflows 0.5.0 | critical-review — fresh-eyes re-examination of existing materials through a mandatory 7-lens pass; complements getting-unstuck (0.3.0-0.4.0) |
 | 2026-07-21 | fable-workflows 0.2.0 | project-cartography — living three-file project map (CODEMAP / PROJECT_STATE / DECISIONS) so large projects survive session boundaries; lifecycle skills now chain |
 | 2026-07-21 | fable-guard 0.2.0 | Stop hook: one-shot stale-map reminder in cartography-mapped projects |
 | 2026-07-21 | fable-guard 0.1.0 | New opt-in plugin: PreToolUse hooks that deterministically block secret leaks and `curl \| sh` before execution |
@@ -40,14 +43,14 @@ What a frontier model still gets wrong is narrow and specific:
 - **Platform gotchas that contradict intuition** — the documented behavior that no amount of reasoning predicts
 - **Methodologies with hard numeric rules** — cold-email benchmarks, A/B sample sizes, TDD's iron law
 
-That is the entire selection bar. Of 269 skills triaged from ECC alone, 18 survived. Of ~745 agents in wshobson/agents, 23 made it in.
+That is the entire selection bar. Of 269 skills triaged from ECC alone, 18 survived. Of ~745 agents in wshobson/agents, 23 made it in (21 after the 2026-07 overlap merges).
 
 ## Why it fits Fable
 
 The pack is tuned for a frontier orchestrator model (Claude Fable / Opus) running the main session:
 
 - **Skills carry facts, not lectures** — short, dense, no process rituals. The orchestrator reads exact schemas and flags instead of re-deriving or hallucinating them.
-- **Every agent declares the cheapest model that does the job** — 7 on `opus` (architecture, code review, security), 15 on `sonnet` (implementation and operations), 1 on `haiku`. No agent silently inherits the expensive orchestrator model. The orchestrator delegates mechanical skill work down-tier and keeps judgment work for itself.
+- **Every agent declares the cheapest model that does the job** — 7 on `opus` (architecture, code review, security), 14 on `sonnet` (implementation and operations); `haiku` stays reserved for genuinely mechanical agents. No agent silently inherits the expensive orchestrator model. The orchestrator delegates mechanical skill work down-tier and keeps judgment work for itself.
 - **Nothing competes with the model** — no meta-frameworks, no personas, no "orchestration systems" that fight the harness. The pack only fills gaps.
 
 ## Install
@@ -64,7 +67,7 @@ Install any subset — plugins are independent:
 
 ## Plugins
 
-### fable-knowledge — 48 skills
+### fable-knowledge — 47 skills
 
 Knowledge-only: exact API schemas, CLI flags, version-specific behavior, platform gotchas. No process rituals.
 
@@ -73,39 +76,41 @@ Knowledge-only: exact API schemas, CLI flags, version-specific behavior, platfor
 | Media / video | fal-ai-media, videodb, remotion, ffmpeg-media-recipes, manim-explainers, playwright-demo-videos, html-slides, ios-icon-gen |
 | API integrations | x-api, jira-integration, nutrient-api, free-tier-scraper-apis, mcp-server-configs, mailtrap-email-integration, laravel-plugin-discovery, codehealth-mcp, claude-devfleet, agent-payment-x402 |
 | Web / frameworks | bun-runtime, nuxt4-patterns, nextjs-turbopack, react-performance, angular-developer, wcag22-reference, pm2-node-services |
-| Data | clickhouse, database-migrations, postgres-tips, prisma-patterns, regex-llm-hybrid |
+| Data | clickhouse, database-migrations, postgres-tips, prisma-patterns |
 | Scientific APIs | pubmed-database, uspto-database, gget |
 | Apple (2025+ APIs) | swift-concurrency-6-2, ios26-liquid-glass, apple-foundation-models |
 | Language niches | kotlin-exposed, kotlin-ktor, perl-modern, cpp-core-guidelines, tinystruct-patterns |
 | Packaging / ops | nuitka-windows-packaging, flox-environments, uncloud, windows-desktop-e2e, n8n-selfhosted-ops |
 | EVM / DeFi | evm-gotchas, defi-amm-security |
 
-### fable-agents — 23 subagents
+### fable-agents — 21 subagents
 
 Deep specialist subagents with concrete, tool-specific knowledge.
 
 | Category | Agents |
 |----------|--------|
-| Languages | python-pro, rust-pro, golang-pro, java-pro, sql-pro, bash-pro |
+| Languages | python-pro, rust-pro, golang-pro, java-pro, bash-pro |
 | Review / security | code-reviewer, architect-review, security-auditor |
-| Infrastructure | kubernetes-architect, terraform-specialist, cloud-architect, deployment-engineer, database-admin, database-architect, database-optimizer |
-| Reliability | devops-troubleshooter, incident-responder, observability-engineer, performance-engineer |
+| Infrastructure | kubernetes-architect, terraform-specialist, cloud-architect, deployment-engineer, database-admin, database-architect, database-optimizer (incl. advanced SQL) |
+| Reliability | incident-responder, observability-engineer, performance-engineer |
 | Product | frontend-developer, backend-architect, test-automator |
 
-Every agent declares an explicit model tier — `opus` only where judgment is the product, `sonnet` for implementation, `haiku` for mechanical work.
+Every agent declares an explicit model tier — `opus` only where judgment is the product, `sonnet` for implementation and operations (`haiku` is reserved for mechanical work; no current agent qualifies). Overlapping clusters carry Key Distinctions blocks so the router can tell them apart.
 
 ### fable-workflows — 15 skills
 
-Battle-tested methodologies with hard rules, adapted from obra/superpowers:
+Battle-tested methodologies with hard rules, adapted from obra/superpowers plus original additions:
 
-test-driven-development, systematic-debugging, brainstorming, writing-plans, executing-plans, verification-before-completion, using-git-worktrees, subagent-driven-development, requesting-code-review, receiving-code-review, finishing-a-development-branch, dispatching-parallel-agents, project-cartography, getting-unstuck, critical-review
+test-driven-development, systematic-debugging, brainstorming, writing-plans, executing-plans, verification-before-completion, using-git-worktrees, subagent-driven-development, requesting-code-review, receiving-code-review, finishing-a-development-branch, project-cartography, getting-unstuck, critical-review, solution-hunter
 
 Two critical-thinking skills complement each other: **getting-unstuck** fires when a
 path is declared impossible and breaks the wall with tested hypotheses;
 **critical-review** fires when nothing is visibly wrong and hunts blind spots —
 stale assumptions, data contradictions, dismissed alternatives — through a
 mandatory 7-lens pass. Blocked opportunities found by the review route into
-getting-unstuck.
+getting-unstuck. **solution-hunter** extends both into a continuous search loop:
+generator subagents with rotating lenses feed adversarial critics that execute
+evidence checks, with file-anchored state and budget guards.
 
 The lifecycle skills chain: brainstorming settles the design, writing-plans turns it
 into phased tasks, executing-plans runs them, verification closes them out — and
