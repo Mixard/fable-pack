@@ -37,3 +37,25 @@ Core principles:
 3. **Task constraints** - budget/risk/time of the task itself.
 4. **Search budget** - rounds per day (default 24), total rounds before an explicit "continue?" (default 100), auto-pause after 24h of user silence.
 5. Unanswered intake questions get a sensible default marked `assumed` - work starts anyway, and every candidate report repeats the assumed list.
+
+## The Round (medium profile: ~8-12 subagents)
+
+Strict wakeup order - never reorder:
+
+0. **Read state first.** Re-read STATE.md + BRIEF.md + any new user messages BEFORE spawning anything. "stop"/"стоп" -> final report (see Autonomous mode). Corrections -> append to BRIEF.md "User corrections".
+1. **(Stage 1 only) Schedule the safety wakeup FIRST**, before any subagent. Synthesis may move it, but a round never runs with no next wakeup scheduled.
+2. **Phases:**
+   - **Generate** - 3-4 `sonnet` subagents, one lens each, rotated from the pool in prompts.md. Input includes the AVOID list: canonical lines of existing + killed ideas with one-line death reasons - never full cards (full cards anchor generators to old phrasing).
+   - **Combine** - 1 subagent crossbreeds top live ideas from the index (prompts.md `combinator`).
+   - **Dedup** - `haiku` checks new ideas against the index canonical lines (prompts.md `dedup`). Paraphrase = duplicate. Index > 200 ideas -> escalate dedup to `sonnet`.
+   - **Refute** - 3 critic subagents (model: inherit), lenses hostile-skeptic / pre-mortem / data-contradiction (prompts.md `critic`). Critics EXECUTE the cheapest decisive check themselves within the timebox; too expensive -> INCONCLUSIVE with cost. Never rely on a critic "knowing" critical-review - the rules are inlined in the prompt.
+   - **Synthesize** - orchestrator only, in the main session: update LEDGER.md and ideas/ cards, append the round delta to ROUNDS.md, rewrite STATUS.md, carry new facts into the next round's generator prompts.
+3. **Chat output: events only** - new candidate, dry-streak escalation, auto-pause, plus a one-line progress note every ~10 rounds. The log is ROUNDS.md; the dashboard is STATUS.md. Chat is not a log.
+
+Idea lifecycle: `raw -> combined -> confirmed | refuted | inconclusive`; `confirmed` + passes the BRIEF criterion -> `candidate`. One vocabulary everywhere - critics' verdicts map 1:1 onto index statuses. `inconclusive` keeps its cost-to-verify.
+
+## Anti-stagnation
+
+- **Dry round** = no new (non-paraphrase) idea, OR no CONFIRMED/REFUTED verdict at all (an all-INCONCLUSIVE round is dry too).
+- **2 dry in a row** -> force-rotate lenses + run the getting-unstuck protocol against the hunt itself: which hidden assumption narrows the search space?
+- **4 dry** -> reformulate the task and ask the user. The question does NOT stop wakeup scheduling - the loop keeps going or auto-pauses by budget rules.
