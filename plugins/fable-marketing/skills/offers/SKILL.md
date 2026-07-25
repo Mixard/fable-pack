@@ -1,6 +1,6 @@
 ---
 name: offers
-description: Design or fix the offer itself — the value equation (dream outcome x likelihood / time x effort), the six-component offer anatomy (deliverable, bonus stack, guarantee, scarcity, name, payment structure), a diagnostic loop with realistic lift numbers, and banned-vocabulary rules. Use for "my offer isn't converting," value stacks, guarantee design, scarcity/urgency, or productizing a service. Best for services, courses, coaching, info products, and high-ticket B2B; for self-serve SaaS, tiering does more work (see the pricing skill).
+description: Design or fix the offer itself — the value equation, six-component offer anatomy (deliverable, bonus stack, guarantee, scarcity, name, payment structure), diagnostic loop, banned-vocabulary rules. Use for "my offer isn't converting," value stacks, guarantee design, scarcity/urgency, productizing a service. Best for services/coaching/high-ticket B2B; for self-serve SaaS see the pricing skill.
 ---
 
 # Offer Design

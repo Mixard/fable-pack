@@ -1,6 +1,6 @@
 ---
 name: customer-research
-description: Conduct and synthesize customer research — extraction frameworks for transcripts/surveys/tickets, digital-watering-hole source maps by ICP type, confidence-level guardrails, sample-bias checks, and evidence-based persona templates (including the proxy-source ladder for pre-review products). Use for VOC, review mining, Reddit/G2 research, JTBD analysis, persona building, or "find out why customers churn/convert/buy."
+description: Conduct and synthesize customer research — extraction frameworks for transcripts/surveys/tickets, watering-hole source maps by ICP, confidence guardrails, sample-bias checks, evidence-based persona templates. Use for VOC, review mining, Reddit/G2 research, JTBD analysis, persona building, or "find out why customers churn/convert/buy."
 ---
 
 # Customer Research

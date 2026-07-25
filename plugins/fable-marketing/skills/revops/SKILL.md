@@ -1,6 +1,6 @@
 ---
 name: revops
-description: Design revenue operations systems — lead lifecycle stages with entry/exit criteria, MQL fit+engagement scoring, routing rules and speed-to-lead data (5-minute response = 21x more likely to qualify), pipeline stage hygiene, deal-desk approval tiers, and funnel benchmark rates. Use for lead scoring, MQL/SQL definitions, marketing-to-sales handoff, CRM automation, "leads aren't getting to sales," or pipeline management.
+description: Design revenue operations systems — lead lifecycle stages with entry/exit criteria, MQL fit+engagement scoring, routing and speed-to-lead rules, pipeline stage hygiene, deal-desk tiers, funnel benchmarks. Use for lead scoring, MQL/SQL definitions, marketing-to-sales handoff, CRM automation, "leads aren't getting to sales," or pipeline management.
 ---
 
 # RevOps

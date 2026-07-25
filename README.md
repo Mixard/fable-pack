@@ -20,6 +20,7 @@ A curated, license-clean plugin marketplace for Claude Code. We reviewed 1,000+ 
 
 | Date | Release | Highlights |
 |------|---------|------------|
+| 2026-07-25 | fable-agents 1.1.0, fable-guard 0.4.0 | all 19 laundry-list agents rewritten to the bash-pro/incident-responder operational standard (commands, decision tables, gotchas — line counts halved); guard hooks gain a 27-test suite in CI, NotebookEdit coverage, and stale_map path fixes; descriptions capped at 400 chars pack-wide |
 | 2026-07-25 | pack-wide audit release | workflows/knowledge/agents 1.0.0, marketing 0.2.0, guard 0.3.0 — fact fixes (FTC Click-to-Cancel status, retired USPTO host), ~2,200 lines of generic content cut, sql-pro and devops-troubleshooter merged away, guard catches sk-proj keys and curl-pipe variants |
 | 2026-07-25 | fable-workflows 0.6.0 | solution-hunter — continuous solution-search loop: generator subagents with rotating lenses, adversarial critics executing evidence checks, file-anchored state, budget guards |
 | 2026-07-24 | fable-workflows 0.5.0 | critical-review — fresh-eyes re-examination of existing materials through a mandatory 7-lens pass; complements getting-unstuck (0.3.0-0.4.0) |
@@ -187,8 +188,8 @@ stateless, and small enough to audit in one sitting before installing.
 - Skills: `plugins/<plugin>/skills/<name>/SKILL.md`, two-field frontmatter (`name`, `description`), optional `references/` and `scripts/`.
 - Agents: `plugins/fable-agents/agents/<name>.md` with `name`, `description`, and an explicit `model` tier.
 - Model policy: every agent declares the cheapest model that does the job well — `opus` only for judgment-heavy work (architecture, code review, security), `sonnet` for implementation and operations, `haiku` for mechanical tasks. Agents never inherit the orchestrator's model. Skills run inline; when a skill implies substantial mechanical work, the orchestrator should delegate it to a subagent on a lower tier.
-- English only, no emojis, SKILL.md under 800 lines.
-- `python3 scripts/validate.py` checks all of the above (including required agent model tiers and link integrity); CI runs it on every PR.
+- English only, no emojis, SKILL.md under 800 lines, descriptions under 400 characters (long descriptions get truncated in the harness skill listing, hiding the triggers).
+- `python3 scripts/validate.py` checks all of the above (including required agent model tiers, link integrity, and description length); `python3 scripts/test_guard.py` tests the fable-guard hooks. CI runs both on every PR.
 
 ## Contributing
 

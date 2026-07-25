@@ -45,6 +45,9 @@ def check_md(path, kind):
     for req in ("name", "description"):
         if not fields.get(req):
             err(f"{path}: frontmatter missing '{req}'")
+    desc = fields.get("description", "")
+    if len(desc) > 400:
+        err(f"{path}: description is {len(desc)} chars (max 400 - long descriptions get truncated in the harness skill listing)")
     if kind == "skill":
         expected = path.parent.name
         if fields.get("name") and fields["name"] != expected:

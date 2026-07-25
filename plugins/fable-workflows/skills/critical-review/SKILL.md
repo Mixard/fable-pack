@@ -1,6 +1,6 @@
 ---
 name: critical-review
-description: Use when asked to re-examine existing materials, plans, strategies, or results with fresh eyes and find what was missed - stale assumptions, blind spots, contradictions with own data, overlooked opportunities. Russian triggers - "подумай", "посмотри под другим углом", "что мы упускаем", "критическое мышление", "что не так". Not for dead ends - if something is claimed impossible or blocked, use getting-unstuck instead.
+description: Use when asked to re-examine existing materials, plans, or results with fresh eyes and find what was missed - stale assumptions, blind spots, contradictions with own data. Russian triggers - "подумай", "посмотри под другим углом", "что мы упускаем", "критическое мышление", "что не так". Not for dead ends - if something is claimed impossible or blocked, use getting-unstuck instead.
 ---
 
 # Critical Review

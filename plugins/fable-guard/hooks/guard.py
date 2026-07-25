@@ -71,9 +71,9 @@ def main():
         for pattern, label in DANGEROUS_BASH:
             if pattern.search(text):
                 deny(label)
-    else:  # Write / Edit
+    else:  # Write / Edit / NotebookEdit
         text = "\n".join(
-            str(tool_input.get(k, "")) for k in ("content", "new_string")
+            str(tool_input.get(k, "")) for k in ("content", "new_string", "new_source")
         )
 
     for pattern, label in SECRET_PATTERNS:

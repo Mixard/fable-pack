@@ -1,6 +1,6 @@
 ---
 name: solution-hunter
-description: Use when the user wants a continuous, self-driving hunt for solutions to an open-ended problem - generate ideas via subagents, combine them, adversarially verify with executed evidence, and keep iterating rounds until the user stops. Russian triggers - "ищи варианты нон-стоп", "перебирай идеи", "не останавливайся пока не найдёшь", "запусти охоту за решением". Not for re-examining existing materials (critical-review) or breaking a declared dead end (getting-unstuck).
+description: Use when the user wants a continuous, self-driving hunt for solutions to an open-ended problem - subagent generators, combination, adversarial verification with executed evidence, iterating until stopped. Russian triggers - "ищи варианты нон-стоп", "перебирай идеи", "не останавливайся пока не найдёшь". Not for existing materials (critical-review) or declared dead ends (getting-unstuck).
 ---
 
 # Solution Hunter

@@ -2,6 +2,41 @@
 
 All notable changes to this pack are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [fable-agents 1.1.0] - 2026-07-25
+
+### Changed
+
+- All 19 remaining laundry-list agents rewritten to the operational standard set by bash-pro and incident-responder: concrete commands with flags, decision tables, counterintuitive gotchas, and review checklists replace capability walls. Line counts roughly halved (e.g. backend-architect 301->80, database-architect 263->114, observability-engineer 235->80); every description rewritten as a distinct router trigger under 300 chars instead of copy-paste "Use PROACTIVELY" boilerplate. Key Distinctions blocks kept throughout; cross-file topic ownership deduplicated (GitOps in kubernetes-architect, state ops in terraform-specialist, rollout strategy in deployment-engineer, FinOps in cloud-architect).
+
+## [fable-guard 0.4.0] - 2026-07-25
+
+### Added
+
+- scripts/test_guard.py: 27 deterministic tests for both hooks (secrets, dangerous shell, fail-open, stale-map scenarios in throwaway git repos); wired into CI alongside validate.py.
+
+### Fixed
+
+- guard.py now scans NotebookEdit new_source (matcher extended to Write|Edit|NotebookEdit).
+- stale_map.py: git-quoted paths (spaces/non-ASCII) no longer misclassified as code changes; rename entries resolve to the new path.
+
+## [fable-workflows 1.0.1] - 2026-07-25
+
+### Fixed
+
+- solution-hunter and critical-review descriptions trimmed under the new 400-char limit (long descriptions get truncated in the harness skill listing, hiding the Russian triggers); all triggers preserved.
+
+## [fable-marketing 0.2.1] - 2026-07-25
+
+### Fixed
+
+- offers, revops, customer-research descriptions trimmed under the 400-char limit; trigger keywords preserved.
+
+## [repo] - 2026-07-25 (second pass)
+
+### Added
+
+- validate.py: descriptions capped at 400 chars (harness listing truncation guard); CI runs test_guard.py.
+
 ## [fable-workflows 1.0.0] - 2026-07-25
 
 ### Removed

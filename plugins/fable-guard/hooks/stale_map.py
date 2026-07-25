@@ -39,7 +39,15 @@ def main():
     except Exception:
         sys.exit(0)
 
-    changed = [line[3:].strip() for line in status if line.strip()]
+    changed = []
+    for line in status:
+        if not line.strip():
+            continue
+        p = line[3:].strip()
+        if " -> " in p:  # rename entry: "old -> new"; the new path is what matters
+            p = p.split(" -> ", 1)[1]
+        p = p.strip('"')  # git quotes paths with spaces/non-ASCII
+        changed.append(p)
     code_changed = any(
         Path(p).name not in MAP_FILES and not p.endswith(".md") for p in changed
     )
