@@ -49,7 +49,7 @@ Strict wakeup order - never reorder:
    - **Combine** - 1 subagent crossbreeds top live ideas from the index (prompts.md `combinator`). Skip this phase while the index holds fewer than 2 live ideas (typical in round 1) - a combinator with no parents is paid-for noise.
    - **Dedup** - `haiku` checks new ideas against the index canonical lines (prompts.md `dedup`). Paraphrase = duplicate. Index > 200 ideas -> escalate dedup to `sonnet`.
    - **Refute** - 3 critic subagents (model: inherit), lenses hostile-skeptic / pre-mortem / data-contradiction (prompts.md `critic`). Critics EXECUTE the cheapest decisive check themselves within the timebox; too expensive -> INCONCLUSIVE with cost. Never rely on a critic "knowing" critical-review - the rules are inlined in the prompt.
-   - **Synthesize** - orchestrator only, in the main session: update LEDGER.md and ideas/ cards, append the round delta to ROUNDS.md, rewrite STATUS.md, carry new facts into the next round's generator prompts. Conflicting critic verdicts are resolved by evidence quality, not majority - a narrower claim backed by an executed number beats a broad verdict; record the resolution in the idea card.
+   - **Synthesize** - orchestrator only, in the main session: update LEDGER.md and ideas/ cards, append the round delta to ROUNDS.md, rewrite STATUS.md, append to CANDIDATES.md when an idea passes the BRIEF criterion, carry new facts into the next round's generator prompts. Conflicting critic verdicts are resolved by evidence quality, not majority - a narrower claim backed by an executed number beats a broad verdict; record the resolution in the idea card.
 3. **Chat output: events only** - new candidate, dry-streak escalation, auto-pause, plus a one-line progress note every ~10 rounds. The log is ROUNDS.md; the dashboard is STATUS.md. Chat is not a log.
 
 Idea lifecycle: `raw -> combined -> confirmed | refuted | inconclusive`; `confirmed` + passes the BRIEF criterion -> `candidate`. One vocabulary everywhere - critics' verdicts map 1:1 onto index statuses. `inconclusive` keeps its cost-to-verify.
@@ -83,7 +83,7 @@ Idea lifecycle: `raw -> combined -> confirmed | refuted | inconclusive`; `confir
 All four must pass on a demo hunt before autonomous mode is offered:
 
 1. **Cost**: one full round measured (tokens + wall-clock) and accepted by the user.
-2. **Verification yield**: >= 40% of verdicts are CONFIRMED/REFUTED on a checkable demo task. Below that, fix the evidence standard before automating.
+2. **Verification yield**: >= 40% of verdicts are CONFIRMED/REFUTED on a checkable demo task. Below that, fix the evidence standard before automating. Same demo hunt also sanity-checks the generators' output: every idea must arrive with a concrete executable test; slogans mean the generator prompt failed.
 3. **Dedup**: a planted paraphrase of a refuted idea gets caught by the dedup phase.
 4. **Critic divergence**: < 80% identical verdicts across the three critics; otherwise collapse to ONE critic prompted with all three lenses (3x cheaper).
 

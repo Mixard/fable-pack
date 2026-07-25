@@ -34,7 +34,7 @@ Auto-pause after user silence: 24h
 ```markdown
 # State
 Round: 0
-Phase: idle | generating | combining | refuting | synthesizing
+Phase: idle | generating | combining | deduping | refuting | synthesizing
 Next wakeup: <ISO time | none>
 Dry rounds streak: 0
 Rounds since last user message: 0
@@ -51,6 +51,7 @@ Mode: stage0 | stage1
 ```
 
 Statuses: `raw | combined | confirmed | refuted | inconclusive | candidate`. Killed ideas stay forever.
+score = the best executed measurement backing the idea (number + unit), `-` if none yet.
 
 ## ideas/<id>.md — full card
 
