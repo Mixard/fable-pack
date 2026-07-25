@@ -87,6 +87,8 @@ New ideas:
 {NEW}
 
 For each new idea decide: NEW, or DUPLICATE of <id>. A paraphrase that changes the
-words but not the mechanism is a DUPLICATE. Return one line per new idea:
+words but not the mechanism is a DUPLICATE. Also compare the new ideas against EACH
+OTHER: different generators often propose the same mechanism in different words -
+mark the later one DUP of the earlier new idea's id. Return one line per new idea:
 <canonical statement> -> NEW | DUP <id>
 ```

@@ -46,10 +46,10 @@ Strict wakeup order - never reorder:
 1. **(Stage 1 only) Schedule the safety wakeup FIRST**, before any subagent. Synthesis may move it, but a round never runs with no next wakeup scheduled.
 2. **Phases:**
    - **Generate** - 3-4 `sonnet` subagents, one lens each, rotated from the pool in prompts.md. Input includes the AVOID list: canonical lines of existing + killed ideas with one-line death reasons - never full cards (full cards anchor generators to old phrasing).
-   - **Combine** - 1 subagent crossbreeds top live ideas from the index (prompts.md `combinator`).
+   - **Combine** - 1 subagent crossbreeds top live ideas from the index (prompts.md `combinator`). Skip this phase while the index holds fewer than 2 live ideas (typical in round 1) - a combinator with no parents is paid-for noise.
    - **Dedup** - `haiku` checks new ideas against the index canonical lines (prompts.md `dedup`). Paraphrase = duplicate. Index > 200 ideas -> escalate dedup to `sonnet`.
    - **Refute** - 3 critic subagents (model: inherit), lenses hostile-skeptic / pre-mortem / data-contradiction (prompts.md `critic`). Critics EXECUTE the cheapest decisive check themselves within the timebox; too expensive -> INCONCLUSIVE with cost. Never rely on a critic "knowing" critical-review - the rules are inlined in the prompt.
-   - **Synthesize** - orchestrator only, in the main session: update LEDGER.md and ideas/ cards, append the round delta to ROUNDS.md, rewrite STATUS.md, carry new facts into the next round's generator prompts.
+   - **Synthesize** - orchestrator only, in the main session: update LEDGER.md and ideas/ cards, append the round delta to ROUNDS.md, rewrite STATUS.md, carry new facts into the next round's generator prompts. Conflicting critic verdicts are resolved by evidence quality, not majority - a narrower claim backed by an executed number beats a broad verdict; record the resolution in the idea card.
 3. **Chat output: events only** - new candidate, dry-streak escalation, auto-pause, plus a one-line progress note every ~10 rounds. The log is ROUNDS.md; the dashboard is STATUS.md. Chat is not a log.
 
 Idea lifecycle: `raw -> combined -> confirmed | refuted | inconclusive`; `confirmed` + passes the BRIEF criterion -> `candidate`. One vocabulary everywhere - critics' verdicts map 1:1 onto index statuses. `inconclusive` keeps its cost-to-verify.
