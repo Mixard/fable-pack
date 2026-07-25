@@ -59,3 +59,39 @@ Idea lifecycle: `raw -> combined -> confirmed | refuted | inconclusive`; `confir
 - **Dry round** = no new (non-paraphrase) idea, OR no CONFIRMED/REFUTED verdict at all (an all-INCONCLUSIVE round is dry too).
 - **2 dry in a row** -> force-rotate lenses + run the getting-unstuck protocol against the hunt itself: which hidden assumption narrows the search space?
 - **4 dry** -> reformulate the task and ask the user. The question does NOT stop wakeup scheduling - the loop keeps going or auto-pauses by budget rules.
+
+## Autonomous mode (Stage 1)
+
+- User commands are processed at the start of the next wakeup; a message sent mid-sleep waits up to the wakeup interval (20-30 min) - an accepted platform limit, state it to the user when Stage 1 starts.
+- **"stop"/"стоп"** -> ScheduleWakeup with `stop: true` (kills pending wakeups) + a final summary report over the whole LEDGER.
+- **Auto-pause** (pause != stop, nothing is finalized): 24h of user silence, OR the daily round limit, OR the total round limit from BRIEF.md. Any user message resumes the loop.
+- Escalations that "ask the user" go to chat AND to STATUS.md open-questions; the loop then continues within budget rules rather than blocking on the answer.
+
+## Recovery
+
+- Every wakeup prompt must be self-sufficient: slug, path `research/<slug>/`, and the instruction "re-read the solution-hunter SKILL.md and STATE.md first". The procedure is anchored in files, so the loop survives context compaction.
+- `/solution-hunter resume <slug>` rebuilds a hunt from files after a crashed round or a dead session: read STATE.md, finish or discard the interrupted phase, continue from the recorded round number.
+
+## Model routing and budget
+
+- Generators/combinator: `sonnet`. Mechanics (dedup, file drafting): `haiku`, escalating on the stated thresholds. Critics: inherit the session model. Synthesis: main session.
+- Never let a subagent inherit the orchestrator model where a lower tier suffices.
+- Before offering Stage 1: measure one full round's cost and wall-clock on a demo hunt. A round longer than ~15 min or costlier than the user accepts -> shrink the profile or slow the cadence first.
+
+## Calibration gates (Stage 0 -> Stage 1)
+
+All four must pass on a demo hunt before autonomous mode is offered:
+
+1. **Cost**: one full round measured (tokens + wall-clock) and accepted by the user.
+2. **Verification yield**: >= 40% of verdicts are CONFIRMED/REFUTED on a checkable demo task. Below that, fix the evidence standard before automating.
+3. **Dedup**: a planted paraphrase of a refuted idea gets caught by the dedup phase.
+4. **Critic divergence**: < 80% identical verdicts across the three critics; otherwise collapse to ONE critic prompted with all three lenses (3x cheaper).
+
+## Red flags
+
+- A candidate whose evidence nobody executed.
+- Chat filling with per-round logs (logs belong in ROUNDS.md).
+- A Stage 1 round running with no next wakeup scheduled.
+- Verdict vocabulary drift (e.g. "verified" instead of CONFIRMED).
+- Starting a hunt whose criterion nothing can check, without the hypotheses-only marking.
+- Skipping intake budget limits "because the user is in a hurry" - the limits ARE the user's protection.
