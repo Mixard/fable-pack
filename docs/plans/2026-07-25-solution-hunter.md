@@ -445,7 +445,7 @@ All four must pass on a demo hunt before autonomous mode is offered:
 - [ ] **Step 2: Validate + final structure check**
 
 Run: `cd /root/fable-skills && python3 scripts/validate.py && grep -c '^## ' plugins/fable-workflows/skills/solution-hunter/SKILL.md && wc -l plugins/fable-workflows/skills/solution-hunter/SKILL.md`
-Expected: `OK: 5 plugins, 84 skills, 23 agents`, section count `11`, SKILL.md in the 180-260 line range (in family with neighbors at 57-244)
+Expected: `OK: 5 plugins, 84 skills, 23 agents`, section count `11`, SKILL.md around 90-110 lines (templates and prompts live in sibling files; neighbors span 57-244)
 
 - [ ] **Step 3: Commit**
 
