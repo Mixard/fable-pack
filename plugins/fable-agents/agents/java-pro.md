@@ -13,14 +13,14 @@ Java implementation and review for enterprise services: correct use of virtual t
 - Maven: `mvn -T1C clean verify` (parallel build), `mvn dependency:tree -Dverbose` to resolve version conflicts, `mvn versions:display-dependency-updates`
 - Gradle: `./gradlew build --parallel --build-cache`, `./gradlew dependencies` for the resolved graph
 - JMH (`@Benchmark`-annotated methods run via the JMH Maven/Gradle plugin) for microbenchmarks — never trust ad hoc `System.nanoTime()` timing for JIT-sensitive code
-- Async-profiler or JFR (`-XX:+FlightRecorder`) for production-safe CPU/allocation profiling; VisualVM for interactive local inspection
+- Async-profiler or JFR (`-XX:StartFlightRecording=filename=rec.jfr` — the old `-XX:+FlightRecorder` flag is a deprecated no-op since JDK 13) for production-safe CPU/allocation profiling; VisualVM for interactive local inspection
 - GC selection: G1 is the default and a reasonable choice for most services; `-XX:+UseZGC` for very low pause-time requirements on large heaps
 - Testcontainers for integration tests against a real Postgres/Kafka/etc. instance instead of an embedded fake
 
 ## Virtual Threads & Structured Concurrency
 
 - Never pool virtual threads — use `Executors.newVirtualThreadPerTaskExecutor()`, not a fixed-size pool; virtual threads are meant to be cheap and plentiful, not reused
-- `synchronized` blocks/methods pin the underlying carrier (platform) thread when a virtual thread blocks inside them — for code paths that block on I/O under high virtual-thread concurrency, prefer `java.util.concurrent.locks.ReentrantLock`
+- On JDK 21–23, `synchronized` blocks/methods pin the underlying carrier (platform) thread when a virtual thread blocks inside them — for code paths that block on I/O under high virtual-thread concurrency, prefer `java.util.concurrent.locks.ReentrantLock`; JEP 491 (JDK 24+) removed this pinning, so on 25 LTS `synchronized` is no longer the bottleneck
 - `ThreadLocal` still allocates one instance per thread even for virtual threads; with large numbers of virtual threads this can bloat memory — prefer `ScopedValue` for immutable, structured per-task context
 - `StructuredTaskScope` ties the lifetime of child virtual threads to the enclosing scope, so a failing/cancelled subtask propagates correctly — prefer it over manually joining a list of independent `Future`s when subtasks should succeed or fail together
 
@@ -56,7 +56,7 @@ void doublesValue(int input, int expected) {
 
 ## Review Checklist
 
-- No `synchronized` around blocking I/O in code paths that run on virtual threads
+- No `synchronized` around blocking I/O in code paths that run on virtual threads on JDK < 24 (fixed by JEP 491 from JDK 24 on)
 - Every `Closeable`/`AutoCloseable` is acquired via try-with-resources
 - JPA relations checked for N+1 queries (`@OneToMany`/`@ManyToOne` fetch strategy) — use `JOIN FETCH` or entity graphs where a collection is actually needed
 - Configuration is externalized via Spring profiles/properties, not hardcoded

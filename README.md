@@ -7,7 +7,7 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-e3b341" alt="MIT license"></a>
   <img src="https://img.shields.io/badge/skills-82-2b3242" alt="82 skills">
   <img src="https://img.shields.io/badge/subagents-21-2b3242" alt="21 subagents">
-  <img src="https://img.shields.io/badge/executable_code-none-2b3242" alt="no executable code">
+  <img src="https://img.shields.io/badge/executable_code-guard_hooks_only-2b3242" alt="executable code: opt-in guard hooks only">
 </p>
 
 A curated, license-clean plugin marketplace for Claude Code. We reviewed 1,000+ skills and agents from the most popular community packs and kept fewer than 10% — every survivor either contains knowledge a frontier model would otherwise hallucinate, or a battle-tested methodology with hard rules.
@@ -20,6 +20,7 @@ A curated, license-clean plugin marketplace for Claude Code. We reviewed 1,000+ 
 
 | Date | Release | Highlights |
 |------|---------|------------|
+| 2026-07-26 | fable-agents 1.1.1 | post-release fact-check: 12 factual fixes across 9 agents (inverted K8s QoS rule, stale JFR flag, JEP 491 pinning fix, `except*` claim, Terraform 1.10 native S3 locking, scan-before-sign gate order); docs aligned (badge, attributions, line limit) |
 | 2026-07-25 | fable-agents 1.1.0, fable-guard 0.4.0 | all 19 laundry-list agents rewritten to the bash-pro/incident-responder operational standard (commands, decision tables, gotchas — line counts halved); guard hooks gain a 27-test suite in CI, NotebookEdit coverage, and stale_map path fixes; descriptions capped at 400 chars pack-wide |
 | 2026-07-25 | pack-wide audit release | workflows/knowledge/agents 1.0.0, marketing 0.2.0, guard 0.3.0 — fact fixes (FTC Click-to-Cancel status, retired USPTO host), ~2,200 lines of generic content cut, sql-pro and devops-troubleshooter merged away, guard catches sk-proj keys and curl-pipe variants |
 | 2026-07-25 | fable-workflows 0.6.0 | solution-hunter — continuous solution-search loop: generator subagents with rotating lenses, adversarial critics executing evidence checks, file-anchored state, budget guards |

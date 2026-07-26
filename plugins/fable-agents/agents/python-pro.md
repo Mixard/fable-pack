@@ -19,7 +19,7 @@ Python implementation and review for production code: correct async patterns, a 
 ## Async & Concurrency
 
 - `asyncio.TaskGroup` and `asyncio.timeout()` (3.11+) are the structured-concurrency primitives — prefer them over manual `asyncio.gather`/`wait_for` because a failing child task cancels its siblings automatically
-- `except*` (exception groups, 3.11+) is required to catch errors raised inside a `TaskGroup`; a plain `except Exception` will not catch them
+- Errors raised inside a `TaskGroup` surface as an `ExceptionGroup` — a plain `except Exception` catches the whole group as one object; use `except*` (3.11+) when you need to match and unpack individual sub-exceptions by type
 - The GIL still serializes CPU-bound Python bytecode on the standard build; use `concurrent.futures.ProcessPoolExecutor` for CPU-bound work, `asyncio`/threads only for I/O-bound work
 - The free-threaded build (PEP 703, `python3.13t`) removes the GIL but is experimental — do not assume third-party C-extension packages are free-threading-safe without checking
 - A long-running service should own a single event loop for its process lifetime (framework-managed under uvicorn/FastAPI, or one `asyncio.run()` at the entrypoint for a script) — spinning up a new loop per request or per call is a sign the sync/async boundary was designed wrong
@@ -44,7 +44,7 @@ Use `@pytest.fixture(scope="session")` for expensive shared setup (DB container,
 
 - Mutable default arguments (`def f(x=[])`) are created once at function-definition time and shared across calls — use `None` and assign inside the body instead
 - Closures in a loop capture the loop variable by reference, not by value at creation time — `[lambda: i for i in range(3)]` returns three closures that all see the final `i`; bind it as a default argument (`lambda i=i: i`) to fix
-- `dataclass(slots=True)` cannot have a mutable value as a class-level default (same restriction as plain slotted classes) — use `field(default_factory=...)`
+- A `dataclass` field cannot have a mutable value as its default (with or without `slots=True` — the restriction is dataclass's own, not a slots rule) — use `field(default_factory=...)`
 - Circular imports introduced purely by type hints are avoidable with `from __future__ import annotations` (defers annotation evaluation) or by guarding the import with `if TYPE_CHECKING:`
 - `copy.copy()` on a container copies only the outer structure — nested mutable objects are still shared; use `copy.deepcopy()` when nested state must be independent
 - Pydantic v2's validation API (`field_validator`, `model_validator`, `model_config` dict) is not source-compatible with v1's `validator`/inner `Config` class — check which major version a codebase targets before writing validators

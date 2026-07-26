@@ -63,7 +63,7 @@ Run all four against a proposed split before implementing it - a boundary that f
   A chain of default (often unbounded) timeouts is how one slow dependency stalls an entire request chain.
   Set this before writing the retry policy - a retry policy layered on top of an unbounded timeout just multiplies the time a caller can be stuck.
 - **Retries**: retry only idempotent operations, with exponential backoff plus jitter and a hard cap on attempt count (in practice a small fixed number, not "keep trying").
-  Retry on network errors and 5xx, never on 4xx - retrying a client error just repeats the failure.
+  Retry on network errors, 5xx, and 429 (honoring `Retry-After` when present); don't retry other 4xx - retrying a client error just repeats the failure.
   A retry without a cap is self-inflicted traffic amplification during an outage.
 - **Circuit breakers**: open the circuit after a consecutive-failure count or an error-rate threshold over a rolling window, then fail fast until a cooldown elapses and a half-open probe succeeds.
   Use this for calls to a dependency whose failure could cascade or whose latency could exhaust caller resources; skip it for cheap in-process or same-host calls where the overhead isn't worth it.

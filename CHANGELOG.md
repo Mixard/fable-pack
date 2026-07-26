@@ -2,11 +2,36 @@
 
 All notable changes to this pack are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [fable-agents 1.1.1] - 2026-07-26
+
+### Fixed
+
+- 12 factual errors found by a post-release adversarial fact-check across 9 agents:
+  - kubernetes-architect: QoS rule was inverted — the risky case is request-without-limit (unbounded growth, OOMKills neighbors); limit-without-request is auto-defaulted to request=limit by Kubernetes. "Consolidation" reattributed to Karpenter (cluster-autoscaler does scale-down).
+  - python-pro: a plain `except Exception` does catch a TaskGroup's `ExceptionGroup` (it subclasses Exception) — `except*` adds selective unpacking, not catchability; the mutable-default ban is dataclass's own rule, independent of `slots=True`. Both reproduced on a live interpreter.
+  - java-pro: `-XX:+FlightRecorder` is a deprecated no-op since JDK 13 — replaced with `-XX:StartFlightRecording`; `synchronized` carrier-thread pinning is fixed by JEP 491 in JDK 24+, so the ReentrantLock advice is now version-gated to 21–23.
+  - backend-architect: "never retry on 4xx" corrected — 429 is designed to be retried with `Retry-After` (RFC 6585) and every major SDK does.
+  - deployment-engineer: pipeline gates reordered to build → scan → sign — the signature must attest to a scanned artifact (was sign-before-scan, contradicting the file's own principle).
+  - terraform-specialist: S3 backend has native locking since Terraform 1.10 (`use_lockfile`), S3+DynamoDB marked legacy; Terraform Cloud renamed to HCP Terraform; noted HCP is not applicable to OpenTofu.
+  - database-admin: an idle-in-transaction session holds the xmin horizon and blocks vacuum database-wide, not just on tables it touched (the original understated the blast radius).
+  - database-optimizer: `INCLUDE` converts an `Index Scan` into an `Index Only Scan`; residual `Heap Fetches` on an existing Index Only Scan are a visibility-map/VACUUM issue (the original had the mechanism backwards).
+  - database-architect: Bigtable has no per-query tunable consistency — attribute narrowed to Cassandra/ScyllaDB.
+
+## [repo] - 2026-07-26
+
+### Fixed
+
+- README "no executable code" badge corrected to "guard hooks only" — fable-guard ships executable PreToolUse hooks, as the Security Model section already stated.
+- ATTRIBUTIONS.md brought up to date: 11 of 15 workflows skills adapted (4 original), 46 of 47 knowledge skills from ECC (n8n-selfhosted-ops original), 21 agents.
+- CONTRIBUTING.md line limit aligned with the enforced validator value (800, was stale 500).
+- validate.py rejects multiline YAML descriptions (the parser reads one line, so the 400 cap was silently bypassable); cap error message no longer claims listing truncation is length-driven — observed harness behavior hides some short descriptions while showing longer ones, so the cap is hygiene, not a guaranteed fix for hidden triggers.
+- fable-agents 1.1.0 entry corrected below: the description cap shipped at 400 chars (three descriptions sit at 300–330), and most rewritten agents carry decision rules in prose rather than command blocks.
+
 ## [fable-agents 1.1.0] - 2026-07-25
 
 ### Changed
 
-- All 19 remaining laundry-list agents rewritten to the operational standard set by bash-pro and incident-responder: concrete commands with flags, decision tables, counterintuitive gotchas, and review checklists replace capability walls. Line counts roughly halved (e.g. backend-architect 301->80, database-architect 263->114, observability-engineer 235->80); every description rewritten as a distinct router trigger under 300 chars instead of copy-paste "Use PROACTIVELY" boilerplate. Key Distinctions blocks kept throughout; cross-file topic ownership deduplicated (GitOps in kubernetes-architect, state ops in terraform-specialist, rollout strategy in deployment-engineer, FinOps in cloud-architect).
+- All 19 remaining laundry-list agents rewritten to the operational standard set by bash-pro and incident-responder: decision rules with rationale, counterintuitive gotchas, and review checklists replace capability walls (commands and tables where they earn their place). Line counts roughly halved (e.g. backend-architect 301->80, database-architect 263->114, observability-engineer 235->80); every description rewritten as a distinct router trigger under the 400-char cap. Key Distinctions blocks kept throughout; cross-file topic ownership deduplicated (GitOps in kubernetes-architect, state ops in terraform-specialist, rollout strategy in deployment-engineer, FinOps in cloud-architect).
 
 ## [fable-guard 0.4.0] - 2026-07-25
 

@@ -24,13 +24,14 @@ Pick the strategy from the compatibility and rollback constraints of the specifi
 Order gates cheap-and-fast first, expensive-and-slow last, and put anything security-relevant before the artifact leaves the build system:
 
 1. Lint / unit tests — fail in seconds, catch the most common mistakes.
-2. Build and sign the artifact.
-3. SAST / dependency and image vulnerability scan — before the artifact is pushed anywhere it could be pulled from.
-4. Deploy to staging.
-5. Integration / end-to-end tests against staging.
-6. Approval gate (automated policy check or manual sign-off, depending on environment).
-7. Progressive rollout to production with automated health-based promotion and rollback.
-8. Post-deploy smoke test against production.
+2. Build the artifact.
+3. SAST / dependency and image vulnerability scan — before the artifact is signed or pushed anywhere it could be pulled from.
+4. Sign the artifact — the signature then attests to a build that already passed the scans.
+5. Deploy to staging.
+6. Integration / end-to-end tests against staging.
+7. Approval gate (automated policy check or manual sign-off, depending on environment).
+8. Progressive rollout to production with automated health-based promotion and rollback.
+9. Post-deploy smoke test against production.
 
 Running the expensive e2e suite before cheap lint/unit checks wastes pipeline time on changes that were always going to fail step 1.
 

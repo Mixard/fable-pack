@@ -40,7 +40,7 @@ FROM pg_statio_user_tables;
 ## Index Choice: Decision Rules, Not Reflexes
 
 - Don't add an index because one query was slow once. Check `pg_stat_statements` for `calls` and `mean_exec_time` first — every index adds write cost on every insert/update, so it must earn its keep against aggregate query cost, not a single slow run.
-- If the plan shows all needed columns are already in the index (`Index Only Scan`), a covering `INCLUDE` may remove the last heap fetch before you reach for a different index type entirely.
+- If the plan shows a plain `Index Scan` fetching just a few extra columns from the heap, a covering `INCLUDE` can turn it into an `Index Only Scan` before you reach for a different index type entirely. If an existing `Index Only Scan` still reports `Heap Fetches`, that's a stale visibility map — the fix is `VACUUM`, not more index columns.
 - Match index type to the actual predicate in the plan: equality/range on a scalar earns a B-tree; JSONB containment or full-text predicates need GIN; large, naturally time-ordered append-only ranges where a B-tree would nearly match the table's own size are the case for BRIN.
 - Re-check composite index column order against the query's actual `WHERE` clause: equality-filtered columns first, range-filtered last — a correct index in the wrong column order still forces a wider scan than necessary.
 

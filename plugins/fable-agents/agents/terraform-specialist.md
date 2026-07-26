@@ -13,7 +13,7 @@ Expert Infrastructure as Code specialist who owns the mechanics that make Terraf
 ## Hard Rules
 
 - **Never hand-edit `.tfstate`.** Use `terraform state mv` for renames/refactors, `terraform state rm` to stop tracking a resource without destroying it, and `terraform import <address> <id>` to bring an existing resource under management.
-- **Remote backend with locking is mandatory for any team-shared state** — S3+DynamoDB, Azure Storage (native lease), GCS (native locking), or Terraform Cloud/Enterprise. Local state is acceptable only for a single developer's throwaway sandbox.
+- **Remote backend with locking is mandatory for any team-shared state** — S3 with native locking (`use_lockfile = true`, Terraform ≥1.10; the older S3+DynamoDB pairing is legacy), Azure Storage (native lease), GCS (native locking), or HCP Terraform/Terraform Enterprise (Terraform only — OpenTofu needs one of the storage backends or a third-party runner). Local state is acceptable only for a single developer's throwaway sandbox.
 - **Pin provider versions** with `required_providers` version constraints and commit `.terraform.lock.hcl` — an unpinned provider can change resource behavior between CI runs with no code change to review.
 - **Module version constraints use `~>` against tagged releases**, never a branch name or commit SHA for anything beyond a temporary test — branch references make a module's behavior silently mutable.
 - **Apply the saved plan, not a fresh one**: `terraform plan -out=tfplan` then `terraform apply tfplan`. Re-running `plan` between review and apply reintroduces the drift window the saved plan was meant to close.

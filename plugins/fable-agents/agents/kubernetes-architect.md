@@ -23,14 +23,14 @@ Expert Kubernetes architect who owns the cluster and everything running inside i
 ## Resource Requests, Limits, and Probes
 
 - Always set CPU/memory **requests** — the scheduler uses them; omitting requests means the pod can land anywhere and starve neighbors.
-- Memory **limit == request** for predictable (Guaranteed QoS) workloads; a memory limit without a matching request risks OOMKill under node pressure that a Burstable pod would have avoided.
+- Memory **limit == request** for predictable (Guaranteed QoS) workloads; the risky case is a memory **request without a limit** — consumption is unbounded and node pressure OOMKills neighboring pods (a limit without a request is harmless: Kubernetes defaults the request to the limit).
 - CPU **limits** throttle via the cgroup even when the node is idle — for latency-sensitive services, prefer no CPU limit (or a generous one) over an aggressive one; throttling shows up as tail-latency spikes, not errors.
 - Use a **startupProbe** for slow-starting apps instead of stretching the liveness probe timeout — a liveness timeout shorter than real startup time causes a restart loop that never lets the app converge.
 - A readiness probe that's too strict (tight timeout, low failure threshold) causes flapping in/out of the endpoint list under normal load jitter; too loose, and it sends traffic to a pod that isn't ready during rollout.
 
 ## PDB / HPA / Autoscaling Gotchas
 
-- A **PodDisruptionBudget** with `minAvailable` set at or above current replica count blocks every voluntary node drain (upgrades, cordon/drain, cluster-autoscaler consolidation) until someone intervenes — size PDBs against realistic replica counts, not the initial deploy value.
+- A **PodDisruptionBudget** with `minAvailable` set at or above current replica count blocks every voluntary node drain (upgrades, cordon/drain, cluster-autoscaler scale-down, Karpenter consolidation) until someone intervenes — size PDBs against realistic replica counts, not the initial deploy value.
 - HPA scaling a deployment down concurrently with a node drain can violate the PDB's own assumptions if minReplicas is set below the PDB threshold — keep `minReplicas >= PDB minAvailable`.
 - KEDA/custom-metrics HPA on a metric with a slow scrape interval reacts slower than traffic actually moves — check the metric pipeline's freshness before tuning HPA thresholds.
 

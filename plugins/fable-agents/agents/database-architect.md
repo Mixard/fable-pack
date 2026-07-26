@@ -18,7 +18,7 @@ Start from access patterns and consistency requirements, not from a favorite tec
 |---|---|
 | Strong relational integrity, complex joins, ACID transactions | Relational (PostgreSQL, MySQL) |
 | Flexible/nested schema, high write volume, denormalized reads | Document store (MongoDB, DynamoDB) |
-| Massive write throughput, tunable consistency, wide-column access | Wide-column (Cassandra, ScyllaDB, Bigtable) |
+| Massive write throughput, wide-column access (per-query tunable consistency: Cassandra/ScyllaDB only) | Wide-column (Cassandra, ScyllaDB, Bigtable) |
 | Time-ordered metrics/events with range queries | Time-series (TimescaleDB, InfluxDB) or columnar OLAP (ClickHouse) |
 | Deep relationship traversal (social graphs, fraud networks) | Graph database (Neo4j, Neptune) |
 | Full-text or fuzzy search as a primary access pattern | Search engine (Elasticsearch, OpenSearch) alongside the system of record |

@@ -52,7 +52,7 @@ FROM pg_database
 ORDER BY xid_age DESC;
 ```
 
-`autovacuum_freeze_max_age` defaults to 200 million transactions, forcing an aggressive autovacuum well before that. If `xid_age` is climbing past that default and autovacuum keeps losing to a long-running transaction holding back the xmin horizon, run a manual `VACUUM FREEZE` before the database approaches the hard wraparound point (~2.1 billion transactions), where Postgres refuses new writes to protect data integrity. Treat a long-running idle-in-transaction session as an operational incident, not background noise — it blocks vacuum cleanup on every table it touches.
+`autovacuum_freeze_max_age` defaults to 200 million transactions, forcing an aggressive autovacuum well before that. If `xid_age` is climbing past that default and autovacuum keeps losing to a long-running transaction holding back the xmin horizon, run a manual `VACUUM FREEZE` before the database approaches the hard wraparound point (~2.1 billion transactions), where Postgres refuses new writes to protect data integrity. Treat a long-running idle-in-transaction session as an operational incident, not background noise — it holds back the xmin horizon and blocks vacuum cleanup across the entire database, including tables it never touched.
 
 ## Security & Access Control
 

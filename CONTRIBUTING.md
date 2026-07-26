@@ -39,7 +39,7 @@ Agents: `plugins/fable-agents/agents/<name>.md` with `name` and `description` fr
 Rules for all content:
 
 - English only. No emojis.
-- SKILL.md under 500 lines; put heavy reference material in `references/` inside the skill directory.
+- SKILL.md under 800 lines (the enforced validator limit); put heavy reference material in `references/` inside the skill directory.
 - No cross-references to files outside the skill's own plugin.
 - If you adapted third-party content, it must be under a permissive license (MIT, Apache-2.0, BSD) and you must add the source to `ATTRIBUTIONS.md`.
 
