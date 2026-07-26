@@ -2,6 +2,12 @@
 
 All notable changes to this pack are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [fable-agents 1.2.0] - 2026-07-26
+
+### Added
+
+- quant-critic: refute-first reviewer for crypto backtest/strategy claims (22nd agent, first original one). Distilled from a 6-round algo-research hunt (49 ideas, 43 refuted by executed backtests): 9 mandatory checks with measured reference numbers — funding-resample look-ahead (label='left' fabricated +53%/yr), fees-only cost floor 10–16 bps vs 0.1–5 bps directional predictability at 1–3m, fill/knife/untouched triple (93.5% of pullback-limit fills were knives), EW-rebalance compounding artifact (~σ²/2/period), funding settlement vs accrual, liquidation path on mark price, point-in-time universe, Bonferroni over everything tried, hold-out hygiene, capacity in $/yr. Mandatory PASS/FAIL/NOT-RUN/N-A report schema makes skipped checks visible; NOT-RUN on a load-bearing check blocks a CANDIDATE verdict. Draft was adversarially reviewed (26 findings, all triaged and applied) before release.
+
 ## [fable-agents 1.1.1] - 2026-07-26
 
 ### Fixed

@@ -6,7 +6,7 @@
   <a href="https://github.com/Mixard/fable-pack/actions/workflows/validate.yml"><img src="https://github.com/Mixard/fable-pack/actions/workflows/validate.yml/badge.svg" alt="CI"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-e3b341" alt="MIT license"></a>
   <img src="https://img.shields.io/badge/skills-82-2b3242" alt="82 skills">
-  <img src="https://img.shields.io/badge/subagents-21-2b3242" alt="21 subagents">
+  <img src="https://img.shields.io/badge/subagents-22-2b3242" alt="22 subagents">
   <img src="https://img.shields.io/badge/executable_code-guard_hooks_only-2b3242" alt="executable code: opt-in guard hooks only">
 </p>
 
@@ -85,7 +85,7 @@ Knowledge-only: exact API schemas, CLI flags, version-specific behavior, platfor
 | Packaging / ops | nuitka-windows-packaging, flox-environments, uncloud, windows-desktop-e2e, n8n-selfhosted-ops |
 | EVM / DeFi | evm-gotchas, defi-amm-security |
 
-### fable-agents — 21 subagents
+### fable-agents — 22 subagents
 
 Deep specialist subagents with concrete, tool-specific knowledge.
 
@@ -93,6 +93,7 @@ Deep specialist subagents with concrete, tool-specific knowledge.
 |----------|--------|
 | Languages | python-pro, rust-pro, golang-pro, java-pro, bash-pro |
 | Review / security | code-reviewer, architect-review, security-auditor |
+| Quant / trading | quant-critic |
 | Infrastructure | kubernetes-architect, terraform-specialist, cloud-architect, deployment-engineer, database-admin, database-architect, database-optimizer (incl. advanced SQL) |
 | Reliability | incident-responder, observability-engineer, performance-engineer |
 | Product | frontend-developer, backend-architect, test-automator |
