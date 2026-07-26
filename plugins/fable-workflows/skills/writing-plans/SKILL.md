@@ -17,6 +17,18 @@ Assume a skilled developer who knows almost nothing about this toolset or proble
 
 If the spec covers multiple independent subsystems, it should have been decomposed during design. If it wasn't, suggest breaking this into separate plans — one per subsystem. Each plan should produce working, testable software on its own.
 
+## Choosing Between Defensible Directions
+
+When two or more approaches both look viable (your own alternatives, or competing plans from different sessions), do not blend them into mush. Pick one using this tie-break order:
+
+1. Correctness and fit to the user's request.
+2. Grounding in real files, APIs, tests, and data - not invented structure.
+3. Simpler first implementation that does not block the intended future.
+4. Better validation and rollback story.
+5. Lower token/time cost of execution, once quality is acceptable.
+
+Record the rejected direction and the deciding criterion in one line - the executor should never re-litigate the choice.
+
 ## File Structure
 
 Before defining tasks, map out which files will be created or modified and what each one is responsible for. This is where decomposition decisions get locked in.

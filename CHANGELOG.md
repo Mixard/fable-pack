@@ -2,6 +2,21 @@
 
 All notable changes to this pack are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [fable-workflows 1.1.0] - 2026-07-26
+
+### Added
+
+- 3 skills adapted from BuilderIO/skills (MIT) after an 11-skill triage with an adversarial review pass; all rewritten into the pack's hard-rule format (Iron Law, red flags, rationalization tables):
+  - docs-first (renamed from read-the-damn-docs): docs-before-code gate for external contracts — authority hierarchy (local repo > official docs > registry metadata > source), version-verification workflow, boundary with getting-unstuck.
+  - stay-within-limits: usage-window management for long agent runs — 95% stop rule, measure-between-waves loop, self-sufficient wake prompts, ccusage staleness caveat, boundary with solution-hunter Stage 1 (one pause convention, not two).
+  - agent-watchdog: audit of unattended agent runs from artifacts only (session/cron/PR/log) — contract reconstruction, evidence-classed gap report (Gap/Bug/Verification miss/Scope drift), narrow authorized fixes; boundary with subagent-driven-development's Task Reviewer.
+
+### Changed
+
+- writing-plans: added "Choosing Between Defensible Directions" — 5-step tie-break order salvaged from BuilderIO's plan-arbiter (the rest of that skill was skipped as below the bar).
+
+Skipped in the same triage: rewind (macOS Clips-locked), visual-plan/visual-recap (hosted-connector-locked), efficient-fable/efficient-frontier (triple-redundant with model-economy rules and subagent-driven-development), plow-ahead, quick-recap, plan-arbiter. Rationale recorded in ATTRIBUTIONS.md.
+
 ## [fable-agents 1.2.0] - 2026-07-26
 
 ### Added

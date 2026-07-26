@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://github.com/Mixard/fable-pack/actions/workflows/validate.yml"><img src="https://github.com/Mixard/fable-pack/actions/workflows/validate.yml/badge.svg" alt="CI"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-e3b341" alt="MIT license"></a>
-  <img src="https://img.shields.io/badge/skills-82-2b3242" alt="82 skills">
+  <img src="https://img.shields.io/badge/skills-85-2b3242" alt="85 skills">
   <img src="https://img.shields.io/badge/subagents-22-2b3242" alt="22 subagents">
   <img src="https://img.shields.io/badge/executable_code-guard_hooks_only-2b3242" alt="executable code: opt-in guard hooks only">
 </p>
@@ -20,6 +20,7 @@ A curated, license-clean plugin marketplace for Claude Code. We reviewed 1,000+ 
 
 | Date | Release | Highlights |
 |------|---------|------------|
+| 2026-07-26 | fable-workflows 1.1.0 | BuilderIO/skills triage (3 of 11 adopted, adversarially reviewed): docs-first (docs-before-code gate for external contracts), stay-within-limits (95% usage-window rule for long agent runs), agent-watchdog (evidence-based audit of unattended runs); writing-plans gains a 5-step tie-break for competing directions |
 | 2026-07-26 | fable-agents 1.1.1 | post-release fact-check: 12 factual fixes across 9 agents (inverted K8s QoS rule, stale JFR flag, JEP 491 pinning fix, `except*` claim, Terraform 1.10 native S3 locking, scan-before-sign gate order); docs aligned (badge, attributions, line limit) |
 | 2026-07-25 | fable-agents 1.1.0, fable-guard 0.4.0 | all 19 laundry-list agents rewritten to the bash-pro/incident-responder operational standard (commands, decision tables, gotchas — line counts halved); guard hooks gain a 27-test suite in CI, NotebookEdit coverage, and stale_map path fixes; descriptions capped at 400 chars pack-wide |
 | 2026-07-25 | pack-wide audit release | workflows/knowledge/agents 1.0.0, marketing 0.2.0, guard 0.3.0 — fact fixes (FTC Click-to-Cancel status, retired USPTO host), ~2,200 lines of generic content cut, sql-pro and devops-troubleshooter merged away, guard catches sk-proj keys and curl-pipe variants |
@@ -100,11 +101,11 @@ Deep specialist subagents with concrete, tool-specific knowledge.
 
 Every agent declares an explicit model tier — `opus` only where judgment is the product, `sonnet` for implementation and operations (`haiku` is reserved for mechanical work; no current agent qualifies). Overlapping clusters carry Key Distinctions blocks so the router can tell them apart.
 
-### fable-workflows — 15 skills
+### fable-workflows — 18 skills
 
-Battle-tested methodologies with hard rules, adapted from obra/superpowers plus original additions:
+Battle-tested methodologies with hard rules, adapted from obra/superpowers and BuilderIO/skills plus original additions:
 
-test-driven-development, systematic-debugging, brainstorming, writing-plans, executing-plans, verification-before-completion, using-git-worktrees, subagent-driven-development, requesting-code-review, receiving-code-review, finishing-a-development-branch, project-cartography, getting-unstuck, critical-review, solution-hunter
+test-driven-development, systematic-debugging, brainstorming, writing-plans, executing-plans, verification-before-completion, using-git-worktrees, subagent-driven-development, requesting-code-review, receiving-code-review, finishing-a-development-branch, project-cartography, getting-unstuck, critical-review, solution-hunter, docs-first, stay-within-limits, agent-watchdog
 
 Two critical-thinking skills complement each other: **getting-unstuck** fires when a
 path is declared impossible and breaks the wall with tested hypotheses;
@@ -114,6 +115,13 @@ mandatory 7-lens pass. Blocked opportunities found by the review route into
 getting-unstuck. **solution-hunter** extends both into a continuous search loop:
 generator subagents with rotating lenses feed adversarial critics that execute
 evidence checks, with file-anchored state and budget guards.
+
+Three agent-ops skills cover autonomous and delegated work: **docs-first** gates
+code against external contracts on reading current docs instead of model memory,
+**stay-within-limits** keeps long runs inside usage windows (measure between
+waves, pause at 95%, resume on evidence), and **agent-watchdog** audits
+unattended runs from artifacts alone — reconstructing the contract before
+judging the work.
 
 The lifecycle skills chain: brainstorming settles the design, writing-plans turns it
 into phased tasks, executing-plans runs them, verification closes them out — and
