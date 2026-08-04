@@ -2,6 +2,12 @@
 
 All notable changes to this pack are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [fable-workflows 1.2.0] - 2026-08-05
+
+### Added
+
+- kb-hygiene: navigability pass over document folders (notes, research, transcripts, briefs) so an agent can decide read/skip without opening files. Built from a real pass over two bases and corrected by a critical review of that pass, which refuted the obvious approach: hand-annotating every file. The skill's gate is the title-content test - a note named after its topic (`03-multiorders.md` -> `# 03. Multiorders`) already carries its preview in the filename plus H1, and a generated index extracts it for free; a transcript named after its event (`club-session-july-01_729900291.txt`) hides which tools, numbers and conclusions are inside, and only there does a hand-written header add information. Default deliverable is therefore a regenerable index, not prose. Includes: folder classification table (vault / index-only / code / skill-repo, with source trees forbidden), input/output split restricted to pipelines with an external data source, a mandatory reversal check before any bulk write on an unversioned folder, and a dated staleness marker with the rule that an existing header is a claim, not evidence.
+
 ## [fable-workflows 1.1.0] - 2026-07-26
 
 ### Added
