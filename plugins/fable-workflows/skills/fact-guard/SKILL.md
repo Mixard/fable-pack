@@ -1,6 +1,6 @@
 ---
 name: fact-guard
-description: Use when deliverable embeds client facts: names, phones, addresses, emails, domains, prices, codes, IDs, dates, quotes in drafts, landing pages, reports, configs. Also when owner says "откуда ты это взял", "это неправильно", "такого нет", "не выдумывай". Placeholder over guess; facts file over memory; ledger checked before delivery.
+description: Use when a deliverable carries client facts - names, people, phones, emails, handles, domains, prices, codes, IDs, licenses, legal dates and thresholds, quotes - in drafts, emails, landing pages, reports, ad copy, configs. Also when the owner says "откуда ты это взял", "это неправильно", "такого нет", "не выдумывай". Placeholder over guess, facts file over memory, ledger check before delivery.
 ---
 
 # Fact Guard
@@ -66,8 +66,9 @@ The left column is a literal blocklist: these strings may appear in project file
 **The delivery check** — run before handing over any deliverable that carries client facts:
 
 ```
-1. BLOCKLIST: grep -F -f <(left column of the ledger) <deliverable>
-   Any hit outside a "do not use" warning = FAIL. Fix, re-check.
+1. BLOCKLIST: copy each left-column value of the ledger (the literal string only —
+   no markdown bold, no explanatory tail) into a temp file, one per line, then
+   grep -n -F -f blocklist.txt <deliverable>. Any hit outside a "do not use" warning = FAIL. Fix, re-check.
 2. TRACE: for every name, number, code, contact, date, quote in the deliverable:
    traced to the facts file (or a document it names)  -> ok
    placeholder                                         -> ok, goes to «Что нужно от вас»
