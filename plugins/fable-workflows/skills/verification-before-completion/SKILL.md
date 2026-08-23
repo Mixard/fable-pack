@@ -13,6 +13,8 @@ Claiming work is complete without verification is dishonesty, not efficiency.
 
 **Violating the letter of this rule is violating the spirit of this rule.**
 
+Claims about *facts in a deliverable* (a client's price, phone, code) are verified by a different gate — the fact-guard skill; this skill covers claims about work status.
+
 ## The Iron Law
 
 ```

@@ -71,3 +71,15 @@
 ## Открытые места
 
 Нет. Кандидаты, отклонённые на ревью (requirements-manifest, context-handoff, апгрейды SDD, Unity-knowledge), зафиксированы в этом документе как «вне рамок» и не возвращаются без нового доказательства нужды.
+
+## Acceptance runs 2026-08-22
+
+Оба прогона — `sonnet`-субагенты по промптам из плана (Task 3, Steps 3–4), read-only на целевых проектах; ничего не менялось ни в `/root/FIXMATE_PROJECT`, ни в `/root/geo_rpg` (подтверждено снимком файлов до/после для FIXMATE — не git-репозиторий — и `git status --short` для geo_rpg, оба пусты кроме одного стороннего файла состояния `meta-ads/ads/_state/inbound-notifier-state.json`, не связанного с прогоном). Формулировка скила не потребовала правок — оба прогона прошли с первого раза.
+
+**Run A — FIXMATE/DCWP-NYC (spec criterion 2).**
+Verdict: **FAIL** — 2 blocklist hits: row 2 `VS00107380` (fabricated vendor code), row 14 `Trevor Wilson` (fabricated addressee name). NEEDS-SOURCE: none — остальные факты (DBA, DCWP #2131003-DCWP, телефон) трассировались до facts-файла. Ledger used: `procurement-known-fabrications.md` (найден по `*known-fabrications*`, не создан заново). Facts file used: `procurement-facts.yaml`.
+
+**Run B — geo_rpg (spec criterion 3).**
+Verdict: **NEEDS-SOURCE** — цена подписки и support email не были найдены ни в одном facts-файле (в проекте такого файла нет вовсе) и не были придуманы: оба ушли в плейсхолдеры внутри текста и в список «Что нужно от вас». Субагент зафиксировал отсутствие facts-файла и предложил (proposal only, файл не создан) завести `docs/facts.yaml`.
+
+Wording change: none.

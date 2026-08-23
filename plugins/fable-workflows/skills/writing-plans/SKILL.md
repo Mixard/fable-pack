@@ -137,6 +137,8 @@ Every step must contain the actual content an engineer needs. These are **plan f
 - Steps that describe what to do without showing how (code blocks required for code steps)
 - References to types, functions, or methods not defined in any task
 
+Placeholders for *client facts* (prices, contacts, codes) are the one exception and are mandatory, not forbidden — see the fact-guard skill.
+
 ## Remember
 - Exact file paths always
 - Complete code in every step — if a step changes code, show the code
