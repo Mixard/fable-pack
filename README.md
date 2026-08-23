@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://github.com/Mixard/fable-pack/actions/workflows/validate.yml"><img src="https://github.com/Mixard/fable-pack/actions/workflows/validate.yml/badge.svg" alt="CI"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-e3b341" alt="MIT license"></a>
-  <img src="https://img.shields.io/badge/skills-87-2b3242" alt="skills-87">
+  <img src="https://img.shields.io/badge/skills-87-2b3242" alt="87 skills">
   <img src="https://img.shields.io/badge/subagents-22-2b3242" alt="22 subagents">
   <img src="https://img.shields.io/badge/executable_code-guard_hooks_only-2b3242" alt="executable code: opt-in guard hooks only">
 </p>

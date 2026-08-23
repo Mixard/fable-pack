@@ -59,14 +59,14 @@ A value in your context from an earlier session, a screenshot you half-remember,
 | 1 | **"Trevor Wilson"** as company president | stale bundle row | **Horace Henry** | company site, verified 2026-06-11 |
 ```
 
-The left column is a literal blocklist: these strings may appear in project files only inside an explicit "do not use / refuted" warning, never as a live fact.
+The *Fabricated / wrong value* column is a literal blocklist: these strings may appear in project files only inside an explicit "do not use / refuted" warning, never as a live fact.
 
 **Ledger events.** A fact is added **in the same turn** it is caught — by the owner, by a reviewer, by your own check. "I'll record it later" is how the same fabrication returns next month with a fresh-context agent who never saw the correction.
 
 **The delivery check** — run before handing over any deliverable that carries client facts:
 
 ```
-1. BLOCKLIST: copy each left-column value of the ledger (the literal string only —
+1. BLOCKLIST: copy each value of the ledger's *Fabricated / wrong value* column (the literal string only —
    no markdown bold, no explanatory tail) into a temp file, one per line, then
    grep -n -F -f blocklist.txt <deliverable>. Any hit outside a "do not use" warning = FAIL. Fix, re-check.
 2. TRACE: for every name, number, code, contact, date, quote in the deliverable:
@@ -79,7 +79,7 @@ The left column is a literal blocklist: these strings may appear in project file
 
 Inline for deliverables up to ~2 pages. Longer, or when the deliverable is one of many in a batch: dispatch a `haiku`/`sonnet` subagent with three paths — the deliverable, the ledger, the facts file — and the three-step check above verbatim; it returns the verdict line plus the list of NEEDS-SOURCE items, nothing else.
 
-## Red Flags — STOP
+## Red Flags - STOP and Follow Process
 
 - A number, name, or code in your draft that you cannot point to a file for.
 - "Something like this" / "for example, $49" / "a typical phone format" in a client-facing draft.
@@ -96,7 +96,7 @@ Inline for deliverables up to ~2 pages. Longer, or when the deliverable is one o
 | "A placeholder looks unprofessional" | An invented price in a client proposal looks far worse, and you will not be there to see it. |
 | "It's obviously the same as the other project" | Two projects, two fact sets. The shared phone number was the bug. |
 | "I'll add it to the ledger after the fix" | The fix is one turn; the ledger row is the only part that protects the next agent. Same turn. |
-| "The ledger is empty, the check is pointless" | The check has two steps; TRACE works with an empty blocklist. The ledger is empty until the first catch, and the first catch is the one you are about to make. |
+| "The ledger is empty, the check is pointless" | The check has three steps; TRACE and VERDICT work with an empty blocklist. The ledger is empty until the first catch, and the first catch is the one you are about to make. |
 
 ## Quick Reference
 

@@ -48,10 +48,10 @@
 
 | Паттерн | Что ловит | Риск ложных срабатываний |
 |---|---|---|
-| `\b\d{8,10}:[A-Za-z0-9_-]{35}\b` | Telegram bot-токен | низкий: форма уникальна |
+| `\b\d{8,10}:[A-Za-z0-9_-]{35}\b` | Telegram bot-токен | низкий: форма уникальна (в реализации завершающий `\b` снят — коммит 0e2e6ba: секрет, оканчивающийся на `-`, не матчился) |
 | `\b(?:sk\|rk)_live_[A-Za-z0-9]{20,}` | Stripe live secret/restricted key | низкий; `sk_test_` намеренно **не** блокируем — тестовые ключи в доках и фикстурах легитимны |
 | `\beyJ[A-Za-z0-9_-]{10,}\.eyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\b` | JWT (три сегмента, заголовок+payload в base64url-JSON) | средний: JWT встречаются в тестах; принимаем — в Write/Edit реальный токен встречается чаще, чем фикстура, и отказ объясняет причину |
-| `\b(?:postgres(?:ql)?\|mysql\|mongodb(?:\+srv)?\|redis\|amqp)://[^\s/:@]+:[^\s@]+@` | connection-string с паролем | низкий: URL без пароля (`user@host`) не матчится |
+| `\b(?:postgres(?:ql)?\|mysql\|mongodb\|redis\|amqp)(?:\+[a-z0-9_]+)?s?://[^\s/:@]+:[^\s@]+@` | connection-string с паролем | низкий: URL без пароля (`user@host`) не матчится (ловит также `+driver` и TLS-формы `amqps://`/`rediss://`) |
 
 Тесты в `plugins/fable-guard/test_guard.py`: по одному позитивному и одному негативному кейсу на паттерн (для Stripe негатив — `sk_test_`; для connection-string — URL без пароля; для JWT — двухсегментная строка).
 
@@ -74,7 +74,7 @@
 
 ## Acceptance runs 2026-08-22
 
-Оба прогона — `sonnet`-субагенты по промптам из плана (Task 3, Steps 3–4), read-only на целевых проектах; ничего не менялось ни в `/root/FIXMATE_PROJECT`, ни в `/root/geo_rpg` (подтверждено снимком файлов до/после для FIXMATE — не git-репозиторий — и `git status --short` для geo_rpg, оба пусты кроме одного стороннего файла состояния `meta-ads/ads/_state/inbound-notifier-state.json`, не связанного с прогоном). Формулировка скила не потребовала правок — оба прогона прошли с первого раза.
+Оба прогона — `sonnet`-субагенты по промптам из плана (Task 3, Steps 3–4), read-only на целевых проектах. Содержимое не менялось ни в `/root/FIXMATE_PROJECT`, ни в `/root/geo_rpg` (подтверждено снимком файлов до/после для FIXMATE — не git-репозиторий — и `git status --short` для geo_rpg). Один сторонний файл состояния, `meta-ads/ads/_state/inbound-notifier-state.json`, изменил mtime при неизменном размере — отнесено на фоновый процесс, не связанный с прогоном. Формулировка скила не потребовала правок — оба прогона прошли с первого раза.
 
 **Run A — FIXMATE/DCWP-NYC (spec criterion 2).**
 Verdict: **FAIL** — 2 blocklist hits: row 2 `VS00107380` (fabricated vendor code), row 14 `Trevor Wilson` (fabricated addressee name). NEEDS-SOURCE: none — остальные факты (DBA, DCWP #2131003-DCWP, телефон) трассировались до facts-файла. Ledger used: `procurement-known-fabrications.md` (найден по `*known-fabrications*`, не создан заново). Facts file used: `procurement-facts.yaml`.
@@ -83,3 +83,5 @@ Verdict: **FAIL** — 2 blocklist hits: row 2 `VS00107380` (fabricated vendor co
 Verdict: **NEEDS-SOURCE** — цена подписки и support email не были найдены ни в одном facts-файле (в проекте такого файла нет вовсе) и не были придуманы: оба ушли в плейсхолдеры внутри текста и в список «Что нужно от вас». Субагент зафиксировал отсутствие facts-файла и предложил (proposal only, файл не создан) завести `docs/facts.yaml`.
 
 Wording change: none.
+
+**Criterion 4 — sweep of 17 repos (re-run at final review).** Clean except two deliberate examples: `plugins/fable-knowledge/skills/prisma-patterns/SKILL.md:217,220` (placeholder DSNs in docs) and third-party scraped JSON under `/root/FIXMATE_PROJECT/meta-ads/ads/research/competitors/` (vendor JWTs in raw Apify dumps — flagged to the owner, not a pattern defect).

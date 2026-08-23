@@ -24,7 +24,7 @@ SECRET_PATTERNS = [
     (re.compile(r"\b(?:sk|rk)_live_[A-Za-z0-9]{20,}"), "Stripe live key"),
     (re.compile(r"\beyJ[A-Za-z0-9_-]{10,}\.eyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\b"), "JWT"),
     (
-        re.compile(r"\b(?:postgres(?:ql)?|mysql|mongodb(?:\+srv)?|redis|amqp)://[^\s/:@]+:[^\s@]+@"),
+        re.compile(r"\b(?:postgres(?:ql)?|mysql|mongodb|redis|amqp)(?:\+[a-z0-9_]+)?s?://[^\s/:@]+:[^\s@]+@"),
         "connection string with embedded password",
     ),
 ]
