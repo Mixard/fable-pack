@@ -60,6 +60,7 @@ check_guard("private key header",
 # --- guard.py: secrets added in fable-guard 0.5.0 ---
 check_guard("Telegram bot token", bash("export BOT_TOKEN=1234567890:AAHf3kZ9xQwErTyUiOpAsDfGhJkLzXcVbNm"), True)
 check_guard("Telegram-like but short secret part is allowed", bash("echo 1234567890:AAHf3kZ9xQ"), False)
+check_guard("Telegram bot token whose secret ends in a dash", bash("export BOT_TOKEN=1234567890:AAHf3kZ9xQwErTyUiOpAsDfGhJkLzXcVbN-"), True)
 check_guard("Stripe live secret key", bash("export STRIPE_SECRET_KEY=sk_live_Ab12Cd34Ef56Gh78Ij90"), True)
 check_guard("Stripe restricted live key in Write",
             {"tool_name": "Write", "tool_input": {"content": "key = 'rk_live_Ab12Cd34Ef56Gh78Ij90'"}}, True)
