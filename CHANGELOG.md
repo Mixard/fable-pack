@@ -2,6 +2,22 @@
 
 All notable changes to this pack are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [fable-workflows 1.3.0] - 2026-08-22
+
+### Added
+
+- fact-guard: stops invented client facts (names, prices, codes, contacts) from reaching deliverables. Three rules — placeholder instead of a plausible guess (collected into a «Что нужно от вас» list), the project's facts file beats memory (proposes `docs/facts.yaml` at the first real question), and a `known-fabrications.md` ledger with a BLOCKLIST → TRACE → VERDICT check before delivery (inline up to ~2 pages, subagent beyond). Generalizes the ledger + guard pattern one project had built by hand after 15 hallucinated facts; the same failure class was documented in two more projects. The only idea adopted from a triage of nick-vels/skills (autopilot) — its rule "a fact about the user is never invented" — after a critical review refuted the other six candidates (requirements manifest, context handoff, SDD upgrades, secrets skill, Unity knowledge, acceptance protocol) for lack of any documented failure they would fix.
+
+### Changed
+
+- writing-plans, verification-before-completion: one cross-reference line each to fact-guard (client-fact placeholders are mandatory; fact claims are a different gate from status claims).
+
+## [fable-guard 0.5.0] - 2026-08-22
+
+### Added
+
+- Four secret patterns: Telegram bot token, Stripe live key (`sk_live_`/`rk_live_`; test keys deliberately allowed), JWT (three base64url segments), connection string with an embedded password (postgres/mysql/mongodb/redis/amqp). Eleven new test cases, paired positive/negative per pattern.
+
 ## [fable-workflows 1.2.0] - 2026-08-05
 
 ### Added

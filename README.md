@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://github.com/Mixard/fable-pack/actions/workflows/validate.yml"><img src="https://github.com/Mixard/fable-pack/actions/workflows/validate.yml/badge.svg" alt="CI"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-e3b341" alt="MIT license"></a>
-  <img src="https://img.shields.io/badge/skills-86-2b3242" alt="86 skills">
+  <img src="https://img.shields.io/badge/skills-87-2b3242" alt="skills-87">
   <img src="https://img.shields.io/badge/subagents-22-2b3242" alt="22 subagents">
   <img src="https://img.shields.io/badge/executable_code-guard_hooks_only-2b3242" alt="executable code: opt-in guard hooks only">
 </p>
@@ -20,6 +20,7 @@ A curated, license-clean plugin marketplace for Claude Code. We reviewed 1,000+ 
 
 | Date | Release | Highlights |
 |------|---------|------------|
+| 2026-08-22 | fable-workflows 1.3.0, fable-guard 0.5.0 | fact-guard — placeholder over invented client facts, facts file over memory, fabrications ledger checked before delivery; guard hook gains Telegram/Stripe-live/JWT/connection-string patterns |
 | 2026-08-05 | fable-workflows 1.2.0 | kb-hygiene — navigability pass for document folders: generated index by default, hand-written preview headers only where the title hides the content (transcripts, dumps, mixed docs), input/output split restricted to real pipelines, mandatory reversal check before bulk writes on unversioned folders |
 | 2026-07-26 | fable-workflows 1.1.0 | BuilderIO/skills triage (3 of 11 adopted, adversarially reviewed): docs-first (docs-before-code gate for external contracts), stay-within-limits (95% usage-window rule for long agent runs), agent-watchdog (evidence-based audit of unattended runs); writing-plans gains a 5-step tie-break for competing directions |
 | 2026-07-26 | fable-agents 1.1.1 | post-release fact-check: 12 factual fixes across 9 agents (inverted K8s QoS rule, stale JFR flag, JEP 491 pinning fix, `except*` claim, Terraform 1.10 native S3 locking, scan-before-sign gate order); docs aligned (badge, attributions, line limit) |
@@ -102,11 +103,11 @@ Deep specialist subagents with concrete, tool-specific knowledge.
 
 Every agent declares an explicit model tier — `opus` only where judgment is the product, `sonnet` for implementation and operations (`haiku` is reserved for mechanical work; no current agent qualifies). Overlapping clusters carry Key Distinctions blocks so the router can tell them apart.
 
-### fable-workflows — 19 skills
+### fable-workflows — 20 skills
 
 Battle-tested methodologies with hard rules, adapted from obra/superpowers and BuilderIO/skills plus original additions:
 
-test-driven-development, systematic-debugging, brainstorming, writing-plans, executing-plans, verification-before-completion, using-git-worktrees, subagent-driven-development, requesting-code-review, receiving-code-review, finishing-a-development-branch, project-cartography, getting-unstuck, critical-review, solution-hunter, docs-first, stay-within-limits, agent-watchdog, kb-hygiene
+test-driven-development, systematic-debugging, brainstorming, writing-plans, executing-plans, verification-before-completion, using-git-worktrees, subagent-driven-development, requesting-code-review, receiving-code-review, finishing-a-development-branch, project-cartography, getting-unstuck, critical-review, solution-hunter, docs-first, stay-within-limits, agent-watchdog, kb-hygiene, fact-guard
 
 Two critical-thinking skills complement each other: **getting-unstuck** fires when a
 path is declared impossible and breaks the wall with tested hypotheses;
@@ -131,6 +132,11 @@ its topic already carries its preview, so a generated index extracts it for free
 while a transcript named after its event hides everything inside and earns a
 hand-written header. Prose is the exception, not the default.
 
+**fact-guard** stops invented client facts (names, prices, codes, contacts) from
+reaching deliverables: a visible placeholder instead of a plausible guess, the
+project's facts file over model memory, and a `known-fabrications.md` ledger
+checked before delivery.
+
 The lifecycle skills chain: brainstorming settles the design, writing-plans turns it
 into phased tasks, executing-plans runs them, verification closes them out — and
 **project-cartography** keeps a three-file living map (CODEMAP, PROJECT_STATE,
@@ -151,8 +157,9 @@ Marketing frameworks with concrete numbers, benchmarks, and templates.
 
 ### fable-guard — deterministic guardrails (opt-in)
 
-PreToolUse hooks that block secret patterns (API keys, tokens, private keys) in shell
-commands and file writes, plus dangerous shell patterns (`curl | sh`,
+PreToolUse hooks that block secret patterns (API keys, tokens, private keys, Telegram
+bot tokens, Stripe live keys, JWTs, connection strings with an embedded password) in
+shell commands and file writes, plus dangerous shell patterns (`curl | sh`,
 `--dangerously-skip-permissions`) — before they execute. A model can be tricked or
 forget; a hook fires every time. Also ships a Stop hook that reminds — exactly once,
 and only in projects keeping a CODEMAP.md — when code changed but the project map did
