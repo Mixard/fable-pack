@@ -20,6 +20,13 @@ SECRET_PATTERNS = [
     (re.compile(r"AIza[0-9A-Za-z_-]{35}"), "Google API key"),
     (re.compile(r"xox[baprsce]-[A-Za-z0-9-]{10,}"), "Slack token"),
     (re.compile(r"-----BEGIN (?:RSA |EC |OPENSSH |PGP )?PRIVATE KEY-----"), "private key material"),
+    (re.compile(r"\b\d{8,10}:[A-Za-z0-9_-]{35}\b"), "Telegram bot token"),
+    (re.compile(r"\b(?:sk|rk)_live_[A-Za-z0-9]{20,}"), "Stripe live key"),
+    (re.compile(r"\beyJ[A-Za-z0-9_-]{10,}\.eyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\b"), "JWT"),
+    (
+        re.compile(r"\b(?:postgres(?:ql)?|mysql|mongodb(?:\+srv)?|redis|amqp)://[^\s/:@]+:[^\s@]+@"),
+        "connection string with embedded password",
+    ),
 ]
 
 DANGEROUS_BASH = [
