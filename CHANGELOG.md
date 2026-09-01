@@ -2,6 +2,86 @@
 
 All notable changes to this pack are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [fable-workflows 2.0.0] - 2026-09-01
+
+### Added
+
+- parallel-plans: splits one implementation plan into lanes with exclusive write-sets so several Claude Code sessions or worktree subagents can execute it at once without conflicts — a serial foundation lane (contracts, shared config) merged before fan-out, atomic lane claims via `git worktree add -b lane/<slug>/<lane>`, rebase-before-hand-off, and a serial integration lane that merges `--ff-only` in dependency order from the main checkout. Extends writing-plans; executes via executing-plans. Design: `docs/specs/2026-09-01-fable-pack-2-design.md` section 5.
+
+### Changed
+
+- using-git-worktrees: rewritten around the native harness path — `claude --worktree <name>` / `EnterWorktree` create `.claude/worktrees/<name>` on branch `worktree-<name>`, based on `worktree.baseRef` (`fresh` = remote default branch, `head` = current HEAD), `.worktreeinclude` copies gitignored files, isolation blocks edits and git in the main checkout. The `git worktree add` path stays as a shorter fallback section; the baseline-test step is unchanged.
+- finishing-a-development-branch: trimmed; keeps the four-option menu, typed "discard", and merge-verify-remove order. Cleanup now delegates to `ExitWorktree` (keep/remove, `discard_changes` guard); the provenance check recognizes `.claude/worktrees/` as harness-owned; the final whole-branch review points at `/code-review` when available.
+- brainstorming: "one question per message" replaced with batched `AskUserQuestion` rounds (up to 4 per round, one topic each, a recommended first choice), falling back to one-per-message only when the tool is unavailable. Per-section approval replaced with one design approval. When the design has 2+ independent components, they are now recorded as lane candidates for parallel-plans.
+- writing-plans: Scope Check now mentions lanes, Execution Handoff gains a "Parallel lanes (parallel-plans)" option, and the plan header gets an optional `**Parallel:**` line.
+- subagent-driven-development: the blanket "never dispatch implementation subagents in parallel" rule is now scoped — parallel implementers are allowed across lanes with disjoint write-sets (parallel-plans) or with `isolation: "worktree"`; final review may use `/code-review`.
+- executing-plans: one line added — inside a lane, the plan's write-set bounds every edit.
+- test-driven-development: trimmed toward ~120 lines, keeping the Iron Law, red/green verification, mock rules, and exceptions; rationalization tables and duplicated debugging text cut.
+
+### Removed
+
+- requesting-code-review: covered by the built-in `/code-review` command and by subagent-driven-development's Task Reviewer.
+
+## [fable-agents 2.0.0] - 2026-09-01
+
+### Removed
+
+- golang-pro, java-pro, rust-pro, python-pro: all four scored 1.00/1.00 on both Sonnet and Opus in the 2026-09-01 blind audit — the remaining value was a generic "expert" role prompt the model already produces on its own. python-pro was flagged as the maintainer's most-used language and a legitimate case for keeping as a role prompt, but removed by the same bar applied to the other three.
+
+### Fixed
+
+- bash-pro: corrected Bash version gating for modern features — `EPOCHREALTIME`/`EPOCHSECONDS` are Bash 5.0 (was misattributed to 5.2); `${var@U}`/`${var@u}`/`${var@L}` case conversion and the associative-array improvements are 5.1 (was misattributed to 5.0); `varredir_close` is 5.2. Dropped the claim of "improved exec error handling" (matches no Bash NEWS entry). Source: Bash NEWS file.
+
+## [fable-mobile 1.0.0] - 2026-09-01
+
+### Added
+
+- New plugin: ios-icon-gen, swift-concurrency-6-2, ios26-liquid-glass, apple-foundation-models, wcag22-reference (5 skills), moved from fable-knowledge unchanged except the fix below. Pairs with the official `expo` plugin and rcosteira79/android-skills for Android content.
+
+### Fixed
+
+- wcag22-reference: SwiftUI has no `accessibilityLiveRegion` modifier (Apple's documentation index 404s on it) — replaced with the `updatesFrequently` trait for continuously changing values and `AccessibilityNotification.Announcement` (iOS 17+) / `UIAccessibility.post(.announcement)` for one-off announcements.
+
+## [fable-web 1.0.0] - 2026-09-01
+
+### Added
+
+- New plugin: angular-developer, nextjs-turbopack, pm2-node-services, html-slides, playwright-demo-videos, prisma-patterns (6 skills), moved from fable-knowledge unchanged.
+
+## [fable-integrations 1.0.0] - 2026-09-01
+
+### Added
+
+- New plugin: x-api, jira-integration, nutrient-api, free-tier-scraper-apis, mcp-server-configs, mailtrap-email-integration, laravel-plugin-discovery, codehealth-mcp, claude-devfleet, agent-payment-x402, n8n-selfhosted-ops (11 skills), moved from fable-knowledge unchanged except the fixes below.
+
+### Fixed
+
+- n8n-selfhosted-ops: "credential re-linking cannot be automated via CLI" was wrong — `n8n import:credentials --input=<file>` preserves ids, so nodes re-link automatically (keep `--decrypted` on export across instances with different encryption keys). Source: docs.n8n.io CLI page.
+- x-api: default tweet fields (no `tweet.fields` expansion) are `id`, `text`, and `edit_history_tweet_ids` (since Sept 2022), not just `id`/`text`. Source: docs.x.com data dictionary.
+
+## [fable-media 1.0.0] - 2026-09-01
+
+### Added
+
+- New plugin: fal-ai-media, videodb, ffmpeg-media-recipes (3 skills), moved from fable-knowledge unchanged.
+
+## [fable-niche 1.0.0] - 2026-09-01
+
+### Added
+
+- New plugin: kotlin-ktor, kotlin-exposed, perl-modern, cpp-core-guidelines, tinystruct-patterns, flox-environments, uncloud, windows-desktop-e2e, gget, uspto-database, defi-amm-security (11 skills), moved from fable-knowledge unchanged except the fixes below.
+
+### Fixed
+
+- kotlin-ktor: StatusPages handler selection is by nearest class in the exception hierarchy (`selectNearestParentClass`), not `install`-block order — identical in Ktor 1.x through 3.5.2. Source: ktor-server-status-pages `StatusPages.kt`.
+- perl-modern: a plain nested read (`$h->{a}{b}`) autovivifies every intermediate level — only the final key stays unset, contrary to the "no autovivification on read" claim. Noted the `no autovivification` pragma (CPAN) as the opt-out. Source: Perl 5.38.2, live interpreter.
+
+## [fable-knowledge] - 2026-09-01 - removed
+
+### Removed
+
+- The plugin is removed from the marketplace. Its 36 remaining skills moved unchanged (bar the fixes above) into five domain plugins — fable-mobile, fable-web, fable-integrations, fable-media, fable-niche (see their 1.0.0 entries above) — so a single-project machine installs only the domains it needs. 11 skills were dropped outright as model-known rather than moved: clickhouse, database-migrations, evm-gotchas, manim-explainers, nuitka-windows-packaging, nuxt4-patterns, postgres-tips, bun-runtime, pubmed-database, react-performance, remotion (all scored 1.00/1.00 on both Fable and Sonnet in the blind audit; see `docs/audits/2026-09-01-model-relevance-audit.md`). Installed fable-knowledge 1.0.0 caches keep working but never update — uninstall it and install the domain plugins you use (README has the full skill-to-plugin migration table).
+
 ## [fable-workflows 1.3.0] - 2026-08-22
 
 ### Added

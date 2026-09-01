@@ -5,8 +5,8 @@
 <p align="center">
   <a href="https://github.com/Mixard/fable-pack/actions/workflows/validate.yml"><img src="https://github.com/Mixard/fable-pack/actions/workflows/validate.yml/badge.svg" alt="CI"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-e3b341" alt="MIT license"></a>
-  <img src="https://img.shields.io/badge/skills-87-2b3242" alt="87 skills">
-  <img src="https://img.shields.io/badge/subagents-22-2b3242" alt="22 subagents">
+  <img src="https://img.shields.io/badge/skills-76-2b3242" alt="76 skills">
+  <img src="https://img.shields.io/badge/subagents-18-2b3242" alt="18 subagents">
   <img src="https://img.shields.io/badge/executable_code-guard_hooks_only-2b3242" alt="executable code: opt-in guard hooks only">
 </p>
 
@@ -20,6 +20,7 @@ A curated, license-clean plugin marketplace for Claude Code. We reviewed 1,000+ 
 
 | Date | Release | Highlights |
 |------|---------|------------|
+| 2026-09-01 | fable-pack 2.0 | fable-pack 2.0 — blind-audit release: 11 model-known knowledge skills and 4 language agents removed, 7 factual fixes, fable-knowledge split into fable-mobile / fable-web / fable-integrations / fable-media / fable-niche, workflows aligned with native worktrees and /code-review, new parallel-plans |
 | 2026-08-22 | fable-workflows 1.3.0, fable-guard 0.5.0 | fact-guard — placeholder over invented client facts, facts file over memory, fabrications ledger checked before delivery; guard hook gains Telegram/Stripe-live/JWT/connection-string patterns |
 | 2026-08-05 | fable-workflows 1.2.0 | kb-hygiene — navigability pass for document folders: generated index by default, hand-written preview headers only where the title hides the content (transcripts, dumps, mixed docs), input/output split restricted to real pipelines, mandatory reversal check before bulk writes on unversioned folders |
 | 2026-07-26 | fable-workflows 1.1.0 | BuilderIO/skills triage (3 of 11 adopted, adversarially reviewed): docs-first (docs-before-code gate for external contracts), stay-within-limits (95% usage-window rule for long agent runs), agent-watchdog (evidence-based audit of unattended runs); writing-plans gains a 5-step tie-break for competing directions |
@@ -50,12 +51,14 @@ What a frontier model still gets wrong is narrow and specific:
 
 That is the entire selection bar. Of 269 skills triaged from ECC alone, 18 survived. Of ~745 agents in wshobson/agents, 23 made it in (21 after the 2026-07 overlap merges).
 
+A 2026-09-01 blind-quiz audit tested that bar against the orchestrator model itself: skill and agent facts were extracted as closed-book questions, answered by the target models with no tools and no skills, and graded against the file. Every one of seven confident disagreements between a model's answer and a skill or agent file resolved in the model's favor — the file was wrong or stale, never the model. A skill that only restates what the model already knows is not neutral: it costs context, and where it is wrong it can override a correct answer. Removing model-known content is therefore a correctness measure, not only a cost one. Full method, scores, and the seven disputes: [2026-09-01 model-relevance audit](docs/audits/2026-09-01-model-relevance-audit.md).
+
 ## Why it fits Fable
 
 The pack is tuned for a frontier orchestrator model (Claude Fable / Opus) running the main session:
 
 - **Skills carry facts, not lectures** — short, dense, no process rituals. The orchestrator reads exact schemas and flags instead of re-deriving or hallucinating them.
-- **Every agent declares the cheapest model that does the job** — 7 on `opus` (architecture, code review, security), 14 on `sonnet` (implementation and operations); `haiku` stays reserved for genuinely mechanical agents. No agent silently inherits the expensive orchestrator model. The orchestrator delegates mechanical skill work down-tier and keeps judgment work for itself.
+- **Every agent declares the cheapest model that does the job** — 8 on `opus` (architecture, code review, security), 10 on `sonnet` (implementation and operations); `haiku` stays reserved for genuinely mechanical agents. No agent silently inherits the expensive orchestrator model. The orchestrator delegates mechanical skill work down-tier and keeps judgment work for itself.
 - **Nothing competes with the model** — no meta-frameworks, no personas, no "orchestration systems" that fight the harness. The pack only fills gaps.
 
 ## Install
@@ -63,7 +66,11 @@ The pack is tuned for a frontier orchestrator model (Claude Fable / Opus) runnin
 Install any subset — plugins are independent:
 
 ```
-/plugin install fable-knowledge@fable-pack
+/plugin install fable-mobile@fable-pack
+/plugin install fable-web@fable-pack
+/plugin install fable-integrations@fable-pack
+/plugin install fable-media@fable-pack
+/plugin install fable-niche@fable-pack
 /plugin install fable-agents@fable-pack
 /plugin install fable-workflows@fable-pack
 /plugin install fable-marketing@fable-pack
@@ -72,29 +79,99 @@ Install any subset — plugins are independent:
 
 ## Plugins
 
-### fable-knowledge — 47 skills
+### fable-mobile — 5 skills
 
-Knowledge-only: exact API schemas, CLI flags, version-specific behavior, platform gotchas. No process rituals.
+Apple platform APIs, Xcode tooling, and cross-platform accessibility mapping for mobile app work.
 
 | Category | Skills |
 |----------|--------|
-| Media / video | fal-ai-media, videodb, remotion, ffmpeg-media-recipes, manim-explainers, playwright-demo-videos, html-slides, ios-icon-gen |
-| API integrations | x-api, jira-integration, nutrient-api, free-tier-scraper-apis, mcp-server-configs, mailtrap-email-integration, laravel-plugin-discovery, codehealth-mcp, claude-devfleet, agent-payment-x402 |
-| Web / frameworks | bun-runtime, nuxt4-patterns, nextjs-turbopack, react-performance, angular-developer, wcag22-reference, pm2-node-services |
-| Data | clickhouse, database-migrations, postgres-tips, prisma-patterns |
-| Scientific APIs | pubmed-database, uspto-database, gget |
-| Apple (2025+ APIs) | swift-concurrency-6-2, ios26-liquid-glass, apple-foundation-models |
-| Language niches | kotlin-exposed, kotlin-ktor, perl-modern, cpp-core-guidelines, tinystruct-patterns |
-| Packaging / ops | nuitka-windows-packaging, flox-environments, uncloud, windows-desktop-e2e, n8n-selfhosted-ops |
-| EVM / DeFi | evm-gotchas, defi-amm-security |
+| Apple platform APIs | swift-concurrency-6-2, ios26-liquid-glass, apple-foundation-models |
+| Xcode tooling | ios-icon-gen |
+| Accessibility | wcag22-reference |
 
-### fable-agents — 22 subagents
+Pairs with the official `expo` plugin and [rcosteira79/android-skills](https://github.com/rcosteira79/android-skills) for Android content — Android is not vendored here.
+
+### fable-web — 6 skills
+
+Web framework knowledge: version-specific behavior and gotchas a model's training-data lag makes it guess at.
+
+| Category | Skills |
+|----------|--------|
+| Frameworks | nextjs-turbopack, angular-developer, prisma-patterns |
+| Ops | pm2-node-services |
+| Content tooling | html-slides, playwright-demo-videos |
+
+### fable-integrations — 11 skills
+
+Exact API schemas, CLI flags, and MCP configs for third-party services.
+
+| Category | Skills |
+|----------|--------|
+| API integrations | x-api, jira-integration, nutrient-api, mailtrap-email-integration, free-tier-scraper-apis |
+| MCP servers | mcp-server-configs, claude-devfleet, codehealth-mcp, laravel-plugin-discovery |
+| Payments | agent-payment-x402 |
+| Self-hosted ops | n8n-selfhosted-ops |
+
+### fable-media — 3 skills
+
+Media generation and processing: model app_ids and parameters, SDK methods, FFmpeg recipes.
+
+| Category | Skills |
+|----------|--------|
+| Media generation | fal-ai-media, videodb, ffmpeg-media-recipes |
+
+### fable-niche — 11 skills
+
+Niche stacks with version-gated gotchas that contradict intuition.
+
+| Category | Skills |
+|----------|--------|
+| Language niches | kotlin-ktor, kotlin-exposed, perl-modern, cpp-core-guidelines, tinystruct-patterns |
+| Packaging / ops | flox-environments, uncloud, windows-desktop-e2e |
+| Scientific / gov APIs | gget, uspto-database |
+| EVM / DeFi | defi-amm-security |
+
+**Migrating from fable-knowledge 1.0.0**: fable-knowledge is removed from the marketplace — installed 1.0.0 caches keep working but never update. Uninstall it and install the domain plugins you actually use; every skill moved to exactly one of the five plugins above, files unchanged bar the fixes in [CHANGELOG.md](CHANGELOG.md).
+
+```
+/plugin uninstall fable-knowledge@fable-pack
+/plugin install fable-mobile@fable-pack
+/plugin install fable-web@fable-pack
+/plugin install fable-integrations@fable-pack
+/plugin install fable-media@fable-pack
+/plugin install fable-niche@fable-pack
+```
+
+11 skills were removed instead of moved — model-known per the 2026-09-01 audit; see [CHANGELOG.md](CHANGELOG.md) and the [audit](docs/audits/2026-09-01-model-relevance-audit.md).
+
+| Skill | New plugin | Skill | New plugin |
+|-------|-----------|-------|-----------|
+| agent-payment-x402 | fable-integrations | laravel-plugin-discovery | fable-integrations |
+| angular-developer | fable-web | mailtrap-email-integration | fable-integrations |
+| apple-foundation-models | fable-mobile | mcp-server-configs | fable-integrations |
+| claude-devfleet | fable-integrations | n8n-selfhosted-ops | fable-integrations |
+| codehealth-mcp | fable-integrations | nextjs-turbopack | fable-web |
+| cpp-core-guidelines | fable-niche | nutrient-api | fable-integrations |
+| defi-amm-security | fable-niche | perl-modern | fable-niche |
+| fal-ai-media | fable-media | playwright-demo-videos | fable-web |
+| ffmpeg-media-recipes | fable-media | pm2-node-services | fable-web |
+| flox-environments | fable-niche | prisma-patterns | fable-web |
+| free-tier-scraper-apis | fable-integrations | swift-concurrency-6-2 | fable-mobile |
+| gget | fable-niche | tinystruct-patterns | fable-niche |
+| html-slides | fable-web | uncloud | fable-niche |
+| ios-icon-gen | fable-mobile | uspto-database | fable-niche |
+| ios26-liquid-glass | fable-mobile | videodb | fable-media |
+| jira-integration | fable-integrations | wcag22-reference | fable-mobile |
+| kotlin-exposed | fable-niche | windows-desktop-e2e | fable-niche |
+| kotlin-ktor | fable-niche | x-api | fable-integrations |
+
+### fable-agents — 18 subagents
 
 Deep specialist subagents with concrete, tool-specific knowledge.
 
 | Category | Agents |
 |----------|--------|
-| Languages | python-pro, rust-pro, golang-pro, java-pro, bash-pro |
+| Languages | bash-pro |
 | Review / security | code-reviewer, architect-review, security-auditor |
 | Quant / trading | quant-critic |
 | Infrastructure | kubernetes-architect, terraform-specialist, cloud-architect, deployment-engineer, database-admin, database-architect, database-optimizer (incl. advanced SQL) |
@@ -107,7 +184,7 @@ Every agent declares an explicit model tier — `opus` only where judgment is th
 
 Battle-tested methodologies with hard rules, adapted from obra/superpowers and BuilderIO/skills plus original additions:
 
-test-driven-development, systematic-debugging, brainstorming, writing-plans, executing-plans, verification-before-completion, using-git-worktrees, subagent-driven-development, requesting-code-review, receiving-code-review, finishing-a-development-branch, project-cartography, getting-unstuck, critical-review, solution-hunter, docs-first, stay-within-limits, agent-watchdog, kb-hygiene, fact-guard
+test-driven-development, systematic-debugging, brainstorming, writing-plans, parallel-plans, executing-plans, verification-before-completion, using-git-worktrees, subagent-driven-development, receiving-code-review, finishing-a-development-branch, project-cartography, getting-unstuck, critical-review, solution-hunter, docs-first, stay-within-limits, agent-watchdog, kb-hygiene, fact-guard
 
 Two critical-thinking skills complement each other: **getting-unstuck** fires when a
 path is declared impossible and breaks the wall with tested hypotheses;
@@ -173,19 +250,19 @@ fable-pack ships **no MCP servers** — that is a deliberate part of the securit
 below, not a gap. Bundled servers auto-start with your session and widen the attack
 surface; a knowledge pack has no business running processes.
 
-Instead, the [mcp-server-configs](plugins/fable-knowledge/skills/mcp-server-configs/SKILL.md)
-skill (fable-knowledge) carries exact, pinned launch configs for the servers people
+Instead, the [mcp-server-configs](plugins/fable-integrations/skills/mcp-server-configs/SKILL.md)
+skill (fable-integrations) carries exact, pinned launch configs for the servers people
 actually use — Jira, GitHub, Supabase, Playwright, fal.ai, Cloudflare, Vercel, and
 others — so the model writes a correct `.mcp.json` on the first try and *you* decide
 what runs. Related skills cover the MCP surface where precision matters:
-[claude-devfleet](plugins/fable-knowledge/skills/claude-devfleet/SKILL.md) (exact tool
-signatures for parallel-agent orchestration), [codehealth-mcp](plugins/fable-knowledge/skills/codehealth-mcp/SKILL.md),
-[laravel-plugin-discovery](plugins/fable-knowledge/skills/laravel-plugin-discovery/SKILL.md),
-and [nutrient-api](plugins/fable-knowledge/skills/nutrient-api/SKILL.md).
+[claude-devfleet](plugins/fable-integrations/skills/claude-devfleet/SKILL.md) (exact tool
+signatures for parallel-agent orchestration), [codehealth-mcp](plugins/fable-integrations/skills/codehealth-mcp/SKILL.md),
+[laravel-plugin-discovery](plugins/fable-integrations/skills/laravel-plugin-discovery/SKILL.md),
+and [nutrient-api](plugins/fable-integrations/skills/nutrient-api/SKILL.md).
 
 ## Security model
 
-The four content plugins are **inert by design**: markdown only — no hooks, no MCP
+The eight content plugins are **inert by design**: markdown only — no hooks, no MCP
 servers, no code that runs on install or load. Reference scripts inside skills are
 examples the model may run with your normal tool permissions, never automatically.
 Installing them cannot send your code or keys anywhere.

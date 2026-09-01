@@ -6,7 +6,7 @@ Contributions are welcome: new skills, new agents, fixes for outdated informatio
 
 This pack is curated, not exhaustive. Before submitting, check your content against the selection principle:
 
-**fable-knowledge** accepts only knowledge a strong model would otherwise hallucinate:
+**fable-mobile, fable-web, fable-integrations, fable-media, and fable-niche** accept only knowledge a strong model would otherwise hallucinate:
 
 - exact API schemas, endpoints, request/response shapes
 - exact CLI flags and commands for specific tools
