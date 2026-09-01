@@ -27,7 +27,7 @@ Add at launch time: `fable-marketing@fable-pack` (aso, pricing, churn-prevention
 /plugin install android-emulator-skill@fluxxion82                 # emulator / adb / logcat driving, MIT
 
 /plugin marketplace add kylehughes/apple-platform-build-tools-claude-code-plugin
-/plugin install apple-platform-build-tools@apple-platform-build-tools-claude-code-plugin   # xcodebuild/devicectl/signing skill + "builder" subagent, MIT
+/plugin install apple-platform-build-tools@apple-platform-build-tools   # xcodebuild/devicectl/signing skill + "builder" subagent, MIT (marketplace name verified 2026-09-01)
 
 /plugin marketplace add AvdLee/SwiftUI-Agent-Skill
 /plugin install swiftui-expert@swiftui-expert-skill               # SwiftUI best practices, MIT (more current than twostraws')
