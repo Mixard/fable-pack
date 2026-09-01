@@ -93,7 +93,7 @@ Tasks are grouped per lane using the writing-plans task template, under headings
 
    SendMessage between local sessions and `notify_when_idle` on a dependency lane's session are optional accelerators for knowing when to rebase — never a requirement; polling `git branch --merged main` works without them.
 
-6. **Hand-off.** Rebase, confirm verify is green, self-review the diff, write the lane report, and leave the session parked in its worktree. Lane status is entirely readable from git: a branch that exists is claimed, a branch merged into main is done.
+6. **Hand-off.** Rebase, confirm verify is green, self-review the diff, write the lane report inside the worktree (git-ignored, or committed on the lane branch), and leave the session parked in its worktree. Lane status is entirely readable from git: a branch that exists is claimed, a branch merged into main is done.
 
 7. **Integration (Ω).** Run from the main checkout — never from inside a lane's worktree, since isolation blocks git commands against main from there. For each lane in dependency order, rebase it once more inside its own worktree, then merge from the main checkout:
 
@@ -139,7 +139,7 @@ Verify: <verify-command>
 
 Done when: <done-criteria>
 
-Report to: <report-path> — lane id, commits made, verify output, anything that needed a file outside the write-set, anything blocked on another lane.
+Report to: <report-path inside this worktree, e.g. lane-report.md at the worktree root> — lane id, commits made, verify output, anything that needed a file outside the write-set, anything blocked on another lane. The main checkout is write-blocked from an isolated session, so a report path outside the worktree fails.
 ```
 
 ## Integration (Ω)

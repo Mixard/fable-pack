@@ -2,6 +2,12 @@
 
 All notable changes to this pack are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [fable-workflows 2.0.1] - 2026-09-01
+
+### Fixed
+
+- parallel-plans: the lane prompt template and hand-off step now require the lane report to live inside the worktree. Found by the acceptance run: a headless Sonnet session followed the skill correctly (atomic claim, one commit inside the write-set, sibling lane untouched, verify green, rebase before hand-off) but could not write a report to a path in the main checkout because worktree isolation blocks it.
+
 ## [fable-workflows 2.0.0] - 2026-09-01
 
 ### Added
