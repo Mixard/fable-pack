@@ -1,0 +1,15 @@
+{
+  "name": "fable-media",
+  "description": "Media generation and processing: fal.ai models and parameters, VideoDB SDK, FFmpeg cutting/loudness/scene recipes with ElevenLabs TTS.",
+  "version": "1.0.0",
+  "author": {
+    "name": "mixardeee"
+  },
+  "license": "MIT",
+  "keywords": [
+    "media",
+    "video",
+    "audio",
+    "generation"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "fable-web",
+  "description": "Web framework knowledge skills: Next.js 16 Turbopack, Angular 19-21, Prisma, PM2 services, self-contained HTML slide decks, Playwright demo recording.",
+  "version": "1.0.0",
+  "author": {
+    "name": "mixardeee"
+  },
+  "license": "MIT",
+  "keywords": [
+    "web",
+    "frameworks",
+    "nextjs",
+    "angular",
+    "prisma"
+  ]
+}

@@ -9,11 +9,39 @@
   },
   "plugins": [
     {
-      "name": "fable-knowledge",
-      "source": "./plugins/fable-knowledge",
-      "description": "Knowledge-only skills: exact API schemas, CLI flags, version-specific behavior, platform gotchas",
+      "name": "fable-mobile",
+      "source": "./plugins/fable-mobile",
+      "description": "Mobile knowledge skills for iOS and Android app work: Apple platform APIs (Swift 6.2 concurrency, iOS 26 Liquid Glass, Foundation Models), Xcode icon generation, WCAG 2.2 cross-platform mapping. Pairs with the official expo plugin and rcosteira79/android-skills.",
       "category": "development",
-      "tags": ["knowledge", "api-reference", "gotchas"]
+      "tags": ["mobile", "ios", "android", "apple"]
+    },
+    {
+      "name": "fable-web",
+      "source": "./plugins/fable-web",
+      "description": "Web framework knowledge skills: Next.js 16 Turbopack, Angular 19-21, Prisma, PM2 services, self-contained HTML slide decks, Playwright demo recording.",
+      "category": "development",
+      "tags": ["web", "frameworks", "nextjs", "angular"]
+    },
+    {
+      "name": "fable-integrations",
+      "source": "./plugins/fable-integrations",
+      "description": "Exact API schemas and MCP configs for third-party services: X API, Jira, Nutrient DWS, Gemini free tier, Mailtrap, LaraPlugins, CodeScene, DevFleet, x402 agent payments, self-hosted n8n.",
+      "category": "development",
+      "tags": ["api-reference", "mcp", "integrations"]
+    },
+    {
+      "name": "fable-media",
+      "source": "./plugins/fable-media",
+      "description": "Media generation and processing: fal.ai models and parameters, VideoDB SDK, FFmpeg cutting/loudness/scene recipes with ElevenLabs TTS.",
+      "category": "development",
+      "tags": ["media", "video", "audio"]
+    },
+    {
+      "name": "fable-niche",
+      "source": "./plugins/fable-niche",
+      "description": "Niche stacks with version-gated gotchas: Ktor 3, Exposed 1.0, modern Perl, C++ tooling, tinystruct, Flox, Uncloud, Windows desktop E2E, gget, USPTO, DeFi AMM security.",
+      "category": "development",
+      "tags": ["gotchas", "kotlin", "perl", "cpp", "ops"]
     },
     {
       "name": "fable-agents",

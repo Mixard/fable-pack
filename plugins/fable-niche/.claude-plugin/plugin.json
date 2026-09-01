@@ -1,0 +1,16 @@
+{
+  "name": "fable-niche",
+  "description": "Niche stacks with version-gated gotchas: Ktor 3, Exposed 1.0, modern Perl, C++ tooling, tinystruct, Flox, Uncloud, Windows desktop E2E, gget, USPTO, DeFi AMM security.",
+  "version": "1.0.0",
+  "author": {
+    "name": "mixardeee"
+  },
+  "license": "MIT",
+  "keywords": [
+    "gotchas",
+    "kotlin",
+    "perl",
+    "cpp",
+    "ops"
+  ]
+}
