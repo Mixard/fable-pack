@@ -1,6 +1,6 @@
 ---
 name: kotlin-ktor
-description: Use when building Ktor 3.x HTTP servers. Covers the non-obvious defaults and gotchas — CORS's method allowlist, StatusPages exception-matching order, JWT validate-returning-null semantics, WebSocket protocol details — plus JWT/StatusPages/CORS/WebSocket install-block shapes.
+description: Use when building Ktor 3.x HTTP servers. Covers the non-obvious defaults and gotchas — CORS's method allowlist, StatusPages nearest-class exception matching, JWT validate-returning-null semantics, WebSocket protocol details — plus JWT/StatusPages/CORS/WebSocket install-block shapes.
 ---
 
 # Ktor 3.x Server Patterns
@@ -75,7 +75,7 @@ fun Application.configureStatusPages() {
 }
 ```
 
-`ContentTransformationException` is what `call.receive<T>()` throws on malformed bodies — put it before `IllegalArgumentException`, and put both before the `Throwable` catch-all (order in the `install` block is the match order). `require(...)` in a handler surfaces as 400 for free via the `IllegalArgumentException` handler.
+`ContentTransformationException` is what `call.receive<T>()` throws on malformed bodies — register it alongside `IllegalArgumentException` and a `Throwable` catch-all. StatusPages picks the handler whose registered class is nearest to the thrown exception in its class hierarchy (`selectNearestParentClass`, unchanged from Ktor 1.x through 3.5); registration order in `install` is irrelevant, so `exception<Throwable>` is a safe catch-all wherever it sits. `require(...)` in a handler surfaces as 400 for free via the `IllegalArgumentException` handler.
 
 ## CORS
 

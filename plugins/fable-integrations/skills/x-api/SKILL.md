@@ -125,7 +125,7 @@ resp = requests.get(
 )
 ```
 
-Expansion params (`tweet.fields`, `user.fields`) are comma-separated; without them responses contain only `id` and `text`. Engagement counts come back under `public_metrics`.
+Expansion params (`tweet.fields`, `user.fields`) are comma-separated; without them responses contain only `id`, `text` and `edit_history_tweet_ids`. Engagement counts come back under `public_metrics`.
 
 ## Rate limits
 

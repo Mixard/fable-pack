@@ -115,9 +115,9 @@ model: sonnet
 
 ## Modern Bash Features (5.x)
 
-- **Bash 5.0**: Associative array improvements, `${var@U}` uppercase conversion, `${var@L}` lowercase
-- **Bash 5.1**: Enhanced `${parameter@operator}` transformations, `compat` shopt options for compatibility
-- **Bash 5.2**: `varredir_close` option, improved `exec` error handling, `EPOCHREALTIME` microsecond precision
+- **Bash 5.0**: `EPOCHREALTIME` (microseconds) and `EPOCHSECONDS`, `BASH_ARGV0`, `${var@a}`-style transformations
+- **Bash 5.1**: `${var@U}`, `${var@u}`, `${var@L}` case conversions; associative-array improvements (`( [k]=v )` compound assignment, `${arr[@]@K}`)
+- **Bash 5.2**: `varredir_close` shopt option, `{var}<file` redirection improvements
 - Check version before using modern features: `[[ ${BASH_VERSINFO[0]} -ge 5 && ${BASH_VERSINFO[1]} -ge 2 ]]`
 - Use `${parameter@Q}` for shell-quoted output (Bash 4.4+)
 - Use `${parameter@E}` for escape sequence expansion (Bash 4.4+)

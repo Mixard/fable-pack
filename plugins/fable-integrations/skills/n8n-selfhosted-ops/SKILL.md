@@ -1,6 +1,6 @@
 ---
 name: n8n-selfhosted-ops
-description: Use when operating a self-hosted n8n instance (npm/systemd, no Docker) - importing workflows via CLI without an API key, exposing env vars to workflow expressions, credential re-linking after import, and the Telegram human-in-the-loop pattern that avoids the broken sendAndWait node. Verified on n8n 2.8.
+description: Use when operating a self-hosted n8n instance (npm/systemd, no Docker) - importing workflows via CLI without an API key, exposing env vars to workflow expressions, credential export/import that keeps node links, and the Telegram human-in-the-loop pattern that avoids the broken sendAndWait node. Verified on n8n 2.8.
 ---
 
 # Self-hosted n8n operations
@@ -34,13 +34,16 @@ EnvironmentFile=/path/to/.env
 systemctl daemon-reload && systemctl restart n8n
 ```
 
-## Credentials are never exported
+## Credentials travel separately
 
 Workflow JSON exports reference credentials by ID only - the secrets themselves are
-not in the file. After importing to another instance, every credentialed node points
-at a dangling ID. The user must create each credential in the UI (Settings >
-Credentials > New) and re-link it in each node. This cannot be automated via CLI;
-plan for it in migration instructions instead of promising a turnkey import.
+not in the file, so a workflow imported alone points every credentialed node at a
+dangling ID. Export them on the source with
+`n8n export:credentials --all --decrypted --output=creds.json` and import with
+`n8n import:credentials --input=creds.json`; ids are preserved, so nodes re-link
+without UI work. Across instances with different encryption keys keep `--decrypted`
+on export (the target re-encrypts). Only credentials that never existed on the
+source need manual creation (Settings > Credentials > New).
 
 ## Webhook URLs
 

@@ -33,4 +33,4 @@ description: Use when writing or reviewing Perl 5.32+ code and unsure which feat
 
 ## Gotcha
 
-Deep hash/array access via arrow chains is safe by default on read: `$config->{cache}{host}` returns `undef` without error if any intermediate level doesn't exist — no autovivification happens on a plain read, only on assignment (`$config->{cache}{host} = 'x'` does create the intermediate levels).
+Deep reads autovivify every intermediate level: `my $x = $config->{cache}{host}` creates `$config->{cache} = {}` even though it returns `undef` (only the final key stays absent). Guard with `exists $config->{cache} && exists $config->{cache}{host}`, or add `no autovivification;` (CPAN pragma) in the lexical scope.

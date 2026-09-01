@@ -30,7 +30,7 @@ Focus-related criteria new in 2.2: 2.4.11 Focus Not Obscured (Minimum, AA), 2.4.
 | Primary label | `aria-label` / `<label>` | `.accessibilityLabel()` | `contentDescription` |
 | Secondary hint | `aria-describedby` | `.accessibilityHint()` | `Modifier.semantics { stateDescription = ... }` |
 | Action role | `role="button"` | `.accessibilityAddTraits(.isButton)` | `Modifier.semantics { role = Role.Button }` |
-| Live updates | `aria-live="polite"` | `.accessibilityLiveRegion(.polite)` | `Modifier.semantics { liveRegion = LiveRegionMode.Polite }` |
+| Live updates | `aria-live="polite"` | no live-region modifier: `.accessibilityAddTraits(.updatesFrequently)` for continuously changing values, `AccessibilityNotification.Announcement(text).post()` (iOS 17+) or `UIAccessibility.post(notification: .announcement, argument:)` for one-off announcements | `Modifier.semantics { liveRegion = LiveRegionMode.Polite }` |
 
 ## Platform Snippets
 
