@@ -5,7 +5,7 @@ description: Use before any creative or feature work - creating features, buildi
 
 # Brainstorming Ideas Into Designs
 
-Turn ideas into fully formed designs and specs through natural collaborative dialogue. Understand the current project context, ask questions one at a time to refine the idea, then present the design and get user approval.
+Turn ideas into fully formed designs and specs through natural collaborative dialogue. Understand the current project context, ask batched clarifying questions to refine the idea, then present the design and get user approval.
 
 <HARD-GATE>
 Do NOT write any code, scaffold any project, or take any implementation action until you have presented a design and the user has approved it. This applies to EVERY project regardless of perceived simplicity.
@@ -20,9 +20,9 @@ Every project goes through this process. A todo list, a single-function utility,
 Create a task for each of these items and complete them in order:
 
 1. **Explore project context** — check files, docs, recent commits
-2. **Ask clarifying questions** — one at a time; understand purpose, constraints, success criteria
+2. **Ask clarifying questions** — batched via AskUserQuestion; understand purpose, constraints, success criteria
 3. **Propose 2-3 approaches** — with trade-offs and your recommendation; apply YAGNI ruthlessly, removing unnecessary features from each
-4. **Present design** — in sections scaled to their complexity, get user approval after each section
+4. **Present design** — in sections scaled to their complexity, get a single design approval after the full design is presented
 5. **Write design doc** — save the spec (e.g. `docs/specs/YYYY-MM-DD-<topic>-design.md`) and commit it
 6. **Spec self-review** — quick inline check for placeholders, contradictions, ambiguity, scope
 7. **User reviews written spec** — ask the user to review the spec file before proceeding
@@ -37,10 +37,11 @@ Create a task for each of these items and complete them in order:
 - Check the current project state first (files, docs, recent commits)
 - Before asking detailed questions, assess scope: if the request describes multiple independent subsystems (e.g., "build a platform with chat, file storage, billing, and analytics"), flag this immediately. Don't spend questions refining details of a project that needs to be decomposed first.
 - If the project is too large for a single spec, help the user decompose into sub-projects: what are the independent pieces, how do they relate, what order should they be built? Then brainstorm the first sub-project through the normal design flow. Each sub-project gets its own spec, plan, and implementation cycle.
-- For appropriately-scoped projects, ask questions one at a time to refine the idea
+- For appropriately-scoped projects, ask batched clarifying questions to refine the idea
 - Prefer multiple choice questions when possible, but open-ended is fine too
-- Only one question per message — if a topic needs more exploration, break it into multiple questions
+- Batch related questions with AskUserQuestion: up to 4 per round, one topic per question, options with the recommended choice first; ask one question per message only when that tool is unavailable.
 - Focus on understanding: purpose, constraints, success criteria
+- If the design has two or more components with disjoint file ownership, record them as lane candidates for parallel-plans; the plan decides whether to fan out.
 
 **Exploring approaches:**
 
@@ -52,7 +53,7 @@ Create a task for each of these items and complete them in order:
 
 - Once you believe you understand what you're building, present the design
 - Scale each section to its complexity: a few sentences if straightforward, up to 200-300 words if nuanced
-- Ask after each section whether it looks right so far
+- Present the full design, then get a single approval — not after each section
 - Cover: architecture, components, data flow, error handling, testing
 - Be ready to go back and clarify if something doesn't make sense
 

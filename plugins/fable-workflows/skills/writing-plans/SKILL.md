@@ -17,6 +17,8 @@ Assume a skilled developer who knows almost nothing about this toolset or proble
 
 If the spec covers multiple independent subsystems, it should have been decomposed during design. If it wasn't, suggest breaking this into separate plans — one per subsystem. Each plan should produce working, testable software on its own.
 
+If the spec has two or more independent components, plan them as lanes (parallel-plans) instead of separate plans when they share contracts.
+
 ## Choosing Between Defensible Directions
 
 When two or more approaches both look viable (your own alternatives, or competing plans from different sessions), do not blend them into mush. Pick one using this tie-break order:
@@ -67,6 +69,8 @@ A task is the smallest unit that carries its own test cycle and is worth a fresh
 **Architecture:** [2-3 sentences about approach]
 
 **Tech Stack:** [Key technologies/libraries]
+
+**Parallel:** [Optional, only when execution will use parallel-plans] <N> lanes, foundation first
 
 ## Global Constraints
 
@@ -161,10 +165,12 @@ If you find issues, fix them inline. If a spec requirement has no task, add the 
 
 After saving the plan, offer the execution choice:
 
-**"Plan complete and saved to `<path>`. Two execution options:**
+**"Plan complete and saved to `<path>`. Three execution options:**
 
 **1. Subagent-Driven (recommended)** — dispatch a fresh subagent per task, review between tasks, fast iteration (see the subagent-driven-development skill)
 
 **2. Inline Execution** — execute tasks in this session with review checkpoints (see the executing-plans skill)
+
+**3. Parallel lanes** — several sessions or worktree subagents, one per lane (see the parallel-plans skill)
 
 **Which approach?"**

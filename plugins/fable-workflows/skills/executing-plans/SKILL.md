@@ -27,6 +27,8 @@ For each task:
 3. Run verifications as specified
 4. Mark as completed
 
+Inside a lane (parallel-plans), the lane's write-set bounds every edit; stop and report when a task needs a file outside it.
+
 ### Step 3: Complete Development
 
 After all tasks complete and verified, finish the branch properly: verify the full test suite, then present the integration options (merge locally, push and create a PR, keep the branch, or discard) and execute the user's choice. The finishing-a-development-branch skill covers this.

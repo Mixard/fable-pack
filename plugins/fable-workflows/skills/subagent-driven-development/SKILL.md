@@ -31,7 +31,7 @@ Use when: you have a written implementation plan, tasks are mostly independent, 
    d. Write the diff to a review package file; dispatch a task reviewer subagent.
    e. Reviewer returns two verdicts: spec compliance and task quality. If issues: dispatch a fix subagent for Critical/Important findings, then re-review. Repeat until approved.
    f. Mark the task complete in todos and the progress ledger.
-3. After all tasks: dispatch a final whole-branch code reviewer (most capable model) with a package from the branch's merge base to HEAD.
+3. After all tasks: use `/code-review` for the whole-branch review when the command is available; otherwise dispatch a final whole-branch code reviewer (most capable model) with a package from the branch's merge base to HEAD.
 4. Finish the branch: verify tests, present merge/PR/keep/discard options (see the finishing-a-development-branch skill).
 
 ## Pre-Flight Plan Review
@@ -125,7 +125,7 @@ Conversation memory does not survive compaction. Controllers that lost their pla
 - Start implementation on main/master without explicit user consent
 - Skip task review, or accept a report missing either verdict (spec compliance AND task quality are both required)
 - Proceed with unfixed Critical/Important issues
-- Dispatch multiple implementation subagents in parallel (conflicts) — tasks within one plan/branch share files and state. This does not forbid parallel dispatch in general: fully independent work with no shared state (e.g. several unrelated bug fixes in separate subsystems) can still be dispatched in parallel, one message with multiple Agent calls.
+- Dispatch parallel implementers on tasks that share files or state — dispatch them in parallel only across lanes with disjoint write-sets (parallel-plans) or with `isolation: "worktree"`; tasks that share files run one at a time.
 - Make a subagent read the whole plan file (hand it its task brief)
 - Skip scene-setting context (the subagent needs to know where its task fits)
 - Ignore subagent questions (answer before letting them proceed)
