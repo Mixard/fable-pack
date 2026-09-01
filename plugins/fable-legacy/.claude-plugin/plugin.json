@@ -1,0 +1,15 @@
+{
+  "name": "fable-legacy",
+  "description": "Opt-in archive of content retired from the default plugins by the 2026-09-01 model-relevance audit: 11 knowledge skills and 4 language agents whose facts Fable 5.1 and Sonnet 5 already know, plus requesting-code-review (superseded by the built-in /code-review). Kept so older models and existing servers lose nothing; not recommended for new installs.",
+  "version": "1.0.0",
+  "author": {
+    "name": "mixardeee"
+  },
+  "license": "MIT",
+  "keywords": [
+    "legacy",
+    "archive",
+    "knowledge",
+    "agents"
+  ]
+}

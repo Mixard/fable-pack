@@ -1,16 +1,21 @@
 {
   "name": "fable-mobile",
-  "description": "Mobile knowledge skills for iOS and Android app work: Apple platform APIs (Swift 6.2 concurrency, iOS 26 Liquid Glass, Foundation Models), Xcode icon generation, WCAG 2.2 cross-platform mapping. Pairs with the official expo plugin and rcosteira79/android-skills.",
-  "version": "1.0.0",
+  "description": "Mobile knowledge skills for iOS and Android app work: Apple platform APIs (Swift 6.2 concurrency, iOS 26 Liquid Glass, Foundation Models), Xcode icon generation, WCAG 2.2 mapping, and Expo-app essentials researched from primary sources - share/keyboard extensions via expo-apple-targets, store compliance calendar, subscriptions, speech-to-text. Pairs with the official expo plugin and rcosteira79/android-skills.",
+  "version": "1.1.0",
   "author": {
     "name": "mixardeee"
   },
   "license": "MIT",
   "keywords": [
-    "mobile",
-    "ios",
     "android",
+    "app-store",
     "apple",
+    "expo",
+    "google-play",
+    "ios",
+    "mobile",
+    "react-native",
+    "subscriptions",
     "swift",
     "xcode"
   ]

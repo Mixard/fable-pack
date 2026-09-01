@@ -2,6 +2,22 @@
 
 All notable changes to this pack are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [fable-legacy 1.0.0] - 2026-09-01
+
+### Added
+
+- Opt-in archive plugin holding everything retired in 2.0 (11 knowledge skills, 4 language agents, requesting-code-review), restored verbatim from commit 2c9bd78. Marketplace policy from now on: retired content moves to fable-legacy instead of disappearing, so servers that install from this marketplace never lose a skill they depend on.
+
+## [fable-mobile 1.1.0] - 2026-09-01
+
+### Added
+
+- Four original skills for Expo / React Native apps, each researched from primary sources by a sonnet subagent and then hostile-fact-checked by a second subagent before release (208 claims confirmed, 15 corrected; corrections included two load-bearing plugin behaviors documented wrongly by the plugin's own README):
+  - expo-apple-targets-extensions: iOS share and custom keyboard extensions via `@bacons/apple-targets` — config schema, App Groups auto-sync per target type, activation rules, `RequestsOpenAccess` limits, the Today/iMessage-only scope of `NSExtensionContext.open`, EAS signing, open prebuild bugs.
+  - mobile-store-compliance: dated Google Play and App Store requirement tables (target API 36, Billing Library 8/9, developer verification, AccessibilityService policy, foreground-service declarations, privacy manifests, Xcode 26 SDK minimum, TestFlight limits) plus a pre-submission checklist keyed to AI text, accessibility overlays, microphone, chat screenshots and subscriptions.
+  - expo-subscriptions: RevenueCat vs direct StoreKit 2 / Play Billing decision, exact SDK shapes, Apple sandbox renewal table, App Store Server API and Play Developer API verification from Cloudflare Workers, dated 2026 policy rows.
+  - mobile-speech-to-text: expo-speech-recognition options, SFSpeechRecognizer limits vs iOS 26 SpeechAnalyzer, Android SpeechRecognizer extras, Gemini audio limits and per-clip costs against OpenAI and ElevenLabs.
+
 ## [fable-workflows 2.0.1] - 2026-09-01
 
 ### Fixed

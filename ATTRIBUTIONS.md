@@ -12,3 +12,5 @@ This pack adapts content from the following permissively licensed projects. Adap
 | [nick-vels/skills](https://github.com/nick-vels/skills) (autopilot) | MIT | fable-workflows: one rule adapted into fact-guard ("a fact about the user is never invented — visible placeholder"); fabrications-ledger format comes from an in-house project. Skipped after critical review: requirements manifest + blind acceptance, context ceiling/handoff, long-lived reviewers, secrets redaction (already in fable-guard), dashboard/state.js, polish loop — no documented failure in our projects that they would fix |
 
 Thanks to the original authors. If you are an author and want an attribution adjusted, open an issue.
+
+Retired-in-2.0 content (11 ECC skills, 4 wshobson agents, 1 superpowers skill) remains available verbatim in the opt-in fable-legacy plugin; the counts above describe the default plugins.

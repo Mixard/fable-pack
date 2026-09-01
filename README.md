@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://github.com/Mixard/fable-pack/actions/workflows/validate.yml"><img src="https://github.com/Mixard/fable-pack/actions/workflows/validate.yml/badge.svg" alt="CI"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-e3b341" alt="MIT license"></a>
-  <img src="https://img.shields.io/badge/skills-76-2b3242" alt="76 skills">
+  <img src="https://img.shields.io/badge/skills-80-2b3242" alt="80 skills">
   <img src="https://img.shields.io/badge/subagents-18-2b3242" alt="18 subagents">
   <img src="https://img.shields.io/badge/executable_code-guard_hooks_only-2b3242" alt="executable code: opt-in guard hooks only">
 </p>
@@ -20,6 +20,8 @@ A curated, license-clean plugin marketplace for Claude Code. We reviewed 1,000+ 
 
 | Date | Release | Highlights |
 |------|---------|------------|
+| 2026-09-01 | fable-legacy 1.0.0 | opt-in archive plugin: the 11 knowledge skills, 4 language agents and requesting-code-review retired in 2.0 are back in the marketplace under fable-legacy, so existing servers and older models lose nothing; the default plugins stay lean. Also docs/profiles/mobile-app.md — the install profile (pack + upstream marketplaces) for an Expo/native mobile project |
+| 2026-09-01 | fable-mobile 1.1.0 | four Expo-app skills researched from primary sources and hostile-fact-checked before release (208 claims verified, 15 corrected): expo-apple-targets-extensions (share/keyboard extensions, App Groups, EAS signing), mobile-store-compliance (dated Play/App Store calendar + feature checklist), expo-subscriptions (RevenueCat vs StoreKit 2/Play Billing 8-9, sandbox timing, Workers-side verification), mobile-speech-to-text (expo-speech-recognition, SpeechAnalyzer, Android SpeechRecognizer, Gemini audio costs) |
 | 2026-09-01 | fable-pack 2.0 | fable-pack 2.0 — blind-audit release: 11 model-known knowledge skills and 4 language agents removed, 7 factual fixes, fable-knowledge split into fable-mobile / fable-web / fable-integrations / fable-media / fable-niche, workflows aligned with native worktrees and /code-review, new parallel-plans |
 | 2026-08-22 | fable-workflows 1.3.0, fable-guard 0.5.0 | fact-guard — placeholder over invented client facts, facts file over memory, fabrications ledger checked before delivery; guard hook gains Telegram/Stripe-live/JWT/connection-string patterns |
 | 2026-08-05 | fable-workflows 1.2.0 | kb-hygiene — navigability pass for document folders: generated index by default, hand-written preview headers only where the title hides the content (transcripts, dumps, mixed docs), input/output split restricted to real pipelines, mandatory reversal check before bulk writes on unversioned folders |
@@ -79,15 +81,23 @@ Install any subset — plugins are independent:
 
 ## Plugins
 
-### fable-mobile — 5 skills
+### fable-legacy — 12 skills, 4 agents (opt-in archive)
 
-Apple platform APIs, Xcode tooling, and cross-platform accessibility mapping for mobile app work.
+Content retired from the default plugins by the 2026-09-01 audit because Fable 5.1 and Sonnet 5 already know it: clickhouse, database-migrations, evm-gotchas, manim-explainers, nuitka-windows-packaging, nuxt4-patterns, postgres-tips, bun-runtime, pubmed-database, react-performance, remotion, requesting-code-review; agents golang-pro, java-pro, rust-pro, python-pro. Install only if a server or an older model still relies on it: `/plugin install fable-legacy@fable-pack`. Nothing is ever deleted from the marketplace: retired content moves here.
+
+### fable-mobile — 9 skills
+
+Apple platform APIs, Xcode tooling, cross-platform accessibility mapping, and the Expo-app layer nobody else covers: share/keyboard extensions, store compliance, subscriptions, speech-to-text. Every fact in the four Expo skills was verified against a primary source and hostile-fact-checked before release.
 
 | Category | Skills |
 |----------|--------|
 | Apple platform APIs | swift-concurrency-6-2, ios26-liquid-glass, apple-foundation-models |
 | Xcode tooling | ios-icon-gen |
 | Accessibility | wcag22-reference |
+| Expo app layer | expo-apple-targets-extensions, expo-subscriptions, mobile-speech-to-text |
+| Store submission | mobile-store-compliance |
+
+Install alongside `expo@claude-plugins-official` (official Expo skills) and `android-skills@android-skills` (rcosteira79, native Android) for a complete mobile set.
 
 Pairs with the official `expo` plugin and [rcosteira79/android-skills](https://github.com/rcosteira79/android-skills) for Android content — Android is not vendored here.
 
