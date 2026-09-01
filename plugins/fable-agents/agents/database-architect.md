@@ -56,7 +56,7 @@ Design the invalidation strategy before the cache itself — a cache with no cle
 
 ## Migration & Evolution Planning
 
-Plan the migration; database-admin and the database-migrations skill execute and carry the tool-specific syntax.
+Plan the migration; database-admin executes and carries the tool-specific syntax.
 
 - Prefer expand-contract over in-place breaking changes: add the new shape, dual-write or backfill, cut reads over, remove the old shape in a later migration.
 - Any migration on a table too large to lock during business hours needs a chunked/batched plan from the start, not as a retrofit after the first timeout.

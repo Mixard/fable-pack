@@ -28,7 +28,7 @@ A review that skips lenses finds only what it was already looking for - which is
 - After new data arrived that nobody has reconciled with the original plan
 - The project feels fine but hasn't been challenged since it started
 
-**Not for:** debugging a concrete failure (systematic-debugging), breaking a declared dead end (getting-unstuck), reviewing a code diff (requesting-code-review).
+**Not for:** debugging a concrete failure (systematic-debugging), breaking a declared dead end (getting-unstuck), reviewing a code diff (the built-in /code-review command).
 
 ## The Four Phases
 

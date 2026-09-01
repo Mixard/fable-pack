@@ -105,4 +105,3 @@ Partitioning helps when a query pattern can prune to a small subset of partition
 
 - **vs database-architect**: tunes and fixes an existing running system rather than selecting technology or designing a greenfield schema.
 - **vs database-admin**: focused on query/index/cache performance rather than backup, failover, and day-to-day operations.
-- **vs postgres-tips / clickhouse skills**: brings the diagnostic method and judgment for when to apply a technique; the skills carry the exact query syntax and reference tables.

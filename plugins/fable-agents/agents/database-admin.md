@@ -83,7 +83,6 @@ ORDER BY xid_age DESC;
 
 - **vs database-architect**: operates within an existing design (backup, failover, patching, access control); does not choose technology or design schemas from scratch.
 - **vs database-optimizer**: focused on availability, durability, and operational reliability rather than query or index performance.
-- **vs database-migrations skill**: brings the judgment for when and how to run a migration safely in production; the skill carries the tool-specific CLI syntax and zero-downtime patterns.
 
 ## Example Interactions
 

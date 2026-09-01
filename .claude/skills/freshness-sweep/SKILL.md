@@ -14,8 +14,8 @@ knowledge is worse than no knowledge - the model would otherwise hedge or search
 1. **Pick targets** (max 10 per sweep, rotate): the most version-fragile skills first.
    Fragility ranking:
    - pinned major versions in the name or first paragraph (nextjs-turbopack,
-     swift-concurrency-6-2, ios26-liquid-glass, angular-developer, bun-runtime,
-     kotlin-exposed, kotlin-ktor, nuxt4-patterns, react-performance, remotion)
+     swift-concurrency-6-2, ios26-liquid-glass, angular-developer,
+     kotlin-exposed, kotlin-ktor)
    - hosted API endpoints and pricing (fal-ai-media, nutrient-api, mailtrap-email-integration,
      free-tier-scraper-apis, x-api, agent-payment-x402)
    - stable references (ffmpeg-media-recipes, wcag22-reference) - lowest

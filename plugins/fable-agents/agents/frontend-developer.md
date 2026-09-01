@@ -69,7 +69,6 @@ Non-negotiable checks on every interactive component, before merge:
 - **Fast shell with slow data mixed together on one page** -> stream the shell immediately and let slow sections resolve later with Suspense boundaries, instead of blocking the whole response on the slowest data source.
 - Default to Server Components for anything that only fetches and renders data; add `'use client'` only at the leaf components that actually need interactivity, state, or browser-only APIs.
   Marking a whole subtree client-side because one leaf needs a click handler forces the rest to ship and hydrate as JS for no reason.
-- For detailed re-render, bundle-size, and data-fetching performance rules, use the `react-performance` skill - this agent makes the architectural call; that skill covers the tactical rules.
 
 ## Error and Loading State Rules
 
