@@ -2,6 +2,12 @@
 
 All notable changes to this pack are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [fable-workflows 2.1.0] - 2026-09-14
+
+### Changed
+
+- verification-before-completion: new "Define Done Before the Work" section, adapted from a triage of Leonxlnx/unlazy (MIT) — for multi-part work, acceptance checks (outcome + deciding command + success output) are written before implementing; a check counts as evidence only if it can fail (positive control for absence checks, measured rather than copied numbers, exit code plus success-only marker); an impossible requirement is surfaced as an unmet handoff, never silently dropped. The Requirements pattern now reconciles against the original request and amendments and reports met/unmet/abandoned counts. unlazy's Node gate tooling, approval store, Depth Tree orchestration and Stop hook were not adopted: they overlap subagent-driven-development and parallel-plans and add ceremony without a documented failure they would fix.
+
 ## [fable-legacy 1.0.0] - 2026-09-01
 
 ### Added

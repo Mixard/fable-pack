@@ -39,6 +39,17 @@ BEFORE claiming any status or expressing satisfaction:
 Skip any step = lying, not verifying
 ```
 
+## Define Done Before the Work
+
+For multi-part or long autonomous work (not a one-line edit), write the acceptance checks **before** implementing: one observable outcome per independently required part of the request, each with the command that decides it and the output that means success. Checks written after the work tend to measure what was built, not what was asked.
+
+A check is only evidence if it can fail:
+- **Absence checks need a positive control.** "grep finds no X" proves nothing until the same grep finds X where X exists (wrong path, wrong pattern, and empty input all return nothing).
+- **Measure numbers, don't copy them.** A figure supplied by the plan, the user, or an agent is not its own proof; re-derive it.
+- **Require exit code AND a success-only marker** - a script that prints "passed" before crashing, or exits 0 on a skipped suite, fools either one alone.
+
+**An impossible requirement is never silently dropped.** Mark it unmet with the reason and surface it as a handoff to the user. Abandoned is not done: the report is not "complete" while any required outcome is unmet, abandoned, or waiting on an owner decision.
+
 ## Common Failures
 
 | Claim | Requires | Not Sufficient |
@@ -49,7 +60,8 @@ Skip any step = lying, not verifying
 | Bug fixed | Test original symptom: passes | Code changed, assumed fixed |
 | Regression test works | Red-green cycle verified | Test passes once |
 | Agent completed | VCS diff shows changes | Agent reports "success" |
-| Requirements met | Line-by-line checklist | Tests passing |
+| Requirements met | Line-by-line checklist against the original request | Tests passing, plan ticked off |
+| Nothing left / no matches | Same check finds a known positive | Empty output |
 
 ## Red Flags - STOP
 
@@ -97,8 +109,9 @@ BAD:  "Linter passed" (linter doesn't check compilation)
 
 **Requirements:**
 ```
-GOOD: Re-read plan -> Create checklist -> Verify each -> Report gaps or completion
-BAD:  "Tests pass, phase complete"
+GOOD: Re-read the original request + later amendments (not only the plan) -> Checklist
+      -> Verify each -> Report met / unmet / abandoned counts, naming every unmet item
+BAD:  "Tests pass, phase complete" / quietly omitting the part that didn't work
 ```
 
 **Agent delegation:**
