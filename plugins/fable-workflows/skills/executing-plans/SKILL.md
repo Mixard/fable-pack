@@ -18,6 +18,7 @@ If subagent dispatch is available, prefer the subagent-driven-development skill 
 2. Review critically — identify any questions or concerns about the plan
 3. If concerns: raise them with the user before starting
 4. If no concerns: create todos for the plan items and proceed
+5. For a multi-part plan, write the acceptance checks before the first task - one observable outcome per required part, with the command that decides it (verification-before-completion, "Define Done Before the Work")
 
 ### Step 2: Execute Tasks
 

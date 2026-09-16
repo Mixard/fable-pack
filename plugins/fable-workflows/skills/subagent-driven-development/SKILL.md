@@ -23,7 +23,7 @@ Use when: you have a written implementation plan, tasks are mostly independent, 
 
 ## The Process
 
-1. Read the plan once; note context and global constraints; create todos (one per task); check the progress ledger (see Durable Progress).
+1. Read the plan once; note context and global constraints; create todos (one per task); check the progress ledger (see Durable Progress). Write the acceptance checks before dispatching the first task - one observable outcome per required part, with the command that decides it (verification-before-completion, "Define Done Before the Work").
 2. Per task:
    a. Record the current commit as BASE. Extract the task's full text to a brief file. Dispatch an implementer subagent.
    b. If the implementer asks questions, answer them and re-dispatch.

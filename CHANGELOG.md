@@ -2,6 +2,12 @@
 
 All notable changes to this pack are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [fable-workflows 2.1.1] - 2026-09-16
+
+### Fixed
+
+- verification-before-completion: the description only triggered at the completion moment, so the 2.1.0 "Define Done Before the Work" section arrived after the work it governs. The description now also names the start of multi-part work, and executing-plans (Step 1) and subagent-driven-development (step 1) point to that section before the first task. Found by a critical-review pass with a fresh-eyes subagent that independently reached the same conclusion.
+
 ## [fable-workflows 2.1.0] - 2026-09-14
 
 ### Changed

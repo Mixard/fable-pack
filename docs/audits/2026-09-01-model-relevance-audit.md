@@ -123,7 +123,7 @@ Marketing (Fable): aso 1.00; ad-creative, sms 0.83; ai-seo, competitors, pricing
 | subagent-driven-development (141) | extend | "Never dispatch implementation subagents in parallel" predates Agent `isolation: worktree`; parallel is safe with disjoint write-sets |
 | executing-plans (57) | keep + one line | The per-lane executor; write-set bounds every edit |
 | test-driven-development (244) | trim to ~120 | Iron law still needed; rationalization tables and mock lore are ballast |
-| verification-before-completion (136) | keep, optional trim | Fresh-evidence gate and revert-to-prove-red still catch "should work now" |
+| verification-before-completion (149) | keep, optional trim | Fresh-evidence gate and revert-to-prove-red still catch "should work now" |
 | solution-hunter | keep; note future port to the Workflow tool | Heaviest ritual; the Workflow tool is its natural deterministic home |
 | agent-watchdog, critical-review, docs-first, fact-guard, getting-unstuck, kb-hygiene, project-cartography, receiving-code-review, stay-within-limits, systematic-debugging | keep | Each fixes a documented failure mode with no built-in equivalent |
 | parallel-plans (new) | add | See §6 |
