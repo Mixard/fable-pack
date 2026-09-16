@@ -302,7 +302,8 @@ stateless, and small enough to audit in one sitting before installing.
 - Skills: `plugins/<plugin>/skills/<name>/SKILL.md`, two-field frontmatter (`name`, `description`), optional `references/` and `scripts/`.
 - Agents: `plugins/fable-agents/agents/<name>.md` with `name`, `description`, and an explicit `model` tier.
 - Model policy: every agent declares the cheapest model that does the job well — `opus` only for judgment-heavy work (architecture, code review, security), `sonnet` for implementation and operations, `haiku` for mechanical tasks. Agents never inherit the orchestrator's model. Skills run inline; when a skill implies substantial mechanical work, the orchestrator should delegate it to a subagent on a lower tier.
-- English only, no emojis, SKILL.md under 800 lines, descriptions under 400 characters (long descriptions get truncated in the harness skill listing, hiding the triggers).
+- English only, no emojis, SKILL.md under 800 lines, descriptions under 400 characters with the key use case first.
+- Skill descriptions missing from Claude's listing? Claude Code caps the listing at 1% of the context window and drops the descriptions of the least-used skills first, whole plugins at a time if they were never invoked — the router then cannot trigger them. Length is not the criterion. Set `"skillListingBudgetFraction": 0.02` in `~/.claude/settings.json` (measured: 25 skills lost descriptions at 1%, none at 2%), or mark low-priority skills `"name-only"` in `skillOverrides`. `/doctor` shows the listing cost.
 - `python3 scripts/validate.py` checks all of the above (including required agent model tiers, link integrity, and description length); `python3 scripts/test_guard.py` tests the fable-guard hooks. CI runs both on every PR.
 
 ## Contributing
